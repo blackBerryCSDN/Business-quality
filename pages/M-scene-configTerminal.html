@@ -1,0 +1,243 @@
+<form class="form-inline form-sm" id="scene-configTerminal-form">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well form-well">
+                <div class="form-group form-group-sm" style="position: relative">
+                    <label for="terminalC-province">省份</label>
+                    <select class="select2-group form-control input-small" modal-data-select2="true" id="terminalC-province">
+                        <option value="0">全部</option>
+                        <option value="1">浙江</option>
+                        <option value="2">北京</option>
+                        <option value="3">河南</option>
+                        <option value="4">河北</option>
+                        <option value="5">江苏</option>
+                        <option value="0">黑龙江</option>
+                    </select>
+                </div>
+                &nbsp;
+                <div class="form-group form-group-sm">
+                    <label for="terminalC-city">地市</label>
+                    <select class="select2-group form-control input-small" modal-data-select2="true" id="terminalC-city">
+                        <option value="0">全部</option>
+                        <option value="1">宁波</option>
+                        <option value="2">杭州</option>
+                        <option value="3">绍兴</option>
+                    </select>
+                </div>
+                &nbsp;
+                <div class="form-group form-group-sm">
+                    <label for="terminalC-country">县区</label>
+                    <select class="select2-group form-control input-small" modal-data-select2="true" id="terminalC-country">
+                        <option value="0">全部</option>
+                        <option value="1">海曙</option>
+                        <option value="2">江东</option>
+                        <option value="3">江北</option>
+                    </select>
+                </div>
+                &nbsp;
+                <div class="form-group form-group-sm">
+                    <label for="terminalC-terminal">终端</label>
+                    <input type="text" class="form-control" placeholder="请输入关键字" id="terminalC-terminal"/>
+                </div>
+                &emsp;
+                <button type="button" class="btn blue btn-outline btn-sm">
+                    <i class="fa fa-search"></i> 查询
+                </button>
+                <div class="space-2"></div>
+                <div class="form-group mr20">
+                    <label >终端状态：</label>
+                    <div class="mt-checkbox-inline">
+                        <label class="mt-checkbox">
+                            <input type="checkbox" id="inlineCheckbox1-1" checked value="option1"> 在线
+                            <span></span>
+                        </label>
+                        <label class="mt-checkbox">
+                            <input type="checkbox" id="inlineCheckbox1-2" checked value="option2"> 离线
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group mr20">
+                    <label >工作状态：</label>
+                    <div class="mt-checkbox-inline">
+                        <label class="mt-checkbox">
+                            <input type="checkbox" id="inlineCheckbox2—1" checked value="option1"> 空闲(=0)
+                            <span></span>
+                        </label>
+                        <label class="mt-checkbox">
+                            <input type="checkbox" id="inlineCheckbox2-2" checked value="option2"> 较闲(<=10)
+                            <span></span>
+                        </label>
+                        <label class="mt-checkbox">
+                            <input type="checkbox" id="inlineCheckbox2-3" checked value="option2"> 较忙(<=50)
+                            <span></span>
+                        </label>
+                        <label class="mt-checkbox">
+                            <input type="checkbox" id="inlineCheckbox2-4" checked value="option2"> 繁忙(>50)
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group mr20 hide">
+                    <label >终端类型：</label>
+                    <div class="mt-checkbox-inline">
+                        <label class="mt-checkbox">
+                            <input type="checkbox" id="inlineCheckbox3-1" checked value="option1"> PC
+                            <span></span>
+                        </label>
+                        <label class="mt-checkbox">
+                            <input type="checkbox" id="inlineCheckbox3-2" checked value="option2"> 手机
+                            <span></span>
+                        </label>
+                        <label class="mt-checkbox">
+                            <input type="checkbox" id="inlineCheckbox3-2" checked value="option2"> web
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <h5 class="text-bolder">
+                    可选择
+                    <a class='pull-right' onclick='chooseLTAll()' href='javascript:;'>全选所有</a>
+                    <a class='pull-right mr10' onclick='chooseLTPage()' href='javascript:;'>全选本页</a>&emsp;
+                </h5>
+                <table id="terminal-left-table" class="table-condensed">
+
+                </table>
+            </div>
+            <div class="col-sm-6">
+                <h5 class="text-bolder">
+                    已选择
+                    <a class='pull-right' onclick='removeRTAll()' href='javascript:;'>全部清空</a>
+                </h5>
+                <table id="terminal-right-table" class="table-condensed"></table>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+<style>
+    .select2-container--open{
+        z-index: 9999999;;
+    }
+</style>
+
+<script>
+//    $.fn.modal.Constructor.prototype.enforceFocus = function () { };
+    $(function(){
+
+        $('[modal-data-select2="true"]').select2({
+//            dropdownParent: $('.aaa')
+         //   dropdownParent: $(".bootbox-confirm")
+        });
+
+
+        $('#terminal-left-table').bootstrapTable({
+            'url': '../assets/json/terminals.json',
+            'pagination': true,
+            'sidePagination': 'client',
+            'columns':[
+                { 'field': 'id', 'visible': false},
+                { 'field': 'province', 'title': '省份','sortable':true},
+                { 'field': 'city', 'title': '地市','sortable':true},
+                { 'field': 'country', 'title': '县区','sortable':true},
+                { 
+                    'field': 'model', 'title': '终端名称','sortable':true,
+                    'events':{
+                        'click a': function (e, value, row, index) {
+                           //alert(row.id);
+                        }
+                    }
+                },
+                { 'field': 'state', 'title': '终端状态','sortable':true},
+                { 'field': 'level', 'title': '工作状态','sortable':true},
+                {
+                    'field': 'action',
+                    'align': 'center',
+                    'title': '操作',
+                    'events':{
+                        'click a': function (e, value, row, index) {
+                            $('#terminal-right-table').bootstrapTable("prepend",row);
+                            $('#terminal-left-table').bootstrapTable('remove', {
+                                field: 'id',
+                                values: [row.id]
+                            });
+                            //alert('You click like action, row: ' + JSON.stringify(row));
+                        }
+                    }
+                },
+                { 'field': 'remove', 'visible': false}
+            ]
+            
+        });
+
+        $('#terminal-right-table').bootstrapTable({
+            'pagination': true,
+            'sidePagination': 'client',
+            'columns':[
+                { 'field': 'id', 'visible': false},
+                {
+                    'field': 'remove',
+                    'align': 'center',
+                    'title': '操作',
+                    'events':{
+                        'click a': function (e, value, row, index) {
+                            $('#terminal-left-table').bootstrapTable("prepend",row);
+                            $('#terminal-right-table').bootstrapTable('remove', {
+                                field: 'id',
+                                values: [row.id]
+                            });
+                        }
+                    }
+                },
+                { 'field': 'province', 'title': '省份','sortable':true},
+                { 'field': 'city', 'title': '地市','sortable':true},
+                { 'field': 'country', 'title': '县区','sortable':true},
+                { 'field': 'model', 'title': '终端名称','sortable':true,
+                    'events':{
+                        'click a': function (e, value, row, index) {
+                            //alert(row.id);
+                        }
+                    }
+                },
+                { 'field': 'state', 'title': '终端状态','sortable':true},
+                { 'field': 'level', 'title': '工作状态','sortable':true},
+                { 'field': 'action', 'visible': false}
+                
+            ]
+
+        });
+    });
+    
+    //选择所有
+    function chooseLTAll(){
+        var _row =  $('#terminal-left-table').bootstrapTable("getData");
+        $('#terminal-right-table').bootstrapTable("prepend",_row);
+        $('#terminal-left-table').bootstrapTable("removeAll");
+       
+    }
+    //选择当页
+    function chooseLTPage(){
+        var _row =  $('#terminal-left-table').bootstrapTable("getData",{'useCurrentPage':true});
+        $('#terminal-right-table').bootstrapTable("prepend",_row);
+        $('#terminal-left-table').bootstrapTable('remove', {
+            field: 'id',
+            values: (function(){
+                var arr = [];
+                for(var i=0;i<_row.length;i++){
+                    arr.push(_row[i].id);
+                }
+                return arr;
+            })()
+        });
+    }
+    //清空选择
+    function removeRTAll(){
+        var _row =  $('#terminal-right-table').bootstrapTable("getData");
+        $('#terminal-left-table').bootstrapTable("prepend",_row);
+        $('#terminal-right-table').bootstrapTable("removeAll");
+    }
+</script>

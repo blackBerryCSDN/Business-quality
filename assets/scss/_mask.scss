@@ -1,0 +1,22 @@
+.mask-body{
+  position: relative;
+ 
+  .mask-level{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right:0;
+    bottom:0;
+    width: 100%;
+    background: url('../img/img-mask.png') repeat;
+    @include opacity(100);
+    @include transition(all .2s);
+    z-index: 9;
+    &.mask-hide{
+      @include opacity(0);
+      left: -100%;
+    }
+    
+  }
+
+}

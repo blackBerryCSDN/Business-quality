@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>业务质量拨测系统</title>
+
+    <meta content="业务质量拨测系统" name="description"/>
+    <meta content="songt" name="author"/>
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="../metronic/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../metronic/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../metronic/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../metronic/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet"
+          type="text/css"/>
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <link href="../metronic/global/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+    <link href="../metronic/global/plugins/ladda/ladda-themeless.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="../metronic/global/plugins/jquery-multi-select/css/multi-select.css" rel="stylesheet" type="text/css" />
+
+    <link href="../metronic/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="../metronic/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="../metronic/global/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="../metronic/global/plugins/bootstrap-editable/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet" type="text/css" />
+
+    <link href="../metronic/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+
+    <!--<link rel="stylesheet" href="../metronic/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>-->
+
+    <!-- END PAGE LEVEL PLUGINS -->
+
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="../metronic/global/css/components-rounded.min.css" rel="stylesheet" id="style_components" type="text/css"/>
+    <link href="../metronic/global/css/plugins.min.css" rel="stylesheet" type="text/css"/>
+    <!-- END THEME GLOBAL STYLES -->
+
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <link href="../metronic/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../metronic/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css"
+          id="style_color"/>
+    <link href="../metronic/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css"/>
+    <!-- END THEME LAYOUT STYLES -->
+
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <link rel="stylesheet" href="../assets/plugins/my97DatePicker/skin/WdatePicker.css"/>
+    <link href="../assets/plugins/bootstrap-multiselect/css/bootstrap-multiselect.css" rel="stylesheet"  type="text/css" />
+    <link href="../assets/plugins/zTreeV3/css/metroStyle/metroStyle.css" rel="stylesheet"  type="text/css" />
+    <link href="../assets/plugins/Validform/css/style.css" rel="stylesheet"  type="text/css" />
+    <!-- END PAGE LEVEL PLUGINS -->
+
+    <!-- BEGIN DIALOG PLUGINS-->
+    <link rel="stylesheet" href="../assets/plugins/artDialog/css/dialog.css"/>
+
+    <!-- END DIALOG PLUGINS -->
+
+    <link href="../assets/css/web.css?v=1.0.0" rel="stylesheet" />
+
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="../assets/css/iconfont.css">
+</head>
+<body class="page-container-bg-solid">
+
+
+<style>
+     input[type=radio] {
+        margin: 2px 0 0;
+        margin-top: 1px\9;
+        line-height: normal;
+    }
+      .radio-inline {
+         position: relative;
+         display: inline-block;
+         padding-left: 20px;
+         margin-bottom: 0;
+         vertical-align: middle;
+         font-weight: 400;
+         cursor: pointer;
+         margin-top: -8px !important;
+     }
+     .astyle {
+         width: 350px;
+         display: block;
+         overflow: hidden;
+         color: #333;
+         text-overflow: ellipsis;
+         white-space: nowrap;
+         text-decoration: none;
+     }
+     .astyle:hover{
+         text-decoration: none;
+     }
+     .tooltip-inner {
+         max-width: 500px;
+         padding: 3px 8px;
+         color: #8c3901;
+         text-align: center;
+         background-color: #fef9d9;
+         border-radius: 4px;
+         border: 1px solid #a7a7a7;
+     }
+     .tooltip.top .tooltip-arrow {
+         bottom: 0;
+         left: 50%;
+         margin-left: -5px;
+         border-width: 5px 5px 0;
+         border-top-color: #a7a7a7;
+     }
+     .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+         position: absolute;
+         margin-left: -16px;
+         margin-top: 4px\9;
+     }
+      .btn-sm {
+         padding: 2px 2px;
+         font-size: 12px;
+         line-height: 1.5;
+         border-radius: 3px;
+          margin: 0px !important;
+     }
+     .btn-sm i{
+
+     }
+</style>
+<form class="form-inline" role="form" method="post" id="scene-addAlarmNum-form">
+    <div class="form-group">
+        <label class="radio-inline">
+            <input checked type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 详单
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 统计
+        </label>
+    </div>&emsp;
+    <div class="form-group">
+        <label>开始时间：</label>
+        <input type="text"class="form-control input-small input-sm inline-block" id="beginTime" value="2018-03-12 09:21:12" name="beginTime" value="" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+    </div>
+    <div class="form-group divcss5"></div>
+    <div class="form-group">
+        <label>结束时间：</label>
+        <input type="text"class="form-control input-small input-sm inline-block" id="endTime" value="2018-06-12 09:10:12" name="endTime" value="" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+    </div>
+    <div class="form-group divcss5"></div>
+    <div class="form-group">
+        <label>告警状态：</label>
+        <select class="form-control select-small input-sm inline-block" name="alarmInfoSelect" id="alarmInfoSelect" >
+            <option value=""  >全部</option>
+            <option value="0" >活动</option>
+            <option value="1" >确认</option>
+            <option value="2" >清除</option>
+            <option value="3" >无效</option>
+        </select>
+    </div>
+    <div class="form-group divcss5"></div>
+    <div class="form-group">
+        <div class="form-group divcss5"></div>
+        <button class="form-control btn-info" type="button" >
+            <i class="fa fa-search"></i>查询
+        </button>
+    </div>
+    <hr style="height: 1px; border: none; border-top: 1px dashed #0066CC;" />
+    <div class="form-group">
+        <button type="button" class="form-control btn btn-default" >
+            <i class="fa fa-refresh"></i> 刷新
+        </button>
+        <button type="button" class="form-control btn btn-default" >
+            <i class="fa fa-check"></i> 批量确认
+        </button>
+        <button type="button" onclick="deleteThis('small','确定批量删除?')"  class="form-control btn btn-default" >
+            <i class="fa fa-minus"></i> 批量清除
+        </button>
+        <button type="button" class="form-control btn btn-default" >
+            <i class="fa fa-arrow-circle-down"></i>导出
+        </button>
+    </div>
+
+    <div style="overflow-y:auto;overflow-x:auto; height:430px;margin-bottom: 17px;width: 1000px;">
+        <table style="" class="table table-bordered table-condensed table-hover table-vertical-middle" id="table-alarmInfo">
+            <thead>
+            <tr>
+                <th width="2%" bgcolor="#f8f8f8">
+                    <input type="checkbox" onclick="checkAll(this,'itemBox')" />
+                </th>
+                <th width="15%" bgcolor="#f8f8f8" id="xxx">告警时间</th>
+                <th width="5%" bgcolor="#f8f8f8">级别</th>
+                <th width="12%" bgcolor="#f8f8f8">告警类型</th>
+                <th width="40%" bgcolor="#f8f8f8">告警正文</th>
+                <th width="8%" bgcolor="#f8f8f8">告警状态</th>
+                <th width="18" bgcolor="#f8f8f8">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input type="checkbox" name="itemBox"/></td>
+                <td>2018-05-06 09:43:09</td>
+                <td>严重</td>
+                <td>业务连续失败告警</td>
+                <td><a class="astyle" data-toggle="tooltip" data-placement="top"  title="自动拨测业务连续失败告警:告警级别--严重,场景名称--验证测试,业务类型--PING,测试开始时间--2018-06-06 09:55:33 原因([获取域名失败,100次]),主叫测试终端--验证测试-远大路有线,主叫测试点--验证测试-远大路有线">自动拨测业务连续失败告警:告警级别--严重,场景名称--验证测试,业务类型--PING...</a></td>
+                <td>活动</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="...">
+                        <button type="button" class="btn-sm btn btn-default" onclick=" return false" ><i class="iconfont icon-querenwancheng"></i>确认</button>
+                        <button type="button" class="btn btn-default btn-sm" onclick="deleteThis('small','确定要删除?')"><i class="iconfont icon-cuowuguanbiquxiao"></i>清除</button>
+                        <button type="button" class="btn btn-default btn-sm" onclick=" return false"><i class="iconfont icon-caidan"></i>详单</button>
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="itemBox"/></td>
+                <td>2018-05-06 09:43:09</td>
+                <td>严重</td>
+                <td>业务连续失败告警</td>
+                <td><a class="astyle" data-toggle="tooltip" data-placement="top"  title="自动拨测业务连续失败告警:告警级别--严重,场景名称--验证测试,业务类型--PING,测试开始时间--2018-06-06 09:55:33 原因([获取域名失败,100次]),主叫测试终端--验证测试-远大路有线,主叫测试点--验证测试-远大路有线">自动拨测业务连续失败告警:告警级别--严重,场景名称--验证测试,业务类型--PING...</a></td>
+                <td>活动</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="...">
+                        <button type="button" class="btn-sm btn btn-default" onclick=" return false" ><i class="iconfont icon-querenwancheng"></i>确认</button>
+                        <button type="button" class="btn btn-default btn-sm" onclick="deleteThis('small','确定要删除?')"><i class="iconfont icon-cuowuguanbiquxiao"></i>清除</button>
+                        <button type="button" class="btn btn-default btn-sm" onclick=" return false"><i class="iconfont icon-caidan"></i>详单</button>
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="itemBox"/></td>
+                <td>2018-05-06 09:43:09</td>
+                <td>严重</td>
+                <td>业务连续失败告警</td>
+                <td><a class="astyle" data-toggle="tooltip" data-placement="top"  title="自动拨测业务连续失败告警:告警级别--严重,场景名称--验证测试,业务类型--PING,测试开始时间--2018-06-06 09:55:33 原因([获取域名失败,100次]),主叫测试终端--验证测试-远大路有线,主叫测试点--验证测试-远大路有线">自动拨测业务连续失败告警:告警级别--严重,场景名称--验证测试,业务类型--PING...</a></td>
+                <td>活动</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="...">
+                        <button type="button" class="btn-sm btn btn-default" onclick=" return false" ><i class="iconfont icon-querenwancheng"></i>确认</button>
+                        <button type="button" class="btn btn-default btn-sm" onclick="deleteThis('small','确定要删除?')"><i class="iconfont icon-cuowuguanbiquxiao"></i>清除</button>
+                        <button type="button" class="btn btn-default btn-sm" onclick=" return false"><i class="iconfont icon-caidan"></i>详单</button>
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="itemBox"/></td>
+                <td>2018-05-06 09:43:09</td>
+                <td>严重</td>
+                <td>业务连续失败告警</td>
+                <td><a class="astyle" data-toggle="tooltip" data-placement="top"  title="自动拨测业务连续失败告警:告警级别--严重,场景名称--验证测试,业务类型--PING,测试开始时间--2018-06-06 09:55:33 原因([获取域名失败,100次]),主叫测试终端--验证测试-远大路有线,主叫测试点--验证测试-远大路有线">自动拨测业务连续失败告警:告警级别--严重,场景名称--验证测试,业务类型--PING...</a></td>
+                <td>活动</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="...">
+                        <button type="button" class="btn-sm btn btn-default" onclick=" return false" ><i class="iconfont icon-querenwancheng"></i>确认</button>
+                        <button type="button" class="btn btn-default btn-sm" onclick="deleteThis('small','确定要删除?')"><i class="iconfont icon-cuowuguanbiquxiao"></i>清除</button>
+                        <button type="button" class="btn btn-default btn-sm" onclick=" return false"><i class="iconfont icon-caidan"></i>详单</button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class=" mt5 mb5">
+            <div class="col-sm-5">每页<select name="pageSize"
+                                            class="input-xsmall form-control inline-block ml5 mr5"
+                                            onchange="pageSubmit(1);return false;">
+                <option value="10" selected="">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+            </select>条，总共4条，显示1到4
+            </div>
+            <div class="col-sm-7">
+                <ul class="pagination no-margin  pull-right">
+                    <li class="disabled"><span>&lt;&lt;</span></li>
+                    <li class="active"><a href="#" onclick="return false;">1</a></li>
+                    <li class="disabled"><a href="#" onclick="return false;">&gt;&gt;</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<!-- END INNER FOOTER -->
+<!-- END FOOTER -->
+<!--[if lt IE 9]>
+<script src="../metronic/global/plugins/respond.min.js"></script>
+<script src="../metronic/global/plugins/excanvas.min.js"></script>
+<![endif]-->
+<!-- BEGIN CORE PLUGINS -->
+<script src="../metronic/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+<script src="../metronic/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+
+<!--<script src="../metronic/global/plugins/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/bootstrap-select/js/i18n/defaults-zh_CN.min.js" type="text/javascript"></script>-->
+
+<script src="../metronic/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/jquery-validation/js/localization/messages_zh.min.js" type="text/javascript"></script>
+
+<script src="../metronic/global/plugins/ladda/spin.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/ladda/ladda.min.js" type="text/javascript"></script>
+
+<script src="../metronic/global/plugins/jquery-multi-select/js/jquery.multi-select.js" type="text/javascript"></script>
+
+<!--手动修改过源码-->
+<script src="../metronic/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+<!--<script src="../metronic/global/plugins/select2/js/i18n/zh-CN.js" type="text/javascript"></script>-->
+
+<script src="../metronic/global/plugins/bootstrap-table/bootstrap-table.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js" type="text/javascript"></script>
+
+<script src="../metronic/global/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.js" type="text/javascript"></script>
+
+<script src="../metronic/global/plugins/bootbox/bootbox.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN THEME GLOBAL SCRIPTS -->
+<script src="../metronic/global/scripts/app.min.js" type="text/javascript"></script>
+<!-- END THEME GLOBAL SCRIPTS -->
+
+
+<!-- BEGIN THEME LAYOUT SCRIPTS -->
+<script src="../metronic/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
+<script src="../metronic/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
+<script src="../metronic/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+<!-- END THEME LAYOUT SCRIPTS -->
+
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="../assets/js/nbptUtil.js" type="text/javascript"></script>
+<script src="../assets/plugins/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+<script src="../assets/plugins/mustache/mustache.js" type="text/javascript"></script>
+<script src="../assets/plugins/jqueryForm/jquery.form.min.js" type="text/javascript"></script>
+<script src="../assets/plugins/quicksearch/jquery.quicksearch.js" type="text/javascript"></script>
+<script src="../assets/plugins/bootstrap-multiselect/js/bootstrap-multiselect.js" type="text/javascript"></script>
+<script src="../assets/plugins/zTreeV3/js/jquery.ztree.all.min.js" type="text/javascript"></script>
+<script src="../assets/plugins/infinite-scroll/jquery.infinitescroll.min.js" type="text/javascript"></script>
+<script src="../assets/plugins/infinite-scroll/behaviors/manual-trigger.js" type="text/javascript"></script>
+<script type="text/javascript" src="../assets/plugins/Validform/js/Validform.js"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN ConfigData -->
+<script src="../assets/js/colorConfig.js" type="text/javascript"></script>
+<!-- END ConfigData -->
+
+<script src="../assets/plugins/echarts/echarts.min.js"></script>
+<script src="../assets/plugins/echarts/china.js"></script>
+
+
+<!--//dialog-->
+
+<script src="../assets/plugins/artDialog/dist/dialog-plus.js" type="text/javascript"></script>
+
+
+</body>
+
+</html>
+
+<script>
+    $('[data-toggle="tooltip"]').tooltip();
+
+    function checkAll(obj){
+        var allTd=  $(obj).parents().parents().parents().next().children().children('td').find('input');
+        if($(obj).is(':checked')){
+            allTd.prop('checked',true);
+        }else{
+            allTd.prop('checked',false);
+        }
+    }
+    //删除弹框
+    function deleteThis(size,title) {
+        bootbox.confirm({
+            size: size,
+            message:title,
+            buttons: {
+                cancel: {
+                    label: '取消',
+                    className: 'btn-default btn-small'
+                },
+                confirm: {
+                    label: '确认',
+                    className: 'btn-primary btn-small'
+                }
+            },
+            callback: function(result){
+                /* result is a boolean; true = OK, false = Cancel*/
+                if (result == true) {
+                    // alert('确定删除');
+                }else{
+                    // alert('取消');
+                }
+            }
+        })
+    }
+</script>

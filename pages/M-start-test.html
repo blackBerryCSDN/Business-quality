@@ -1,0 +1,174 @@
+<!--任务过滤弹窗-->
+
+<form action="" id="form-task-filter" class="form-inline start-test-style">
+    <div class="form-group" style="max-height: 500px;overflow-y: auto;overflow-x: hidden;">
+        <div class="form-group col-md-12">
+            <label class="control-label" style="width: 70px; text-align:right;">任务名称</label>
+            &nbsp;
+            <input class="form-control" type="text" name="taskName" id="taskName" value="" style="width: 400px;"/>
+        </div>
+        <div class="form-group col-md-12">
+            <label class="control-label" style="width: 70px; text-align:right;">执行方式</label>
+            &nbsp;
+            <label class="radio-inline"><input type="radio" name="testMode" value="1" checked="checked">立即</label>
+            <label class="radio-inline"><input type="radio" name="testMode" value="2">定时</label>
+            <label class="radio-inline"><input type="radio" name="testMode" value="3">例行</label>
+            <label class="radio-inline"><input type="radio" name="testMode" value="4">循环</label>
+        </div>
+        <div class="form-group col-md-12">
+            <label class="control-label" style="width: 70px; text-align:right;">优先级</label>
+            &nbsp;
+            <select class="form-control" name="priority" id="priority" style="width: 80px;">
+                <option value="3" selected="selected">高</option>
+                <option value="2">中</option>
+                <option value="1">低</option>
+            </select>
+            &nbsp;
+            <label class="control-label" style="width: 100px;">顺序锁定
+                <input type="checkbox" name="indexFlag" id="indexFlag" value="1" checked>
+            </label>
+        </div>
+        <div class="form-group col-md-12 ">
+            <div style="display: inline-block;" class="timed routine loop">
+                <label class="control-label" style="width: 74px; text-align:right;">开始时间</label>&nbsp;
+                <input class="form-control Wdate" type="text" id="startTime" name="startTime" value="" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',readOnly:true,maxDate:'#F{$dp.$D(\'endTime\')}',skin:'twoer'})"  style="width: 150px;"/>&nbsp;
+            </div>
+            <div style="display: inline-block;" class="timed routine loop">
+                <label class="control-label" style="width: 70px; text-align:right;">结束时间</label>&nbsp;
+                <input class="form-control Wdate" type="text" id="endTime" name="endTime" value="" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',readOnly:true,minDate:'#F{$dp.$D(\'startTime\')}',startDate:'#F{$dp.$D(\'startTime\',{d:+1})}',skin:'twoer'})" style="width: 150px;"/>
+            </div>
+        </div>
+        <div class="form-group col-md-12 loop timed routine">
+            <label class="control-label" style="width: 70px; text-align:right;">暂停时段</label>
+            &nbsp; <select class="multiselect" multiple="multiple" name="pauseTime" id="pauseTime" style="width: 400px;">
+            </select>
+            <span class="Validform_checktip">(设定时间范围内不执行测试)</span>
+        </div>
+        <div class="form-group col-md-12 loop">
+            <label class="control-label" style="width: 70px; text-align:right;">循环次数</label>
+            &nbsp;
+            <input class="form-control" type="text" name="loopTimes" id="loopTimes" value="0" style="width: 150px;">
+            <span class="Validform_checktip">(0表示无限制)</span>
+        </div>
+        <div class="form-group col-md-12 routine loop">
+            <label class="control-label" style="width: 70px; text-align:right;">任务间隔</label>&nbsp;
+            <input class="form-control" type="text" name="taskInterval" id="taskInterval" value="0" style="width: 40px;">分钟执行一次 <span class="Validform_checktip">(0表示无限制)</span>&emsp;
+            单任务时限<input class="form-control" type="text" name="loopTaskLimit" id="loopTaskLimit" value="0" style="width: 40px;">分钟
+            <span class="Validform_checktip">(0表示无限制)</span>
+        </div>
+        <div class="form-group col-md-12 routine">
+            <label class="control-label" style="width: 70px; text-align:right;">例行方式</label>
+            &nbsp;
+            <label class="radio-inline"><input type="radio" name="routineMode" value="3">按月</label>
+            <label class="radio-inline"><input type="radio" name="routineMode" value="2">按周</label>
+            <label class="radio-inline"><input type="radio" name="routineMode" value="1" checked="checked">按天</label>
+        </div>
+        <div class="form-group col-md-12 routine">
+            <label class="control-label" style="width: 70px; text-align:right;">执行时间点</label>&nbsp;
+            <div id="routineDateDiv" style="display: inline-block;">
+                <select class="multiselect" multiple="multiple" name="routineDate" id="routineDate" style="width: 400px;">
+                </select>
+            </div>
+            <input class="form-control" type="text" name="routineMinute" id="routineMinute" value="0" style="width: 40px;"> &emsp;<span class="Validform_checktip">(和执行时间点组合使用，0表示整点 )</span>
+        </div>
+        <div class="row select-source-wrap clearfix">
+            <div class="col-md-3 select-source-left">
+                项目 &emsp;<label><input type="checkbox" checked onclick="checkAll(this,'serviceDetail')"/>全选</label>
+                <div style="height: 5px"></div>
+                <ul class="ul-list-style" id="serviceTabLi">
+                    <li ><input type="checkbox" checked><a class="active" href="#" >PING</a></li>
+                    <li><input type="checkbox" checked><a href="#" >WEB网页浏览</a></li>
+                    <li><input type="checkbox" checked><a href="#" >HTTP下载</a></li>
+                </ul>
+            </div>
+            <div class="col-md-9 select-source-right">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span>终端</span>
+                        <ul class="terminal-source-info">
+                            <li><input type="checkbox"><a href="">南京-客户邀请会-有线:南京-客户邀请会-有线 移动ADSL</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <span> 资源</span>
+                        <ul class="terminal-source-info">
+                            <li><input type="checkbox"><a href="#">  http文件下载1(域名组)</a></li>
+                            <li><input type="checkbox"><a href="#">    http文件下载(URL)</a></li>
+
+                        </ul>
+                        <button class="btn btn-success pull-right">下达</button>
+                    </div>
+                    <div class="tab-content row" id="serviceTabContent">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<script>
+    $(function(){
+        var week = {"1":"周一","2":"周二","3":"周三","4":"周四","5":"周五","6":"周六","7":"周日"};
+        var month = {"1":"1号","2":"2号","3":"3号","4":"4号","5":"5号","6":"6号","7":"7号","8":"8号","9":"9号","10":"10号","11":"11号","12":"12号","13":"13号","14":"14号","15":"15号","16":"16号","17":"17号","18":"18号","19":"19号","20":"20号","21":"21号","22":"22号","23":"23号","24":"24号","25":"25号","26":"26号","27":"27号","28":"28号","29":"29号","30":"30号","31":"31号"};
+        var pauseTimeArray = [{"label":"00:00-01:00","value":"00:00-01:00"},{"label":"01:00-02:00","value":"01:00-02:00"},{"label":"02:00-03:00","value":"02:00-03:00"},{"label":"03:00-04:00","value":"03:00-04:00"},{"label":"04:00-05:00","value":"04:00-05:00"},{"label":"05:00-06:00","value":"05:00-06:00"},{"label":"06:00-07:00","value":"06:00-07:00"},{"label":"07:00-08:00","value":"07:00-08:00"},{"label":"08:00-09:00","value":"08:00-09:00"},{"label":"09:00-10:00","value":"09:00-10:00"},{"label":"10:00-11:00","value":"10:00-11:00"},{"label":"11:00-12:00","value":"11:00-12:00"},{"label":"12:00-13:00","value":"12:00-13:00"},{"label":"13:00-14:00","value":"13:00-14:00"},{"label":"14:00-15:00","value":"14:00-15:00"},{"label":"15:00-16:00","value":"15:00-16:00"},{"label":"16:00-17:00","value":"16:00-17:00"},{"label":"17:00-18:00","value":"17:00-18:00"},{"label":"18:00-19:00","value":"18:00-19:00"},{"label":"19:00-20:00","value":"19:00-20:00"},{"label":"20:00-21:00","value":"20:00-21:00"},{"label":"21:00-22:00","value":"21:00-22:00"},{"label":"22:00-23:00","value":"22:00-23:00"},{"label":"23:00-00:00","value":"23:00-00:00"}];
+        var routineTimeArray = [{"label":"00:00","value":"00:00"},{"label":"01:00","value":"01:00"},{"label":"02:00","value":"02:00"},{"label":"03:00","value":"03:00"},{"label":"04:00","value":"04:00"},{"label":"05:00","value":"05:00"},{"label":"06:00","value":"06:00"},{"label":"07:00","value":"07:00"},{"label":"08:00","value":"08:00"},{"label":"09:00","value":"09:00"},{"label":"10:00","value":"10:00"},{"label":"11:00","value":"11:00"},{"label":"12:00","value":"12:00"},{"label":"13:00","value":"13:00"},{"label":"14:00","value":"14:00"},{"label":"15:00","value":"15:00"},{"label":"16:00","value":"16:00"},{"label":"17:00","value":"17:00"},{"label":"18:00","value":"18:00"},{"label":"19:00","value":"19:00"},{"label":"20:00","value":"20:00"},{"label":"21:00","value":"21:00"},{"label":"22:00","value":"22:00"},{"label":"23:00","value":"23:00"}];
+
+        $('.multiselect').multiselect({
+            maxHeight: 150,
+            includeSelectAllOption: true,
+            selectAllText: "全选/取消全选",
+            buttonWidth: '400px',
+        });
+        $(".multiselect-container").css({width:'100%'});
+        $("#pauseTime").multiselect("dataprovider",pauseTimeArray);
+        $("input[type=radio][name='testMode']").click(function(){
+            var testMode = $(this).val();
+            $("#priority").val(testMode==1?'3':'2');
+            if(testMode == 1){
+                $(".timed").hide();
+                $(".routine").hide();
+                $(".loop").hide();
+            }else if(testMode == 2){
+                $(".routine").hide();
+                $(".loop").hide();
+                $(".timed").show();
+            }else if(testMode == 3){
+                $(".timed").hide();
+                $(".loop").hide();
+                $(".routine").show();
+                $("#routineTime").multiselect("dataprovider",routineTimeArray);
+                $("input[type=radio][name='routineMode']:checked").click();
+            }else if(testMode == 4){
+                $(".timed").hide();
+                $(".routine").hide();
+                $(".loop").show();
+            }
+        });
+        $("input[type=radio][name='testMode'][value='1']").click();
+        $("input[type=radio][name='routineMode']").click(function(){
+            var type = $(this).val();
+            var option = "";
+            // type == 1 ? $("#routineDateDiv").hide():$("#routineDateDiv").show();
+            if(type == 3){
+                for(var key in month){
+                    option += "<option value='"+key+"'>"+month[key]+"</option>";
+                }
+            }else if(type == 2){
+                for(var key in week){
+                    option += "<option value='"+key+"'>"+week[key]+"</option>";
+                }
+            }else if(type == 1){
+                for(var key in routineTimeArray){
+                    option += "<option value='"+key+"'>"+routineTimeArray[key].value+"</option>";
+                }
+            }
+            $("#routineDate").empty().append(option).multiselect("rebuild");
+        });
+
+        $(".ul-list-style li ").on('click', 'a',function(){
+            $(this).addClass('active').parent().siblings().find('a').removeClass('active');
+
+        })
+    })
+</script>

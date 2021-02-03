@@ -1,0 +1,65 @@
+<!--选择测试任务-->
+
+<form class="form-inline" id="">
+
+   <div class="form-group">
+      <label>时间段：</label>
+      <div class="input-group">
+         <input type="text" class="form-control read-only-normal" placeholder="请选择开始时间" id="startTime2" name="startTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'endTime2\');}',isShowClear:false,readOnly:true})" readonly/>
+         <div class="input-group-addon">至</div>
+         <input type="text" class="form-control read-only-normal" placeholder="请选择结束时间" id="endTime2" name="endTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startTime2\');}',isShowClear:false,readOnly:true})" readonly/>
+      </div>
+   </div>
+   &emsp;
+   <div class="form-group">
+      <label>任务名称：</label>
+      <input type="text" class="form-control" />
+   </div>
+   &emsp;
+   <div class="form-group">
+   <button type="button" class="btn blue">查询</button>
+   </div>
+</form>
+<hr class="dashed-line">
+<div class="ztree" id="tree-chooseTestTask" style="height: 300px;overflow: auto"></div>
+
+<script>
+
+   //实际开发 请点击选项即勾选
+    $(function () {
+       var setting = {
+          check: {
+             enable: true
+          },
+          data: {
+             simpleData: {
+                enable: true
+             }
+          }
+       };
+
+       var zNodes =[
+          { id:1, pId:0, name:"随意勾选 1", open:true},
+          { id:111, pId:1, name:"随意勾选 1-1-1随意勾选 1-1-1随意勾选 1-1-1随意勾选 1-1-1随意勾选 1-1-1"},
+          { id:112, pId:1, name:"随意勾选 1-1-2随意勾选 1-1-2随意勾选 1-1-2随意勾选 1-1-2随意勾选 1-1-2随意勾选 1-1-2"},
+          { id:121, pId:1, name:"随意勾选 1-2-1随意勾选 1-2-1随意勾选 1-2-1随意勾选 1-2-1随意勾选 1-2-1随意勾选 1-2-1"},
+          { id:121, pId:1, name:"随意勾选 1-2-1"},
+          { id:121, pId:1, name:"随意勾选 1-2-1"},
+          { id:121, pId:1, name:"随意勾选 1-2-1"},
+          { id:121, pId:1, name:"随意勾选 1-2-1"},
+          { id:121, pId:1, name:"随意勾选 1-2-1"},
+          { id:121, pId:1, name:"随意勾选 1-2-1"},
+          { id:121, pId:1, name:"随意勾选 1-2-1"},
+          { id:121, pId:1, name:"随意勾选 1-2-1"},
+          { id:121, pId:1, name:"随意勾选 1-2-1"},
+          { id:121, pId:1, name:"随意勾选 1-2-1"},
+          { id:121, pId:1, name:"随意勾选 1-2-1"},
+          { id:122, pId:1, name:"随意勾选 1-2-2"}
+       ];
+
+
+       $.fn.zTree.init($("#tree-chooseTestTask"), setting, zNodes);
+
+    })
+
+</script>

@@ -1,0 +1,62 @@
+.card-box-stat{
+
+  padding:20px;
+  border: 2px solid #e5e5e5;
+  position: relative;
+  background: #fff;
+  text-align: center;
+  background: #fafafa;
+  .title{
+    font-size: 16px;
+    padding-bottom: 6px;
+    padding-top: 2px;
+    color: #999;
+  }
+  .num {
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 54px;
+    color: #666;
+    .pre {
+      font-size: 18px;
+      margin-left: -10px;
+    }
+  }
+}
+
+.card-box-wrap{
+  background: #fafafa;
+  padding:10px;
+  border: 1px solid #ddd;
+}
+
+.card-grid-shop{
+  background: #eff3f8;
+  border: 1px dashed darken(#eff3f8,5);
+  text-align: center;
+  padding:15px 5px;
+  position: relative;
+  .tip-icon{
+    position: absolute;
+    right: 5px;
+    top:5px;
+    display: inline-block;
+    height: 22px;
+    width: 22px;
+    line-height: 22px;
+    text-shadow: none!important;
+    font-size: 14px;
+    font-weight: 300;
+    color: #fff;
+    background: #000;
+  }
+  .title{
+    font-size: 14px;
+    color: #666;
+  }
+  .desc{
+    font-size: 36px;
+  }
+}

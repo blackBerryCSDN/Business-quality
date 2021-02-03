@@ -1,0 +1,160 @@
+<form class="form-inline form-sm" id="scene-configTerminal-form">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well form-well">
+                <div class="form-group form-group-sm">
+                    <label for="terminalC-province">省份</label>
+                    <select class="select2-group form-control input-small" modal-data-select2="true" id="terminalC-province">
+                        <option value="0">全部</option>
+                        <option value="1">浙江</option>
+                        <option value="2">北京</option>
+                        <option value="3">河南</option>
+                        <option value="4">河北</option>
+                        <option value="5">江苏</option>
+                        <option value="0">黑龙江</option>
+                    </select>
+                </div>
+                &nbsp;
+                <div class="form-group form-group-sm">
+                    <label for="terminalC-city">地市</label>
+                    <select class="select2-group form-control input-small" modal-data-select2="true" id="terminalC-city">
+                        <option value="0">全部</option>
+                        <option value="1">宁波</option>
+                        <option value="2">杭州</option>
+                        <option value="3">绍兴</option>
+                    </select>
+                </div>
+                &nbsp;
+                <div class="form-group form-group-sm">
+                    <label for="terminalC-country">县区</label>
+                    <select class="select2-group form-control input-small" modal-data-select2="true" id="terminalC-country">
+                        <option value="0">全部</option>
+                        <option value="1">海曙</option>
+                        <option value="2">江东</option>
+                        <option value="3">江北</option>
+                    </select>
+                </div>
+                &nbsp;
+                <button type="button" class="btn blue btn-outline btn-sm">
+                    <i class="fa fa-search"></i> 查询
+                </button>
+            </div>
+
+            <div class="col-sm-6">
+                <h5 class="text-bolder">
+                    可选择
+                    <a class='pull-right' onclick='chooseLTAll()' href='javascript:;'>全选所有</a>
+                    <a class='pull-right mr10' onclick='chooseLTPage()' href='javascript:;'>全选本页</a>&emsp;
+                </h5>
+                <table id="terminalByArea-left-table" class="table-condensed">
+
+                </table>
+            </div>
+            <div class="col-sm-6">
+                <h5 class="text-bolder">
+                    已选择
+                    <a class='pull-right' onclick='removeRTAll()' href='javascript:;'>全部清空</a>
+                </h5>
+                <table id="terminalByArea-right-table" class="table-condensed"></table>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+<script>
+    $(function(){
+        
+        
+        
+        $('[modal-data-select2="true"]').select2();
+
+        $('#terminalByArea-left-table').bootstrapTable({
+            'url': '../assets/json/terminalsByArea.json',
+            'pagination': true,
+            'sidePagination': 'client',
+            'columns':[
+                { 'field': 'id', 'visible': false},
+                { 'field': 'province', 'title': '省份','sortable':true},
+                { 'field': 'city', 'title': '地市','sortable':true},
+                { 'field': 'country', 'title': '县区','sortable':true},
+                {
+                    'field': 'action',
+                    'align': 'center',
+                    'title': '操作',
+                    'events':{
+                        'click a': function (e, value, row, index) {
+                            $('#terminalByArea-right-table').bootstrapTable("prepend",row);
+                            $('#terminalByArea-left-table').bootstrapTable('remove', {
+                                field: 'id',
+                                values: [row.id]
+                            });
+                            //alert('You click like action, row: ' + JSON.stringify(row));
+                        }
+                    }
+                },
+                { 'field': 'remove', 'visible': false}
+            ]
+            
+        });
+
+        $('#terminalByArea-right-table').bootstrapTable({
+            'pagination': true,
+            'sidePagination': 'client',
+            'columns':[
+                { 'field': 'id', 'visible': false},
+                {
+                    'field': 'remove',
+                    'align': 'center',
+                    'title': '操作',
+                    'events':{
+                        'click a': function (e, value, row, index) {
+                            $('#terminalByArea-left-table').bootstrapTable("prepend",row);
+                            $('#terminalByArea-right-table').bootstrapTable('remove', {
+                                field: 'id',
+                                values: [row.id]
+                            });
+                        }
+                    }
+                },
+                { 'field': 'province', 'title': '省份','sortable':true},
+                { 'field': 'city', 'title': '地市','sortable':true},
+                { 'field': 'country', 'title': '县区','sortable':true},
+                { 'field': 'action', 'visible': false}
+                
+            ]
+
+        });
+    });
+    
+    //选择所有
+    function chooseLTAll(){
+        var _row =  $('#terminalByArea-left-table').bootstrapTable("getData");
+        $('#terminalByArea-right-table').bootstrapTable("prepend",_row);
+        $('#terminalByArea-left-table').bootstrapTable("removeAll");
+       
+    }
+    //选择当页
+    function chooseLTPage(){
+        var _row =  $('#terminalByArea-left-table').bootstrapTable("getData",{'useCurrentPage':true});
+        $('#terminalByArea-right-table').bootstrapTable("prepend",_row);
+        $('#terminalByArea-left-table').bootstrapTable('remove', {
+            field: 'id',
+            values: (function(){
+                var arr = [];
+                for(var i=0;i<_row.length;i++){
+                    arr.push(_row[i].id);
+                }
+                return arr;
+            })()
+        });
+    }
+    //清空选择
+    function removeRTAll(){
+        var _row =  $('#terminalByArea-right-table').bootstrapTable("getData");
+        $('#terminalByArea-left-table').bootstrapTable("prepend",_row);
+        $('#terminalByArea-right-table').bootstrapTable("removeAll");
+    }
+</script>

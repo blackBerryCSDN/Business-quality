@@ -1,0 +1,2559 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>业务质量拨测系统</title>
+
+    <meta content="业务质量拨测系统" name="description"/>
+    <meta content="songt" name="author"/>
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="../metronic/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../metronic/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../metronic/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../metronic/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet"
+          type="text/css"/>
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <link href="../metronic/global/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+    <link href="../metronic/global/plugins/ladda/ladda-themeless.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="../metronic/global/plugins/jquery-multi-select/css/multi-select.css" rel="stylesheet" type="text/css" />
+
+    <link href="../metronic/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="../metronic/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="../metronic/global/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="../metronic/global/plugins/bootstrap-editable/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet" type="text/css" />
+
+    <link href="../metronic/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+    
+    <!--<link rel="stylesheet" href="../metronic/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>-->
+
+    <!-- END PAGE LEVEL PLUGINS -->
+
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="../metronic/global/css/components-rounded.min.css" rel="stylesheet" id="style_components" type="text/css"/>
+    <link href="../metronic/global/css/plugins.min.css" rel="stylesheet" type="text/css"/>
+    <!-- END THEME GLOBAL STYLES -->
+
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <link href="../metronic/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../metronic/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css"
+          id="style_color"/>
+    <link href="../metronic/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css"/>
+    <!-- END THEME LAYOUT STYLES -->
+    
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <link rel="stylesheet" href="../assets/plugins/my97DatePicker/skin/WdatePicker.css"/>
+    <link href="../assets/plugins/bootstrap-multiselect/css/bootstrap-multiselect.css" rel="stylesheet"  type="text/css" />
+    <link href="../assets/plugins/zTreeV3/css/metroStyle/metroStyle.css" rel="stylesheet"  type="text/css" />
+    <link href="../assets/plugins/Validform/css/style.css" rel="stylesheet"  type="text/css" />
+    <!-- END PAGE LEVEL PLUGINS -->
+
+    <link rel="stylesheet" href="../metronic/global/plugins/datatables/datatables.min.css">
+
+    <!-- BEGIN DIALOG PLUGINS-->
+    <link rel="stylesheet" href="../assets/plugins/artDialog/css/dialog.css"/>
+
+    <!-- END DIALOG PLUGINS -->
+
+    <link href="../assets/css/web.css?v=1.0.0" rel="stylesheet" />
+
+    <link rel="shortcut icon" href="favicon.ico"/>
+
+    <link rel="stylesheet" href="../assets/css/iconfont.css">
+    <link rel="stylesheet" href="../assets/css/iconfont2.css">
+</head>
+<body class="page-container-bg-solid">
+<!-- BEGIN HEADER -->
+<div class="page-header">
+    <!-- BEGIN HEADER MENU -->
+    <div class="page-header-menu">
+        <div class="container-fluid">
+
+            <!-- BEGIN MEGA MENU -->
+            <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
+            <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
+            <div class="hor-menu">
+                <div class="page-logo">
+                    <a href="index.html">
+                        <img src="../assets/img/logo.png" alt="logo" class="logo-special">
+                    </a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class=" active">
+                        <a href="index.html" id="setIndexHref">
+                            <i class="iconfont icon-caidan06"></i> 首页
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="scene-manage.html" id="setManageHref">
+                            <i class="iconfont icon-tubiao11"></i> 场景管理
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="scene-net-show.html" id="setNetHref">
+                            <i class="iconfont icon-tubiao26"></i> 网点展示
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="scene-alarm-total.html">
+                            <i class="iconfont icon-tubiao13"></i> 告警综合
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="scene-device-list.html">
+                            <i class="iconfont icon-tubiao12"></i> 设备管理
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="scene-source-maintain.html">
+                            <i class="iconfont icon-tubiao42"></i>资源维护
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="scene-system-manage.html">
+                            <i class="iconfont icon-tubiao15"></i>系统管理
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- BEGIN TOP NAVIGATION MENU -->
+                <div class="page-header-top pull-right " style="line-height: 50px;">
+
+                    <div class="dropdown login-logout">
+                        <a id="dLabel" class="set-astyle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            你好
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu " id="reset-dropdown-menu" aria-labelledby="dLabel">
+                            <li><a href="login.html"><i class="glyphicon glyphicon-off"></i> 退出</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- END TOP NAVIGATION MENU -->
+
+                <!-- END TOP NAVIGATION MENU -->
+            </div>
+            <!-- END MEGA MENU -->
+        </div>
+    </div>
+    <!-- END HEADER MENU -->
+</div>
+<!-- END HEADER -->
+
+<!-- BEGIN QUICK SIDEBAR
+<a href="javascript:;" class="page-quick-sidebar-toggler">
+    <i class="icon-login"></i>
+</a>
+<div class="page-quick-sidebar-wrapper" data-close-on-body-click="false">
+    <div class="page-quick-sidebar">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="javascript:;" data-target="#quick_sidebar_tab_1" data-toggle="tab"> Users
+                    <span class="badge badge-danger">2</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" data-target="#quick_sidebar_tab_2" data-toggle="tab"> Alerts
+                    <span class="badge badge-success">7</span>
+                </a>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> More
+                    <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="dropdown-menu pull-right">
+                    <li>
+                        <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                            <i class="icon-bell"></i> Alerts </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                            <i class="icon-info"></i> Notifications </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                            <i class="icon-speech"></i> Activities </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                            <i class="icon-settings"></i> Settings </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active page-quick-sidebar-chat" id="quick_sidebar_tab_1">
+                <div class="page-quick-sidebar-chat-users" data-rail-color="#ddd" data-wrapper-class="page-quick-sidebar-list">
+                    <h3 class="list-heading">Staff</h3>
+                    <ul class="media-list list-items">
+                        <li class="media">
+                            <div class="media-status">
+                                <span class="badge badge-success">8</span>
+                            </div>
+                            <img class="media-object" src="../metronic/layouts/layout/img/avatar3.jpg" alt="...">
+                            <div class="media-body">
+                                <h4 class="media-heading">Bob Nilson</h4>
+                                <div class="media-heading-sub"> Project Manager </div>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <img class="media-object" src="../metronic/layouts/layout/img/avatar1.jpg" alt="...">
+                            <div class="media-body">
+                                <h4 class="media-heading">Nick Larson</h4>
+                                <div class="media-heading-sub"> Art Director </div>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="media-status">
+                                <span class="badge badge-danger">3</span>
+                            </div>
+                            <img class="media-object" src="../metronic/layouts/layout/img/avatar4.jpg" alt="...">
+                            <div class="media-body">
+                                <h4 class="media-heading">Deon Hubert</h4>
+                                <div class="media-heading-sub"> CTO </div>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <img class="media-object" src="../metronic/layouts/layout/img/avatar2.jpg" alt="...">
+                            <div class="media-body">
+                                <h4 class="media-heading">Ella Wong</h4>
+                                <div class="media-heading-sub"> CEO </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <h3 class="list-heading">Customers</h3>
+                    <ul class="media-list list-items">
+                        <li class="media">
+                            <div class="media-status">
+                                <span class="badge badge-warning">2</span>
+                            </div>
+                            <img class="media-object" src="../metronic/layouts/layout/img/avatar6.jpg" alt="...">
+                            <div class="media-body">
+                                <h4 class="media-heading">Lara Kunis</h4>
+                                <div class="media-heading-sub"> CEO, Loop Inc </div>
+                                <div class="media-heading-small"> Last seen 03:10 AM </div>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="media-status">
+                                <span class="label label-sm label-success">new</span>
+                            </div>
+                            <img class="media-object" src="../metronic/layouts/layout/img/avatar7.jpg" alt="...">
+                            <div class="media-body">
+                                <h4 class="media-heading">Ernie Kyllonen</h4>
+                                <div class="media-heading-sub"> Project Manager,
+                                    <br> SmartBizz PTL </div>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <img class="media-object" src="../metronic/layouts/layout/img/avatar8.jpg" alt="...">
+                            <div class="media-body">
+                                <h4 class="media-heading">Lisa Stone</h4>
+                                <div class="media-heading-sub"> CTO, Keort Inc </div>
+                                <div class="media-heading-small"> Last seen 13:10 PM </div>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="media-status">
+                                <span class="badge badge-success">7</span>
+                            </div>
+                            <img class="media-object" src="../metronic/layouts/layout/img/avatar9.jpg" alt="...">
+                            <div class="media-body">
+                                <h4 class="media-heading">Deon Portalatin</h4>
+                                <div class="media-heading-sub"> CFO, H&D LTD </div>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <img class="media-object" src="../metronic/layouts/layout/img/avatar10.jpg" alt="...">
+                            <div class="media-body">
+                                <h4 class="media-heading">Irina Savikova</h4>
+                                <div class="media-heading-sub"> CEO, Tizda Motors Inc </div>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="media-status">
+                                <span class="badge badge-danger">4</span>
+                            </div>
+                            <img class="media-object" src="../metronic/layouts/layout/img/avatar11.jpg" alt="...">
+                            <div class="media-body">
+                                <h4 class="media-heading">Maria Gomez</h4>
+                                <div class="media-heading-sub"> Manager, Infomatic Inc </div>
+                                <div class="media-heading-small"> Last seen 03:10 AM </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="page-quick-sidebar-item">
+                    <div class="page-quick-sidebar-chat-user">
+                        <div class="page-quick-sidebar-nav">
+                            <a href="javascript:;" class="page-quick-sidebar-back-to-list">
+                                <i class="icon-arrow-left"></i>Back</a>
+                        </div>
+                        <div class="page-quick-sidebar-chat-user-messages">
+                            <div class="post out">
+                                <img class="avatar" alt="" src="../metronic/layouts/layout/img/avatar3.jpg" />
+                                <div class="message">
+                                    <span class="arrow"></span>
+                                    <a href="javascript:;" class="name">Bob Nilson</a>
+                                    <span class="datetime">20:15</span>
+                                    <span class="body"> When could you send me the report ? </span>
+                                </div>
+                            </div>
+                            <div class="post in">
+                                <img class="avatar" alt="" src="../metronic/layouts/layout/img/avatar2.jpg" />
+                                <div class="message">
+                                    <span class="arrow"></span>
+                                    <a href="javascript:;" class="name">Ella Wong</a>
+                                    <span class="datetime">20:15</span>
+                                    <span class="body"> Its almost done. I will be sending it shortly </span>
+                                </div>
+                            </div>
+                            <div class="post out">
+                                <img class="avatar" alt="" src="../metronic/layouts/layout/img/avatar3.jpg" />
+                                <div class="message">
+                                    <span class="arrow"></span>
+                                    <a href="javascript:;" class="name">Bob Nilson</a>
+                                    <span class="datetime">20:15</span>
+                                    <span class="body"> Alright. Thanks! :) </span>
+                                </div>
+                            </div>
+                            <div class="post in">
+                                <img class="avatar" alt="" src="../metronic/layouts/layout/img/avatar2.jpg" />
+                                <div class="message">
+                                    <span class="arrow"></span>
+                                    <a href="javascript:;" class="name">Ella Wong</a>
+                                    <span class="datetime">20:16</span>
+                                    <span class="body"> You are most welcome. Sorry for the delay. </span>
+                                </div>
+                            </div>
+                            <div class="post out">
+                                <img class="avatar" alt="" src="../metronic/layouts/layout/img/avatar3.jpg" />
+                                <div class="message">
+                                    <span class="arrow"></span>
+                                    <a href="javascript:;" class="name">Bob Nilson</a>
+                                    <span class="datetime">20:17</span>
+                                    <span class="body"> No probs. Just take your time :) </span>
+                                </div>
+                            </div>
+                            <div class="post in">
+                                <img class="avatar" alt="" src="../metronic/layouts/layout/img/avatar2.jpg" />
+                                <div class="message">
+                                    <span class="arrow"></span>
+                                    <a href="javascript:;" class="name">Ella Wong</a>
+                                    <span class="datetime">20:40</span>
+                                    <span class="body"> Alright. I just emailed it to you. </span>
+                                </div>
+                            </div>
+                            <div class="post out">
+                                <img class="avatar" alt="" src="../metronic/layouts/layout/img/avatar3.jpg" />
+                                <div class="message">
+                                    <span class="arrow"></span>
+                                    <a href="javascript:;" class="name">Bob Nilson</a>
+                                    <span class="datetime">20:17</span>
+                                    <span class="body"> Great! Thanks. Will check it right away. </span>
+                                </div>
+                            </div>
+                            <div class="post in">
+                                <img class="avatar" alt="" src="../metronic/layouts/layout/img/avatar2.jpg" />
+                                <div class="message">
+                                    <span class="arrow"></span>
+                                    <a href="javascript:;" class="name">Ella Wong</a>
+                                    <span class="datetime">20:40</span>
+                                    <span class="body"> Please let me know if you have any comment. </span>
+                                </div>
+                            </div>
+                            <div class="post out">
+                                <img class="avatar" alt="" src="../metronic/layouts/layout/img/avatar3.jpg" />
+                                <div class="message">
+                                    <span class="arrow"></span>
+                                    <a href="javascript:;" class="name">Bob Nilson</a>
+                                    <span class="datetime">20:17</span>
+                                    <span class="body"> Sure. I will check and buzz you if anything needs to be corrected. </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page-quick-sidebar-chat-user-form">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Type a message here...">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn green">
+                                        <i class="icon-paper-clip"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane page-quick-sidebar-alerts" id="quick_sidebar_tab_2">
+                <div class="page-quick-sidebar-alerts-list">
+                    <h3 class="list-heading">General</h3>
+                    <ul class="feeds list-items">
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-info">
+                                            <i class="fa fa-check"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc"> You have 4 pending tasks.
+                                                        <span class="label label-sm label-warning "> Take action
+                                                            <i class="fa fa-share"></i>
+                                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> Just now </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-success">
+                                                <i class="fa fa-bar-chart-o"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc"> Finance Report for year 2013 has been released. </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 20 mins </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-danger">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc"> You have 5 pending membership that requires a quick review. </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> 24 mins </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-info">
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc"> New order received with
+                                            <span class="label label-sm label-success"> Reference Number: DR23923 </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> 30 mins </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-success">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc"> You have 5 pending membership that requires a quick review. </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> 24 mins </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-info">
+                                            <i class="fa fa-bell-o"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc"> Web server hardware needs to be upgraded.
+                                            <span class="label label-sm label-warning"> Overdue </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> 2 hours </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-default">
+                                                <i class="fa fa-briefcase"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc"> IPO Report for year 2013 has been released. </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 20 mins </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <h3 class="list-heading">System</h3>
+                    <ul class="feeds list-items">
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-info">
+                                            <i class="fa fa-check"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc"> You have 4 pending tasks.
+                                                        <span class="label label-sm label-warning "> Take action
+                                                            <i class="fa fa-share"></i>
+                                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> Just now </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-danger">
+                                                <i class="fa fa-bar-chart-o"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc"> Finance Report for year 2013 has been released. </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 20 mins </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-default">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc"> You have 5 pending membership that requires a quick review. </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> 24 mins </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-info">
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc"> New order received with
+                                            <span class="label label-sm label-success"> Reference Number: DR23923 </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> 30 mins </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-success">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc"> You have 5 pending membership that requires a quick review. </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> 24 mins </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-warning">
+                                            <i class="fa fa-bell-o"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc"> Web server hardware needs to be upgraded.
+                                            <span class="label label-sm label-default "> Overdue </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> 2 hours </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-info">
+                                                <i class="fa fa-briefcase"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc"> IPO Report for year 2013 has been released. </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 20 mins </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-pane page-quick-sidebar-settings" id="quick_sidebar_tab_3">
+                <div class="page-quick-sidebar-settings-list">
+                    <h3 class="list-heading">General Settings</h3>
+                    <ul class="list-items borderless">
+                        <li> Enable Notifications
+                            <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="success" data-on-text="ON" data-off-color="default" data-off-text="OFF"> </li>
+                        <li> Allow Tracking
+                            <input type="checkbox" class="make-switch" data-size="small" data-on-color="info" data-on-text="ON" data-off-color="default" data-off-text="OFF"> </li>
+                        <li> Log Errors
+                            <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="danger" data-on-text="ON" data-off-color="default" data-off-text="OFF"> </li>
+                        <li> Auto Sumbit Issues
+                            <input type="checkbox" class="make-switch" data-size="small" data-on-color="warning" data-on-text="ON" data-off-color="default" data-off-text="OFF"> </li>
+                        <li> Enable SMS Alerts
+                            <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="success" data-on-text="ON" data-off-color="default" data-off-text="OFF"> </li>
+                    </ul>
+                    <h3 class="list-heading">System Settings</h3>
+                    <ul class="list-items borderless">
+                        <li> Security Level
+                            <select class="form-control input-inline input-sm input-small">
+                                <option value="1">Normal</option>
+                                <option value="2" selected>Medium</option>
+                                <option value="e">High</option>
+                            </select>
+                        </li>
+                        <li> Failed Email Attempts
+                            <input class="form-control input-inline input-sm input-small" value="5" /> </li>
+                        <li> Secondary SMTP Port
+                            <input class="form-control input-inline input-sm input-small" value="3560" /> </li>
+                        <li> Notify On System Error
+                            <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="danger" data-on-text="ON" data-off-color="default" data-off-text="OFF"> </li>
+                        <li> Notify On SMTP Error
+                            <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="warning" data-on-text="ON" data-off-color="default" data-off-text="OFF"> </li>
+                    </ul>
+                    <div class="inner-content">
+                        <button class="btn btn-success">
+                            <i class="icon-settings"></i> Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ END QUICK SIDEBAR -->
+
+<div class="page-container">
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div class="container-fluid">
+
+                <div class="page-content-inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="portlet light ">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <span class="caption-subject font-dark uppercase ">
+                                            场景新建
+                                        </span>
+                                        &nbsp;
+                                        <a type="button" class="btn btn-default btn-xs" href="scene-manage.html">
+                                            <i class="fa fa-level-up"></i> 返回列表
+                                        </a>
+                                    </div>
+                                    <div class="actions">
+                                        <a href="scene-manage.html" class="btn blue input-small">确认新建</a>
+                                    </div>
+                                </div>
+                                <div class="portlet-body" style="min-height: 400px;margin-bottom: 25px;">
+                                    <div class="layout-2_c position-relative">
+                                        <div class="right" style="position: absolute;width: 230px;right: 0;">
+                                            <div class="well pt10 pb10" style="background: #efefef">
+                                                <h4>创建信息</h4>
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-genderless"></i> 基本信息
+                                                        <span class="badge badge-success"> 已配置 </span>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-genderless"></i> 业务和终端
+                                                        <span class="badge badge-default"> 未配置 </span>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-genderless"></i> 特殊报表
+                                                        <span class="badge badge-warning"> 未启用 </span>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-genderless"></i> 告警配置
+                                                        <span class="badge badge-warning"> 未启用 </span>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-genderless"></i> 告警订阅
+                                                        <span class="badge badge-warning"> 未启用 </span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="left" style="margin-right: 290px;">
+                                            <div class="tabbable-line">
+                                                <ul class="nav nav-tabs ">
+                                                    <li class="active">
+                                                        <a href="#tab_1_1" data-toggle="tab" aria-expanded="true">基本信息 </a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a href="#tab_1_2" data-toggle="tab" aria-expanded="false"> 业务和终端 </a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a href="#tab_1_3" data-toggle="tab" aria-expanded="false"> 特殊报表 </a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a href="#tab_1_4" data-toggle="tab" aria-expanded="false"> 告警配置 </a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a href="#tab_1_5" data-toggle="tab" aria-expanded="false"> 告警订阅 </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tab-content">
+                                                    <div class="tab-pane active" id="tab_1_1">
+                                                        <form action="" class="form-horizontal" id="scene-basic-form">
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-body">
+                                                                        <div class="form-group col-md-12">
+                                                                            <label class="control-label col-md-3">分组</label>
+                                                                            <div class="col-md-9 form-inline">
+                                                                                <select class="select2-group form-control input-small">
+                                                                                    <option value="0">默认分组</option>
+                                                                                    <option>默认分组1</option>
+                                                                                    <option>默认分组2</option>
+                                                                                    <option>默认分组3</option>
+                                                                                    <option>默认分组4</option>
+                                                                                    <option>默认分组5</option>
+                                                                                </select>
+                                                                                <a  class="btn btn-link" href="javascript:;" onclick="createGroup()">
+                                                                                    <i class="fa fa-plus"></i> 新建分组
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group col-md-12">
+                                                                            <label class="control-label col-md-3">
+                                                                               <span class="badge badge-roundless tooltips"
+                                                                                     data-container="body" data-placement="top"
+                                                                                     data-original-title="公共分组所有用户都能看到，私有分组仅自己可见"><i class="fa fa-question"></i></span>
+                                                                                分组类型</label>
+                                                                            <div class="col-md-9">
+                                                                                <!--<p class="form-control-static"> 公共 </p>-->
+                                                                                <div class="mt-radio-inline">
+                                                                                    <label class="mt-radio">
+                                                                                        <input type="radio" name="optionsRadios" id="optionsRadios25" value="option1" checked disabled> 公共
+                                                                                        <span></span>
+                                                                                    </label>
+                                                                                    <label class="mt-radio">
+                                                                                        <input type="radio" name="optionsRadios" id="optionsRadios26" value="option2" disabled> 私有
+                                                                                        <span></span>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group col-md-12">
+                                                                            <label class="control-label col-md-3">分组描述</label>
+                                                                            <div class="col-md-9">
+                                                                                <textarea class="form-control" rows="4" placeholder="暂无任何描述" disabled></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="control-label col-md-3">* 场景名称</label>
+                                                                        <div class="col-md-9">
+                                                                            <input name="params.sceneName" type="text" class="form-control" placeholder="请输入场景名称">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="control-label col-md-3">* 场景编码</label>
+                                                                        <div class="col-md-9">
+                                                                            <input name="params.sceneCode" type="text" class="form-control" placeholder="场景编码" value="20160708154612498381">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="control-label col-md-3">上传到集团</label>
+                                                                        <div class="col-md-9">
+                                                                            <div class="mt-checkbox-inline">
+                                                                                <label class="mt-checkbox">
+                                                                                    <input name="params.upDataToGroup" type="checkbox" id="inlineCheckbox1" value="option1"> 数据
+                                                                                    <span></span>
+                                                                                </label>
+                                                                                <label class="mt-checkbox">
+                                                                                    <input name="params.upWarnToGroup" type="checkbox" id="inlineCheckbox2" value="option2"> 告警
+                                                                                    <span></span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="control-label col-md-3">场景备注</label>
+                                                                        <div class="col-md-9">
+                                                                            <textarea name="params.description" class="form-control" rows="4" placeholder="请输入场景备注"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="tab-pane" id="tab_1_2">
+
+                                                        <div class="layout-2_c position-relative clearfix">
+
+                                                            <div class="left" style="width:250px;float: left">
+                                                                <div class="mb10">
+                                                                    <button type="button" class="btn blue btn-xs" onclick="configItem()">
+                                                                        <i class="fa fa-cog"></i> 项目配置
+                                                                    </button>
+                                                                    &emsp;&emsp;
+                                                                    <label class="mt-checkbox mt-checkbox-outline mb0">
+                                                                        <input type="checkbox"> 排序锁定
+                                                                        <span></span>
+                                                                    </label>
+                                                                    <span class="badge badge-roundless tooltips" data-container="body" data-placement="top" data-original-title="选中后，系统将根据配置项目从上往下顺序执行"><i class="fa fa-question"></i></span>
+                                                                </div>
+                                                                <div id="services-sortable-list" class="list-services-vertical scroller" style="height: 350px;">
+
+                                                                    <ul>
+                                                                        <li class="active">
+                                                                            <a href="javascript:void (0);" class="sm-sign sm-sign-1" onclick="removeThisLi(this)"> <i class="fa fa-remove"></i> </a>
+                                                                            <a href="javascript:void (0);" class="sm-sign sm-sign-2" onclick="copyThisLi(this)"> <i class="fa fa-copy" ></i> </a>
+                                                                            <a href="javascript:void (0);" onclick="setTaskEdit()" class="sm-sign sm-sign-3"> <i class="fa fa-cog"></i> </a>
+                                                                            <span id="pingSpan">Ping</span>
+                                                                        </li>
+                                                                        <li >
+                                                                            <a href="javascript:void (0);" class="sm-sign" onclick="removeThisLi(this)"> <i class="fa fa-remove"></i> </a>
+                                                                            <a href="javascript:void (0);" class="sm-sign" onclick="copyThisLi(this)"> <i class="fa fa-copy"></i> </a>
+                                                                            <a href="javascript:void (0);" class="sm-sign" onclick="setTaskEdit()"> <i class="fa fa-cog"></i> </a>
+                                                                            <span id="traceSpan">TRACER</span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="javascript:;" class="sm-sign" onclick="removeThisLi(this)"> <i class="fa fa-remove"></i> </a>
+                                                                            <a href="javascript:;" class="sm-sign" onclick="copyThisLi(this)"> <i class="fa fa-copy"></i> </a>
+                                                                            <a href="javascript:;" class="sm-sign" onclick="setTaskEdit()"> <i class="fa fa-cog"></i> </a>
+                                                                            <span id="webVideo">WEB视频</span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="javascript:;" class="sm-sign" onclick="removeThisLi(this)"> <i class="fa fa-remove"></i> </a>
+                                                                            <a href="javascript:;" class="sm-sign" onclick="copyThisLi(this)"> <i class="fa fa-copy"></i> </a>
+                                                                            <a href="javascript:;" class="sm-sign" onclick="setTaskEdit()"> <i class="fa fa-cog"></i> </a>
+                                                                            <span id="netSpan">网页浏览</span>
+                                                                        </li>
+                                                                    </ul>
+
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="right" style="margin-left: 270px;">
+                                                                <div class="mb10">
+                                                                    <!--<button type="button" class="btn blue btn-xs" href="M-scene-configTerminal.html" data-target="#M-scene-configTerminal" data-toggle="modal">-->
+                                                                    <button type="button" class="btn blue btn-xs"  data-target="#M-scene-configTerminal-pre" data-target="#M-scene-configTerminal" data-toggle="modal">
+                                                                        <i class="fa fa-cog"></i> 批量选择终端
+                                                                    </button>
+                                                                    &emsp;
+                                                                    <button type="button" class="btn blue btn-xs" onclick="configUrls()" >
+                                                                        <i class="fa fa-cog"></i> 批量选择URL
+                                                                    </button>
+                                                                </div>
+                                                                <div class="well">
+                                                                    <div class="mb10">
+                                                                        <div class="btn-group btn-group-devided" data-toggle="buttons">
+                                                                            <label class="btn grey-mint btn-xs btn-outline btn-sm active mr0 input-xsmall" onclick="showPanel('terminal-panel','url-panel')">
+                                                                                <input type="radio" name="options" class="toggle" id="option1">终端</label>
+                                                                            <label class="btn  grey-mint btn-xs btn-outline btn-sm input-xsmall" onclick="showPanel('url-panel','terminal-panel')">
+                                                                                <input type="radio" name="options" class="toggle" id="option2">URL</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="terminal-panel" class="position-relative">
+                                                                        <div style="position: absolute;top:-30px;right: 0;">
+                                                                            <button type="button" class="btn grey-mint btn-xs" data-target="#M-scene-configTerminal-pre" data-target="#M-scene-configTerminal" data-toggle="modal">选择终端 </button>
+                                                                        </div>
+                                                                        <div class="scroller" style="height: 350px;">
+                                                                            <div class="list-gray-vertical">
+
+                                                                                <div class="items">
+                                                                                    <div class="title">【地市】浙江-宁波市</div>
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-3 text-muted">类型：地市</div>
+                                                                                        <div class="col-sm-3 text-muted">终端数：287</div>
+                                                                                    </div>
+                                                                                    <div class="del-btn">
+                                                                                        <button type="button" class="btn red btn-outline btn-circle btn-outline btn-icon-only">
+                                                                                            <i class="fa fa-remove"></i>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="items">
+                                                                                    <div class="title">【终端】DK-Em2IPS-198</div>
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-3 text-muted">工作状态：空闲</div>
+                                                                                        <div class="col-sm-3 text-muted">终端状态：在线</div>
+                                                                                        <div class="col-sm-6 text-muted">所属：浙江-宁波市-鄞州区</div>
+                                                                                    </div>
+                                                                                    <div class="del-btn">
+                                                                                        <button type="button" class="btn red btn-outline btn-circle btn-outline btn-icon-only">
+                                                                                            <i class="fa fa-remove"></i>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="items">
+                                                                                    <div class="title text-danger text-bolder"><i class="fa fa-warning text-danger"></i> 【终端】DK-Em2IPS-65</div>
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-3 text-muted">工作状态：空闲</div>
+                                                                                        <div class="col-sm-3 text-danger text-bolder">终端状态：离线</div>
+                                                                                        <div class="col-sm-6 text-muted">所属：浙江-宁波市-鄞州区</div>
+                                                                                    </div>
+                                                                                    <div class="del-btn">
+                                                                                        <button type="button" class="btn red btn-outline btn-circle btn-outline btn-icon-only">
+                                                                                            <i class="fa fa-remove"></i>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="muted mt20 text-right">
+                                                                            TRACER：共计2台终端，1地市，8项URL，0项域名组
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="url-panel" class="position-relative"  style="display: none;">
+                                                                        <div style="position: absolute;top:-30px;right: 0;">
+                                                                            <button type="button" class="btn grey-mint btn-xs" onclick="configUrls()">选择URL</button>
+                                                                        </div>
+                                                                        <div class="scroller" style="height: 350px;">
+                                                                            <div class="list-gray-vertical">
+
+                                                                                <div class="items">
+                                                                                    <div class="title">http://189.ourgame.com</div>
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-2 text-muted">类别：单个</div>
+                                                                                        <div class="col-sm-4 text-muted">名称：联众世界</div>
+                                                                                        <div class="col-sm-4 text-muted">域名组：WEBTOP60</div>
+                                                                                    </div>
+                                                                                    <div class="del-btn">
+                                                                                        <button type="button" class="btn red btn-outline btn-circle btn-outline btn-icon-only">
+                                                                                            <i class="fa fa-remove"></i>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="items">
+                                                                                    <div class="title">PPS客户端直播组</div>
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-6 text-muted">类别：整组</div>
+                                                                                        <div class="col-sm-6 text-muted">URL数量：300</div>
+                                                                                    </div>
+                                                                                    <div class="del-btn">
+                                                                                        <button type="button" class="btn red btn-outline btn-circle btn-outline btn-icon-only">
+                                                                                            <i class="fa fa-remove"></i>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="items">
+                                                                                    <div class="title">上海视频基地视频标清点播-7月</div>
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-6 text-muted">类别：整组</div>
+                                                                                        <div class="col-sm-6 text-muted">URL数量：200</div>
+                                                                                    </div>
+                                                                                    <div class="del-btn">
+                                                                                        <button type="button" class="btn red btn-outline btn-circle btn-outline btn-icon-only">
+                                                                                            <i class="fa fa-remove"></i>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="muted mt20 text-right">
+                                                                            TRACER：共计16台终端，8项URL
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="tab-pane" id="tab_1_3">
+                                                        <div class="">
+                                                            <label> 是否启用特殊报表：</label>
+                                                            <input type="checkbox" class="make-switch" data-on-text="是" data-off-text="否"
+                                                                   mask-target="mask-level-sceneReport" onchange="maskToggle(this)">
+                                                            <p class="help-block pull-right"><i class="fa fa-info-circle"></i> 此页面配置特殊报表，任务完成后可选择查看特殊类型报表数据</p>
+                                                        </div>
+                                                        <div class="mask-body">
+                                                            <div class="space-10"></div>
+                                                            <select id="select-sceneReport" multiple="multiple">
+                                                                <option value="cheese">语音端到端时延分析1</option>
+                                                                <option value="tomatoes">语音端到端时延分析2</option>
+                                                                <option value="mozarella">语音端到端时延分析3</option>
+                                                                <option value="mushrooms">语音端到端时延分析4</option>
+                                                                <option value="pepperoni">语音端到端时延分析5</option>
+                                                                <option value="onions">语音端到端时延分析6</option>
+                                                            </select>
+                                                            <div class="space-30"></div>
+                                                            <div class="mask-level" id="mask-level-sceneReport"></div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="tab-pane" id="tab_1_4">
+                                                        <div class="">
+                                                            <label> 是否启用告警：</label>
+                                                            <input type="checkbox" class="make-switch" data-on-text="是" data-off-text="否"
+                                                                   mask-target="mask-level-alarm" onchange="maskToggle(this)">
+                                                            <p class="help-block pull-right"><i class="fa fa-info-circle"></i> 启用告警后，可配置相关门限和告警配置</p>
+                                                        </div>
+                                                        <div class="mask-body">
+                                                            <!--<div class="mask-level mask-hide" id="mask-level-alarm"></div>-->
+                                                            <div class="mask-level" id="mask-level-alarm"></div>
+
+                                                            <div class="space-10"></div>
+                                                            <div class="form-inline">
+                                                                <label style="width: 120px;">连续失败告警设置：</label>
+                                                                <div class="form-group form-group-sm">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">一般</div>
+                                                                        <input type="text" class="form-control input-xsmall" placeholder="">
+                                                                    </div>
+                                                                </div>
+                                                                &emsp;
+                                                                <div class="form-group form-group-sm">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">次要</div>
+                                                                        <input type="text" class="form-control input-xsmall" placeholder="">
+                                                                    </div>
+                                                                </div>
+                                                                &emsp;
+                                                                <div class="form-group form-group-sm">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">重要</div>
+                                                                        <input type="text" class="form-control input-xsmall" placeholder="">
+                                                                    </div>
+                                                                </div>
+                                                                &emsp;
+                                                                <div class="form-group form-group-sm">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">严重</div>
+                                                                        <input type="text" class="form-control input-xsmall" placeholder="">
+                                                                    </div>
+                                                                </div>
+                                                                &emsp;
+                                                                <div class="form-group">
+                                                                    <div class="mt-checkbox-inline">
+                                                                        <label class="mt-checkbox">
+                                                                            <input type="checkbox" value="option1"> 严重后不再告警
+                                                                            <span></span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-inline mt10">
+                                                                <label style="width: 120px;"></label>
+                                                                <a href="javascript:;" onclick="configAlarmFormat()" class="btn default btn-xs">  <i class="fa fa-bookmark"></i> 连续失败门限告警格式 </a>
+                                                                &emsp;
+                                                                <a href="javascript:;" onclick="configAlarmFormat()" class="btn default btn-xs">  <i class="fa fa-bookmark"></i> 连续失败门限对外告警格式 </a>
+                                                            </div>
+                                                            <div class="space-10"></div>
+                                                            <div class="clearfix">
+                                                                <div class="left" style="width:200px;float: left">
+                                                                    <div class="list-services-vertical scroller" style="height: 350px;">
+
+                                                                        <ul>
+                                                                            <li>
+                                                                                <a href="javascript:;" class="sm-sign sm-sign-1"> <i class="fa fa-calculator"></i> </a>
+                                                                                <span>Ping</span>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="javascript:;" class="sm-sign sm-sign-1"> <i class="fa fa-calculator"></i> </a>
+                                                                                <span>TRACER</span>
+                                                                            </li>
+                                                                            <li class="active">
+                                                                                <a href="javascript:;" class="sm-sign sm-sign-1"> <i class="fa fa-calculator"></i> </a>
+                                                                                <span>WEB视频</span>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="javascript:;" class="sm-sign sm-sign-1"> <i class="fa fa-calculator"></i> </a>
+                                                                                <span>网页浏览</span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="right" style="margin-left: 210px;">
+                                                                    <div class="well">
+
+                                                                        <div class="row no-margin">
+                                                                            <div class="col-sm-12">
+                                                                                <ul class="nav nav-pills nav-pills-sm positon-relative mb15">
+                                                                                    <li class="active">
+                                                                                        <a href="#tab_15_1" data-toggle="tab"> 性能超标门限 </a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#tab_15_2" data-toggle="tab"> 指标统计告警 </a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#tab_15_3" data-toggle="tab"> 次数告警 </a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#tab_15_4" data-toggle="tab"> 延迟告警 </a>
+                                                                                    </li>
+                                                                                    <div class="btn-group pull-right">
+                                                                                        <a class="btn default btn-xs dropdown-toggle" data-toggle="dropdown" href="javascript:;" aria-expanded="false"> 告警格式设置
+                                                                                            <i class="fa fa-angle-down"></i>
+                                                                                        </a>
+                                                                                        <ul class="dropdown-menu pull-right">
+                                                                                            <li>
+                                                                                                <a href="M-scene-alarmFormat.html"  href="javascript:;" onclick="configAlarmFormat()" > 性能超标告警格式 </a>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <a href="M-scene-alarmFormat.html"  href="javascript:;" onclick="configAlarmFormat()" > 性能超标告警格式（对外） </a>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <a href="M-scene-alarmFormat.html"  href="javascript:;" onclick="configAlarmFormat()" > 定时告警格式 </a>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <a href="M-scene-alarmFormat.html"  href="javascript:;" onclick="configAlarmFormat()" > 定时告警格式（对外） </a>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <a href="M-scene-alarmFormat.html"  href="javascript:;" onclick="configAlarmFormat()" > 指标波动告警格式 </a>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <a href="M-scene-alarmFormat.html"  href="javascript:;" onclick="configAlarmFormat()" > 指标波动告警格式（对外） </a>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <a href="M-scene-alarmFormat.html"  href="javascript:;" onclick="configAlarmFormat()" > 次数告警格式 </a>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <a href="M-scene-alarmFormat.html"  href="javascript:;" onclick="configAlarmFormat()" > 次数告警格式（对外） </a>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </ul>
+                                                                                <div class="tab-content">
+                                                                                    <div class="tab-pane active position-relative" id="tab_15_1">
+                                                                                        <div class="scroller" style="height: 350px;">
+                                                                                            <table class="table table-vertical-middle table-condensed table-condensed-more form-inline">
+                                                                                                <thead>
+                                                                                                <tr>
+                                                                                                    <th>指标名称</th>
+                                                                                                    <th>超标门限</th>
+                                                                                                    <th>一般告警</th>
+                                                                                                    <th>次要告警</th>
+                                                                                                    <th>重要告警</th>
+                                                                                                    <th>严重告警</th>
+                                                                                                    <th>严重后不再告警</th>
+                                                                                                </tr>
+                                                                                                </thead>
+                                                                                                <tbody>
+                                                                                                <tr>
+                                                                                                    <td>PING时延(ms)</td>
+                                                                                                    <td>
+                                                                                                        <div class="form-group form-group-sm">
+                                                                                                            <label for="">大于</label>
+                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder="">
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <div class="form-group form-group-sm">
+                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder="">
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <div class="form-group form-group-sm">
+                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder="">
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <div class="form-group form-group-sm">
+                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder="">
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <div class="form-group form-group-sm">
+                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder="">
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <div class="form-group form-group-sm">
+                                                                                                            <div class="mt-checkbox-inline">
+                                                                                                                <label class="mt-checkbox">
+                                                                                                                    <input type="checkbox" value="option1">&nbsp;
+                                                                                                                    <span></span>
+                                                                                                                </label>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>时延抖动(ms)</td>
+                                                                                                    <td>
+                                                                                                        <div class="form-group form-group-sm">
+                                                                                                            <label for="">大于</label>
+                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder="">
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <div class="form-group form-group-sm">
+                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder="">
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <div class="form-group form-group-sm">
+                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder="">
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <div class="form-group form-group-sm">
+                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder="">
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <div class="form-group form-group-sm">
+                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder="">
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <div class="form-group form-group-sm">
+                                                                                                            <div class="mt-checkbox-inline">
+                                                                                                                <label class="mt-checkbox">
+                                                                                                                    <input type="checkbox" value="option1">&nbsp;
+                                                                                                                    <span></span>
+                                                                                                                </label>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="tab-pane" id="tab_15_2">
+                                                                                        <div class="scroller" style="height: 350px;">
+
+                                                                                            <div class="form-inline">
+                                                                                                <div class="form-group">
+                                                                                                    <label for="">统计粒度：</label>
+                                                                                                    <div class="btn-group btn-group-devided" data-toggle="buttons">
+                                                                                                        <label class="btn btn-default btn-xs btn-outline active mr0 input-sxsmall">
+                                                                                                            <input type="radio" name="options" class="toggle">无</label>
+                                                                                                        <label class="btn btn-default btn-xs btn-outline mr0 input-sxsmall">
+                                                                                                            <input type="radio" name="options" class="toggle">小时</label>
+                                                                                                        <label class="btn btn-default btn-xs btn-outline mr0 input-sxsmall">
+                                                                                                            <input type="radio" name="options" class="toggle">天</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="space-4"></div>
+                                                                                                <div class="form-group">
+                                                                                                    <label for="">统计类型：</label>
+                                                                                                    <div class="btn-group btn-group-devided" data-toggle="buttons">
+                                                                                                        <label class="btn btn-default btn-xs btn-outline active mr0 input-sxsmall">
+                                                                                                            <input type="radio" name="options" class="toggle">无</label>
+                                                                                                        <label class="btn btn-default btn-xs btn-outline mr0 input-xsmall">
+                                                                                                            <input type="radio" name="options" class="toggle">按终端</label>
+                                                                                                        <label class="btn btn-default btn-xs btn-outline mr0 input-xsmall">
+                                                                                                            <input type="radio" name="options" class="toggle">按省份</label>
+                                                                                                        <label class="btn btn-default btn-xs btn-outline mr0 input-xsmall">
+                                                                                                            <input type="radio" name="options" class="toggle">按地市</label>
+                                                                                                        <label class="btn btn-default btn-xs btn-outline mr0 input-xsmall">
+                                                                                                            <input type="radio" name="options" class="toggle">按区县</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <div class="space-10"></div>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                                                                                    <ul class="nav nav-tabs nav-tabs-sm tabs-left">
+                                                                                                        <li class="active">
+                                                                                                            <a href="#tab_6_1" data-toggle="tab" aria-expanded="true"> 定时告警 </a>
+                                                                                                        </li>
+                                                                                                        <li class="">
+                                                                                                            <a href="#tab_6_2" data-toggle="tab" aria-expanded="false"> 波动告警 </a>
+                                                                                                        </li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                                                                                    <div class="tab-content">
+                                                                                                        <div class="tab-pane active in" id="tab_6_1">
+
+                                                                                                            <table class="table table-vertical-middle table-condensed table-condensed-more form-inline">
+                                                                                                                <thead>
+                                                                                                                <tr>
+                                                                                                                    <th>指标名称</th>
+                                                                                                                    <th>一般门限</th>
+                                                                                                                    <th>次要门限</th>
+                                                                                                                    <th>重要门限</th>
+                                                                                                                    <th>严重门限</th>
+                                                                                                                </tr>
+                                                                                                                </thead>
+                                                                                                                <tbody>
+                                                                                                                <tr>
+                                                                                                                    <td>视频下载速率(KBPS)</td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <label for="">小于</label>
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder="">
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder="">
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder="">
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder="">
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                    <td>视频播放卡顿率(次)</td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <label for="">大于</label>
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder="">
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder="">
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder="">
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder="">
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                    <td>停顿时长(S)</td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <label for="">大于</label>
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder="">
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder="">
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder="">
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder="">
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                                </tbody>
+                                                                                                            </table>
+
+
+
+                                                                                                        </div>
+                                                                                                        <div class="tab-pane fade" id="tab_6_2">
+                                                                                                            <table class="table table-vertical-middle table-condensed table-condensed-more form-inline">
+                                                                                                                <thead>
+                                                                                                                <tr>
+                                                                                                                    <th>指标名称</th>
+                                                                                                                    <th>一般告警</th>
+                                                                                                                    <th>次要告警</th>
+                                                                                                                    <th>重要告警</th>
+                                                                                                                    <th>严重告警</th>
+                                                                                                                </tr>
+                                                                                                                </thead>
+                                                                                                                <tbody>
+                                                                                                                <tr>
+                                                                                                                    <td>视频下载速率(KBPS)</td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder=""> %
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder=""> %
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder=""> %
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder=""> %
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                    <td>视频播放卡顿率(次)</td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder=""> %
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder=""> %
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder=""> %
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder=""> %
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                    <td>停顿时长(S)</td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder=""> %
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder=""> %
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder=""> %
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <div class="form-group form-group-sm">
+                                                                                                                            <input type="text" class="form-control input-sxsmall" placeholder=""> %
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                                </tbody>
+                                                                                                            </table>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="tab-pane" id="tab_15_3">
+                                                                                        <div class="form-inline">
+                                                                                            <div class="form-group form-group-sm">
+                                                                                                <label>应测次数：</label>
+                                                                                                <input type="text" class="form-control input-small" placeholder="请输入应测次数">
+                                                                                            </div>
+                                                                                            <div class="space-4"></div>
+                                                                                            <div class="form-group">
+                                                                                                <label>统计粒度：</label>
+                                                                                                <div class="btn-group btn-group-devided" data-toggle="buttons">
+                                                                                                    <label class="btn btn-default btn-xs btn-outline active mr0 input-xsmall">
+                                                                                                        <input type="radio" name="options" class="toggle">无</label>
+                                                                                                    <label class="btn btn-default btn-xs btn-outline btn-xs mr0 input-xsmall">
+                                                                                                        <input type="radio" name="options" class="toggle">小时</label>
+                                                                                                    <label class="btn btn-default btn-xs btn-outline mr0 input-xsmall">
+                                                                                                        <input type="radio" name="options" class="toggle">天</label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="space-4"></div>
+                                                                                            <div class="form-group">
+                                                                                                <label>统计类型：</label>
+                                                                                                <div class="btn-group btn-group-devided" data-toggle="buttons">
+                                                                                                    <label class="btn btn-default btn-xs btn-outline active mr0 input-xsmall">
+                                                                                                        <input type="radio" name="options" class="toggle">无</label>
+                                                                                                    <label class="btn btn-default btn-xs btn-outline mr0 input-xsmall">
+                                                                                                        <input type="radio" name="options" class="toggle">按终端</label>
+                                                                                                    <label class="btn btn-default btn-xs btn-outline mr0 input-xsmall">
+                                                                                                        <input type="radio" name="options" class="toggle">按省份</label>
+                                                                                                    <label class="btn btn-default btn-xs btn-outline mr0 input-xsmall">
+                                                                                                        <input type="radio" name="options" class="toggle">按地市</label>
+                                                                                                    <label class="btn btn-default btn-xs btn-outline mr0 input-xsmall">
+                                                                                                        <input type="radio" name="options" class="toggle">按区县</label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="space-4"></div>
+                                                                                            <p class="help-block">当未测试次数超过一定量时，产生告警：</p>
+                                                                                            <table class="table">
+                                                                                                <thead>
+                                                                                                <tr>
+                                                                                                    <th>一般告警</th>
+                                                                                                    <th>次要告警</th>
+                                                                                                    <th>重要告警</th>
+                                                                                                    <th>严重告警</th>
+                                                                                                </tr>
+                                                                                                </thead>
+                                                                                                <tbody>
+                                                                                                <tr>
+                                                                                                    <td>
+                                                                                                        <div class="form-group form-group-sm">
+                                                                                                            <input type="text" class="form-control input-xsmall" placeholder=""> %
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <div class="form-group form-group-sm">
+                                                                                                            <input type="text" class="form-control input-xsmall" placeholder=""> %
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <div class="form-group form-group-sm">
+                                                                                                            <input type="text" class="form-control input-xsmall" placeholder=""> %
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <div class="form-group form-group-sm">
+                                                                                                            <input type="text" class="form-control input-xsmall" placeholder=""> %
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="tab-pane" id="tab_15_4">
+                                                                                        <div class="form-inline">
+                                                                                            <div class="form-group form-group-sm">
+                                                                                                <label>延迟时间：</label>
+                                                                                                <input type="text" class="form-control input-small" placeholder="请输入时间"> 秒
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="space-10"></div>
+
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane" id="tab_1_5">
+                                                        <div class="">
+                                                            <label> 是否启用告警订阅：</label>
+                                                            <input type="checkbox" class="make-switch" data-on-text="是" data-off-text="否"
+                                                                   mask-target="mask-level-alarmOrder" onchange="maskToggle(this)">
+                                                            <p class="help-block pull-right"><i class="fa fa-info-circle"></i> 启用告警订阅后，产生告警后将输出至对应接口或设备</p>
+                                                        </div>
+                                                        <div class="mask-body">
+                                                            <div class="mask-level" id="mask-level-alarmOrder"></div>
+
+                                                            <div class="space-10"></div>
+                                                            <div class="">
+                                                                <table class="table table-condensed table-vertical-middle">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th></th>
+                                                                        <th>一般告警</th>
+                                                                        <th>次要告警</th>
+                                                                        <th>重要告警</th>
+                                                                        <th>严重告警</th>
+                                                                        <th>操作</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr class="bg-blue-light">
+                                                                        <td colspan="3" class="text-bolder">短信告警订阅(*终端推送)</td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td>
+                                                                            <button type="button" class="btn btn-xs btn-default" onclick="addOrderTr(this,'sms')">
+                                                                                <i class="fa fa-plus"></i> 新增
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            手机号码：
+                                                                            <input type="text" class="form-control input-small input-sm inline-block"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <label class="mt-checkbox mb0">
+                                                                                <input type="checkbox" value="option1"> &nbsp;
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <label class="mt-checkbox mb0">
+                                                                                <input type="checkbox" value="option1"> &nbsp;
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <label class="mt-checkbox mb0">
+                                                                                <input type="checkbox" value="option1"> &nbsp;
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <label class="mt-checkbox mb0">
+                                                                                <input type="checkbox" value="option1"> &nbsp;
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <button type="button" class="btn btn-xs red" onclick="deleteOrderTr(this)">
+                                                                                <i class="fa fa-remove"></i>
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                    <tbody>
+                                                                    <tr class="bg-blue-light">
+                                                                        <td colspan="3" class="text-bolder">邮件告警订阅</td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td>
+                                                                            <button type="button" class="btn btn-xs btn-default" onclick="addOrderTr(this,'email')">
+                                                                                <i class="fa fa-plus"></i> 新增
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            邮箱地址：
+                                                                            <input type="text"  class="form-control input-small input-sm inline-block"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <label class="mt-checkbox mb0">
+                                                                                <input type="checkbox" value="option1"> &nbsp;
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <label class="mt-checkbox mb0">
+                                                                                <input type="checkbox" value="option1"> &nbsp;
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <label class="mt-checkbox mb0">
+                                                                                <input type="checkbox" value="option1"> &nbsp;
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <label class="mt-checkbox mb0">
+                                                                                <input type="checkbox" value="option1"> &nbsp;
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <button type="button" class="btn btn-xs red" onclick="deleteOrderTr(this)">
+                                                                                <i class="fa fa-remove"></i>
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                    <tbody>
+                                                                    <tr class="bg-blue-light">
+                                                                        <td colspan="3" class="text-bolder">短信告警订阅(*短信网关推送)</td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td>
+                                                                            <button type="button" class="btn btn-xs btn-default" onclick="addOrderTr(this, 'smsc')">
+                                                                                <i class="fa fa-plus"></i> 新增
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            手机地址：
+                                                                            <input type="text" class="form-control input-small input-sm inline-block"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <label class="mt-checkbox mb0">
+                                                                                <input type="checkbox" value="option1"> &nbsp;
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <label class="mt-checkbox mb0">
+                                                                                <input type="checkbox" value="option1"> &nbsp;
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <label class="mt-checkbox mb0">
+                                                                                <input type="checkbox" value="option1"> &nbsp;
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <label class="mt-checkbox mb0">
+                                                                                <input type="checkbox" value="option1"> &nbsp;
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <button type="button" class="btn btn-xs red" onclick="deleteOrderTr(this)">
+                                                                                <i class="fa fa-remove"></i>
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                    <tbody>
+                                                                    <tr class="bg-blue-light">
+                                                                        <td colspan="3" class="text-bolder">对外接口</td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td>
+                                                                            <button type="button" class="btn btn-xs btn-default">
+                                                                                <i class="fa fa-plus"></i> 新增
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            网管平台
+                                                                        </td>
+                                                                        <td>
+                                                                            <label class="mt-checkbox mb0">
+                                                                                <input type="checkbox" value="option1"> &nbsp;
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <label class="mt-checkbox mb0">
+                                                                                <input type="checkbox" value="option1"> &nbsp;
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <label class="mt-checkbox mb0">
+                                                                                <input type="checkbox" value="option1"> &nbsp;
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <label class="mt-checkbox mb0">
+                                                                                <input type="checkbox" value="option1"> &nbsp;
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </td>
+                                                                        <td>
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="space-10"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--<div class="page-footer">
+    <div class="container-fluid">  2016 &copy; Design by Songt.
+        <a href="javascript:;" title="宁波普天通信技术有限公司" target="_blank">宁波普天通信技术有限公司</a>
+    </div>
+</div>-->
+<div class="scroll-to-top">
+    <i class="icon-arrow-up"></i>
+</div>
+<!-- END INNER FOOTER -->
+<!-- END FOOTER -->
+<!--[if lt IE 9]>
+<script src="../metronic/global/plugins/respond.min.js"></script>
+<script src="../metronic/global/plugins/excanvas.min.js"></script>
+<![endif]-->
+<!-- BEGIN CORE PLUGINS -->
+<script src="../metronic/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+<script src="../metronic/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+
+<!--<script src="../metronic/global/plugins/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/bootstrap-select/js/i18n/defaults-zh_CN.min.js" type="text/javascript"></script>-->
+
+<script src="../metronic/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/jquery-validation/js/localization/messages_zh.min.js" type="text/javascript"></script>
+
+<script src="../metronic/global/plugins/ladda/spin.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/ladda/ladda.min.js" type="text/javascript"></script>
+
+<script src="../metronic/global/plugins/jquery-multi-select/js/jquery.multi-select.js" type="text/javascript"></script>
+
+<!--手动修改过源码-->
+<script src="../metronic/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+<!--<script src="../metronic/global/plugins/select2/js/i18n/zh-CN.js" type="text/javascript"></script>-->
+
+<script src="../metronic/global/plugins/bootstrap-table/bootstrap-table.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js" type="text/javascript"></script>
+
+<script src="../metronic/global/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.js" type="text/javascript"></script>
+
+<script src="../metronic/global/plugins/bootbox/bootbox.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
+<script src="../metronic/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN THEME GLOBAL SCRIPTS -->
+<script src="../metronic/global/scripts/app.min.js" type="text/javascript"></script>
+<!-- END THEME GLOBAL SCRIPTS -->
+
+
+<!-- BEGIN THEME LAYOUT SCRIPTS -->
+<script src="../metronic/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
+<script src="../metronic/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
+<script src="../metronic/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+<!-- END THEME LAYOUT SCRIPTS -->
+
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="../assets/js/nbptUtil.js" type="text/javascript"></script>
+<script src="../assets/plugins/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+<script src="../assets/plugins/mustache/mustache.js" type="text/javascript"></script>
+<script src="../assets/plugins/jqueryForm/jquery.form.min.js" type="text/javascript"></script>
+<script src="../assets/plugins/quicksearch/jquery.quicksearch.js" type="text/javascript"></script>
+<script src="../assets/plugins/bootstrap-multiselect/js/bootstrap-multiselect.js" type="text/javascript"></script>
+<script src="../assets/plugins/zTreeV3/js/jquery.ztree.all.min.js" type="text/javascript"></script>
+<script src="../assets/plugins/infinite-scroll/jquery.infinitescroll.min.js" type="text/javascript"></script>
+<script src="../assets/plugins/infinite-scroll/behaviors/manual-trigger.js" type="text/javascript"></script>
+<script type="text/javascript" src="../assets/plugins/Validform/js/Validform.js"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN ConfigData -->
+<script src="../assets/js/colorConfig.js" type="text/javascript"></script>
+
+
+<!-- END ConfigData -->
+
+<script src="../assets/plugins/echarts/echarts.min.js"></script>
+<script src="../assets/plugins/echarts/china.js"></script>
+
+<script  src="../assets/plugins/gojs/go.js"></script>
+
+
+<script src="../metronic/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+
+<!--//dialog-->
+
+<script src="../assets/plugins/artDialog/dist/dialog-plus.js" type="text/javascript"></script>
+
+<script>
+    //判断用户
+    if(localStorage.user==0){
+        $("#selectBox").hide();
+        $("#userNum0").show();
+        $("#dLabel").html("你好，客户");
+
+        //场景管理
+        $("#sceneManagerLeft").hide();
+        $("#sceneManagerRight").css({marginLeft:'0px'});
+        $("#myTab").hide();
+
+        // 网点展示
+        $("#sceneNetLeft").hide();
+        $("#sceneNetRight").css({marginLeft:'0px'});
+
+    }if(localStorage.user==1){
+        $("#userNum0").hide();
+        $("#selectBox").show();
+        $("#testTask1").show();
+        $("#testTask2").show();
+        $("#dLabel").html("你好，管理员");
+
+        //场景管理
+        $("#sceneManagerLeft").show();
+        $("#sceneManagerRight").css({marginLeft:'230px'});
+        $("#myTab").show();
+        // 网点展示  sceneNetLeft
+        $("#sceneNetLeft").show();
+        $("#sceneNetRight").css({marginLeft:'230px'});
+
+    }
+</script>
+</body>
+
+</html>
+
+
+<!--批量选终端 模式选择 modal-->
+<div class="modal fade modal-scroll" id="M-scene-configTerminal-pre" role="basic" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">选择终端方式</h4>
+            </div>
+            <div class="modal-body text-center">
+                <button type="button" class="btn blue"  data-dismiss="modal" aria-hidden="true"
+                        onclick="configTerminal()">按终端 </button>
+                &emsp;
+                <button type="button" class="btn blue" data-dismiss="modal" aria-hidden="true"
+                        onclick="configTerminalByArea()">按区域</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--业务编辑 modal-->
+
+<div class="modal fade" id="setTaskEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">业务网参数编辑</h4>
+            </div>
+            <div class="modal-body text-center" >
+                <div class="text-left margin-bottom-10">
+                    <label class="radio-inline">
+                        <input type="radio" name="inlineRadioOptions"  value="0" checked> 初始化模块
+                    </label>
+                </div>
+                <div class="set-tab-color">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#baseAttribute" aria-controls="baseAttribute" role="tab" data-toggle="tab">基本属性</a></li>
+                        <li role="presentation"><a href="#advancedAttribute" aria-controls="advancedAttribute" role="tab" data-toggle="tab">高级属性</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="baseAttribute">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>测试次数：</label>
+                                        <input type="text" class="form-control" value="1"> 次
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>测试间隔：</label>
+                                        <input type="text" class="form-control" value="15"> 秒
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>重测次数：</label>
+                                        <input type="text" class="form-control" value="1"> 次
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>执行时限：</label>
+                                        <input type="text" class="form-control" value="500"> 秒
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane text-left" id="advancedAttribute">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="label-width-set">DNS服务器IP:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="label-width-set">网址:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 margin-bottom-10">
+                                    <label class="label-width-set">信令采集：</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions0"  value="0" checked> 不采集
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions0"  value="1"> 全部采集
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions0"  value="2"> 失败时采集
+                                    </label>
+                                </div>
+                                <div class="col-md-6 margin-bottom-10">
+                                    <label class="label-width-set">网络协议采集：</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions1"  value="0" checked> 不采集
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions1"  value="1"> 全部采集
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions1"  value="2"> 失败或指标异常采集
+                                    </label>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 margin-bottom-10">
+                                    <label class="label-width-set">上传附件：</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions2"  value="0"> 全部上传
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions2"  value="1" checked> 不上传
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions2"  value="2"> 失败时上传
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default btn-sm" data-dismiss="modal">另存为新模板</button>
+                <button class="btn btn-default btn-sm" data-dismiss="modal">设为默认模板</button>
+                <button class="btn btn-primary btn-sm" data-dismiss="modal">确定</button>
+                <button class="btn btn-default btn-sm" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+
+
+        //可以修改为我们的validform插件
+        $("#scene-basic-form").validate({
+            focusInvalid  : true,
+            errorElement  : "span",
+            errorClass    : "help-block help-block-error",
+            ignore        : "",
+            rules: {
+                // no quoting necessary
+                'params.sceneName': {minlength: 2, maxlength:30, required: true},
+                'params.sceneCode': {minlength: 3, maxlength:20, required: true}
+            },
+            highlight     : function(e) {
+                $(e).closest(".form-group").addClass("has-error")
+            },
+            unhighlight   : function(e) {
+                $(e).closest(".form-group").removeClass("has-error")
+            },
+            success       : function(e, r) {
+                e.closest(".form-group").removeClass("has-error");
+                e.remove();
+            }
+        });
+        //判断验证是否通过：$("#scene-basic-form").valid()
+
+
+        $(".select2-group").select2();
+
+
+        $("#services-sortable-list ul").sortable({
+            axis: "y"
+        });
+
+        /*$("#select-sceneReport").multiselect({
+            buttonWidth: '400px',
+            enableFiltering: true,
+            enableFullValueFiltering: true,
+            includeSelectAllOption: true
+        });*/
+
+
+        //加载选择报表
+        $("#select-sceneReport").multiSelect({
+            cssClass: 'scene_multi_select_body margin-center',
+            selectableOptgroup: true,
+            selectableHeader: "<h5 class='text-bolder'>可选择<a class='pull-right' onclick='chooseSceneReportAll()' href='javascript:;'>全选</a></h5><div class='input-icon input-icon-sm'><i class='fa fa-search'></i><input type='text' class='form-control search-input input-sm' autocomplete='off' placeholder='请输入过滤关键字'></div>",
+            selectionHeader: "<h5 class='text-bolder'>已选择<a class='pull-right' onclick='clearSceneReportAll()' href='javascript:;'>清空</a></h5><div class='input-icon input-icon-sm'><i class='fa fa-search'></i><input type='text' class='form-control search-input input-sm' autocomplete='off' placeholder='请输入过滤关键字'></div>",
+            afterInit: function(ms){
+                var that = this,
+                    $selectableSearch = that.$selectableUl.parent().find(".search-input"),
+
+                    $selectionSearch = that.$selectionUl.parent().find(".search-input"),
+                    selectableSearchString = '#'+that.$container.attr('id')+' .ms-elem-selectable:not(.ms-selected)',
+                    selectionSearchString = '#'+that.$container.attr('id')+' .ms-elem-selection.ms-selected';
+
+
+                that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+                    .on('keydown', function(e){
+                        if (e.which === 40){
+                            that.$selectableUl.focus();
+                            return false;
+                        }
+                    });
+
+                that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+                    .on('keydown', function(e){
+                        if (e.which == 40){
+                            that.$selectionUl.focus();
+                            return false;
+                        }
+                    });
+            },
+            afterSelect: function(){
+                this.qs1.cache();
+                this.qs2.cache();
+            },
+            afterDeselect: function(){
+                this.qs1.cache();
+                this.qs2.cache();
+            }
+        });
+
+
+
+    });
+
+    //此处逻辑还需在调整
+    /* $("#services-sortable-list li").on('click','a .fa-copy',function(){
+         var html=$(this).parents().parents().children('span').html();
+         var li = "";
+         li += '<li >';
+         li += '<a href="javascript:;" class="sm-sign sm-sign-1"> <i class="fa fa-remove"></i> </a>';
+         li += '<a href="javascript:;" class="sm-sign sm-sign-2"> <i class="fa fa-copy"></i> </a>';
+         li += '<a href="javascript:;" class="sm-sign sm-sign-3" onclick="setTaskEdit()"> <i class="fa fa-cog"></i> </a>';
+         li += "<a href='' data-toggle='tab'><span  style='display:inline-block;width:142px;'>" + html +"</span></a>";
+         li += '</li>';
+         $("#services-sortable-list").append(li);
+     });
+ */
+    function removeThisLi(obj){
+        $(obj).parents('li').remove();
+        return ;
+    }
+    //此处逻辑有些问题，
+    function copyThisLi(obj){
+        var html=$(obj).next().next().text();
+        console.log(html);
+        var li = "";
+        li += '<li >';
+        li += '<a href="javascript:;" class="sm-sign sm-sign-1"> <i class="fa fa-remove"></i> </a>';
+        li += '<a href="javascript:;" class="sm-sign sm-sign-2" > <i class="fa fa-copy " onclick="copySet()"></i> </a>';
+        li += '<a href="javascript:;" class="sm-sign sm-sign-3" onclick="setTaskEdit()"> <i class="fa fa-cog"></i> </a>';
+        li += "<a href='' data-toggle='tab'><span  style='display:inline-block;width:142px;'>" + html +"</span></a>";
+        li += '</li>';
+        $("#services-sortable-list").append(li);
+    }
+    function chooseSceneReportAll(){
+        $('#select-sceneReport').multiSelect('select_all');
+        return false;
+    }
+    function clearSceneReportAll(){
+        $('#select-sceneReport').multiSelect('deselect_all');
+        return false;
+    }
+
+
+    //切换
+    function maskToggle(obj){
+        var _id = $(obj).attr("mask-target");
+        $(obj).is(":checked")? $("#"+_id).addClass('mask-hide'):$("#"+_id).removeClass('mask-hide');
+    }
+
+    function showPanel(showId, hideId){
+        $("#"+showId).show();
+        $("#"+hideId).hide();
+    }
+    function addOrderTr(obj,type){
+
+        function getStrSms(){
+            var _strSms = '<tr>'+
+                '        <td>'+
+                '        手机号码：'+
+                '    <input type="text" class="form-control input-small input-sm inline-block">'+
+                '        </td>'+
+                '        <td>'+
+                '        <label class="mt-checkbox mb0">'+
+                '        <input type="checkbox" value="option1"> &nbsp;'+
+                '    <span></span>'+
+                '        </label>'+
+                '        </td>'+
+                '        <td>'+
+                '        <label class="mt-checkbox mb0">'+
+                '        <input type="checkbox" value="option1"> &nbsp;'+
+                '    <span></span>'+
+                '        </label>'+
+                '        </td>'+
+                '        <td>'+
+                '        <label class="mt-checkbox mb0">'+
+                '        <input type="checkbox" value="option1"> &nbsp;'+
+                '    <span></span>'+
+                '        </label>'+
+                '        </td>'+
+                '        <td>'+
+                '        <label class="mt-checkbox mb0">'+
+                '        <input type="checkbox" value="option1"> &nbsp;'+
+                '    <span></span>'+
+                '        </label>'+
+                '        </td>'+
+                '        <td>'+
+                '        <button type="button" class="btn btn-xs red" onclick="deleteOrderTr(this)">'+
+                '        <i class="fa fa-remove"></i>'+
+                '        </button>'+
+                '        </td>'+
+                '        </tr>';
+            return _strSms;
+        }
+
+        function getStrEmail(){
+            var _strEmail = '<tr>'+
+                '    <td>'+
+                '        邮箱地址：'+
+                '        <input type="text" class="form-control input-small input-sm inline-block">'+
+                '    </td>'+
+                '    <td>'+
+                '        <label class="mt-checkbox mb0">'+
+                '            <input type="checkbox" value="option1"> &nbsp;'+
+                '            <span></span>'+
+                '        </label>'+
+                '    </td>'+
+                '    <td>'+
+                '        <label class="mt-checkbox mb0">'+
+                '            <input type="checkbox" value="option1"> &nbsp;'+
+                '            <span></span>'+
+                '        </label>'+
+                '    </td>'+
+                '    <td>'+
+                '        <label class="mt-checkbox mb0">'+
+                '            <input type="checkbox" value="option1"> &nbsp;'+
+                '            <span></span>'+
+                '        </label>'+
+                '    </td>'+
+                '    <td>'+
+                '        <label class="mt-checkbox mb0">'+
+                '            <input type="checkbox" value="option1"> &nbsp;'+
+                '            <span></span>'+
+                '        </label>'+
+                '    </td>'+
+                '    <td>'+
+                '        <button type="button" class="btn btn-xs red" onclick="deleteOrderTr(this)">'+
+                '            <i class="fa fa-remove"></i>'+
+                '        </button>'+
+                '    </td>'+
+                '</tr>';
+            return _strEmail;
+        }
+
+        function getSTrSmsc(){
+            var _strSmsc = '<tr>'+
+                '    <td>'+
+                '        手机地址：'+
+                '        <input type="text" class="form-control input-small input-sm inline-block">'+
+                '    </td>'+
+                '    <td>'+
+                '        <label class="mt-checkbox mb0">'+
+                '            <input type="checkbox" value="option1"> &nbsp;'+
+                '            <span></span>'+
+                '        </label>'+
+                '    </td>'+
+                '    <td>'+
+                '        <label class="mt-checkbox mb0">'+
+                '            <input type="checkbox" value="option1"> &nbsp;'+
+                '            <span></span>'+
+                '        </label>'+
+                '    </td>'+
+                '    <td>'+
+                '        <label class="mt-checkbox mb0">'+
+                '            <input type="checkbox" value="option1"> &nbsp;'+
+                '            <span></span>'+
+                '        </label>'+
+                '    </td>'+
+                '    <td>'+
+                '        <label class="mt-checkbox mb0">'+
+                '            <input type="checkbox" value="option1"> &nbsp;'+
+                '            <span></span>'+
+                '        </label>'+
+                '    </td>'+
+                '    <td>'+
+                '        <button type="button" class="btn btn-xs red" onclick="deleteOrderTr(this)">'+
+                '            <i class="fa fa-remove"></i>'+
+                '        </button>'+
+                '    </td>'+
+                '</tr>';
+            return _strSmsc;
+        }
+
+
+
+        //console.log($(obj).parents("tbody").remove());
+
+        switch(type){
+            case 'sms':
+                $(obj).parents("tbody").append(getStrSms());
+                break;
+            case 'email':
+                $(obj).parents("tbody").append(getStrEmail());
+                break;
+            case 'smsc':
+                $(obj).parents("tbody").append(getSTrSmsc());
+                break;
+        }
+
+
+
+    }
+
+    function deleteOrderTr(obj){
+        console.log($(obj).parents("tr").remove());
+        //$(obj).offsetParent("tr").remove();
+    }
+
+
+    /**
+     * 创建分组
+     */
+    function createGroup(){
+
+        var dialog = st_dialogOpen('创建分组', './M-scene-addGroup.html', okFunc);
+
+        function okFunc(){
+
+            if($("#scene-addGroup-form").Validform().check()){
+                //判断表单是否验证通过 通过则做点事情
+                toastr.options.positionClass = 'toast-bottom-right';
+                toastr.success("创建分组成功");
+                dialog.modal('hide');
+            }else{
+                dialog.find('.modal-footer .btn-primary').attr("disabled", false).html('确认');
+            }
+        }
+    }
+
+    /**
+     * 项目配置
+     */
+    function configItem(){
+        var dialog = st_dialogOpen('项目配置', './M-scene-configItem.html', okFunc);
+
+        function okFunc(){
+
+            if($("#scene-configItem-form").Validform().check()){
+                //判断表单是否验证通过 通过则做点事情
+                dialog.modal('hide');
+            }else{
+                dialog.find('.modal-footer .btn-primary').attr("disabled", false).html('确认');
+            }
+        }
+    }
+
+    /**
+     * 选择URL
+     */
+    function configUrls(){
+        var dialog = st_dialogOpen('选择url', './M-scene-configUrl.html', okFunc, 'full');
+
+        function okFunc(){
+
+            if($("#scene-addGroup-form").Validform().check()){
+                //判断表单是否验证通过 通过则做点事情
+                dialog.modal('hide');
+            }else{
+                dialog.find('.modal-footer .btn-primary').attr("disabled", false).html('确认');
+            }
+        }
+    }
+
+    /**
+     * 选择终端
+     */
+    function configTerminal(){
+        var dialog = st_dialogOpen('选择终端', './M-scene-configTerminal.html', okFunc, 'full');
+
+        function okFunc(){
+
+            if($("#scene-addGroup-form").Validform().check()){
+                //判断表单是否验证通过 通过则做点事情
+                dialog.modal('hide');
+            }else{
+                dialog.find('.modal-footer .btn-primary').attr("disabled", false).html('确认');
+            }
+        }
+    }
+
+    /**
+     * 选择终端 按区域
+     */
+    function configTerminalByArea(){
+        var dialog = st_dialogOpen('选择终端', './M-scene-configTerminalByArea.html', okFunc, 'full');
+
+        function okFunc(){
+
+            if($("#scene-addGroup-form").Validform().check()){
+                //判断表单是否验证通过 通过则做点事情
+                dialog.modal('hide');
+            }else{
+                dialog.find('.modal-footer .btn-primary').attr("disabled", false).html('确认');
+            }
+        }
+    }
+
+    /**
+     * 告警格式设置
+     */
+    function configAlarmFormat(){
+        var dialog = st_dialogOpen('告警格式设置', './M-scene-alarmFormat.html', okFunc, 'large');
+
+        function okFunc(){
+
+            if($("#scene-addGroup-form").Validform().check()){
+                //判断表单是否验证通过 通过则做点事情
+                dialog.modal('hide');
+            }else{
+                dialog.find('.modal-footer .btn-primary').attr("disabled", false).html('确认');
+            }
+        }
+    }
+
+    /**
+     * 业务编辑
+     * */
+
+    function setTaskEdit() {
+        $("#setTaskEdit").modal().show();
+    }
+    $('#netSpan').editable({
+        type: 'text',
+        pk: 1,
+        url: '',
+        title: ''
+    });
+    $('#traceSpan').editable({
+        type: 'text',
+        pk: 1,
+        url: '',
+        title: ''
+    });
+    $('#webVideo').editable({
+        type: 'text',
+        pk: 1,
+        url: '',
+        title: ''
+    });
+    $('#pingSpan').editable({
+        type: 'text',
+        pk: 1,
+        url: '',
+        title: ''
+    });
+
+
+</script>
+

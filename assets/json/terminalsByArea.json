@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "province": "四川",
+    "city": "广安市",
+    "country": "广安区",
+    "action":"<a href='javascript:;' class='btn btn-xs default'><i class='fa fa-arrow-right'></i></a>",
+    "remove":"<a href='javascript:;' class='btn btn-xs red'><i class='fa fa-remove'></i></a>"
+  },
+  {
+    "id": 2,
+    "province": "四川",
+    "city": "广安市",
+    "country": "前锋区",
+    "action":"<a href='javascript:;' class='btn btn-xs default'><i class='fa fa-arrow-right'></i> </a>",
+    "remove":"<a href='javascript:;' class='btn btn-xs red'><i class='fa fa-remove'></i></a>"
+  },
+  {
+    "id": 3,
+    "province": "四川",
+    "city": "广安市",
+    "country": "岳池县",
+    "action":"<a href='javascript:;' class='btn btn-xs default'><i class='fa fa-arrow-right'></i> </a>",
+    "remove":"<a href='javascript:;' class='btn btn-xs red'><i class='fa fa-remove'></i></a>"
+  },
+  {
+    "id": 4,
+    "province": "四川",
+    "city": "广安市",
+    "country": "武胜县",
+    "action":"<a href='javascript:;' class='btn btn-xs default'><i class='fa fa-arrow-right'></i> </a>",
+    "remove":"<a href='javascript:;' class='btn btn-xs red'><i class='fa fa-remove'></i></a>"
+  },
+  {
+    "id": 5,
+    "province": "四川",
+    "city": "广安市",
+    "country": "邻水县",
+    "action":"<a href='javascript:;' class='btn btn-xs default'><i class='fa fa-arrow-right'></i> </a>",
+    "remove":"<a href='javascript:;' class='btn btn-xs red'><i class='fa fa-remove'></i></a>"
+  },
+  {
+    "id": 6,
+    "province": "四川",
+    "city": "广安市",
+    "country": "华蓥市",
+    "action":"<a href='javascript:;' class='btn btn-xs default'><i class='fa fa-arrow-right'></i></a>",
+    "remove":"<a href='javascript:;' class='btn btn-xs red'><i class='fa fa-remove'></i></a>"
+  }
+]

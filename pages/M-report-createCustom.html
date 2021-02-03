@@ -1,0 +1,230 @@
+<style>
+    .multiselect-container  .multiselect-item .input-group  .multiselect-search{
+        width: 87px;
+    }
+</style>
+
+<form action="" class="form-horizontal" id="custom-report-form">
+    <div class="row reset-margin1">
+        <div class="col-md-5 reset-form-group">
+            <div class="form-group">
+                <label class="label-style">统计关键字</label>
+                <select   id="totalKeyWorld" class="form-control " multiple="multiple">
+                    <option value="0">省份</option>
+                    <option value="1">地市</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="label-style">主叫网络</label>
+                <select name="" id="callNet" class="form-control" multiple="multiple">
+                    <option value="0">电信FTTH</option>
+                    <option value="1">联通FTTH</option>
+                    <option value="2">移动FTTH</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="label-style">主叫运营商</label>
+                <select name="" id="callKind" class="form-control" multiple="multiple">
+                    <option value="0">电信</option>
+                    <option value="1">联通</option>
+                    <option value="2">移动</option>
+                    <option value="3">移动缓存</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="label-style">忙时闲时</label>
+                <div class="inline-block " >
+                    <label class="radio-inline">
+                        <input type="radio" name="inlineBusy1" id="" value="0" checked>无
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="inlineBusy1" id="" value="1">忙时
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="inlineBusy1" id="" value="2">闲时
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="label-style">粒度</label>
+                <div class="inline-block " >
+                    <label class="radio-inline">
+                        <input type="radio" name="selectData" id="inlineData1" value="0" checked>无
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="selectData" id="inlineData2" value="1">小时
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="selectData" id="inlineData3" value="2">天
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="selectData" id="inlineData4" value="3">周
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="label-style">开始时间</label>
+                <input class="form-control Wdate" type="text" id="startTime" name="startTime" value="" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',readOnly:true,maxDate:'#F{$dp.$D(\'endTime\')}',skin:'twoer'})"  style="width: 150px;"/>&nbsp;
+            </div>
+            <div class="form-group">
+                <label class="label-style">结束时间</label>
+                <input class="form-control Wdate" type="text" id="endTime" name="endTime" value="" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',readOnly:true,minDate:'#F{$dp.$D(\'startTime\')}',startDate:'#F{$dp.$D(\'startTime\',{d:+1})}',skin:'twoer'})" style="width: 150px;"/>
+            </div>
+
+            <div class="form-group">
+                <label  class="label-style">展现方式</label>
+                <div class="inline-block">
+                    <label class="radio-inline">
+                        <input  type="radio" name="selectCharts" id="" value="0" checked>表格(终端)
+                    </label>
+                    <label class="radio-inline">
+                        <input  type="radio" name="selectCharts" id="" value="1" >表格(网点)
+                    </label>
+                    <label class="radio-inline ">
+                        <input  type="radio" name="selectCharts" id="" value="2" > 柱图
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 reset-form-group">
+            <div class="form-group">
+                <label class="label-style">测试任务</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="label-style"><b>业务</b></label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="label-style"><b>指标</b></label>
+                <div class="index-wrap row">
+                    <div class="checkbox"><label><input type="checkbox" value="">掉话率（%）</label></div>
+                    <div class="checkbox"><label><input type="checkbox" value="">成功次数</label></div>
+                    <div class="checkbox"><label><input type="checkbox" value="">成功率（%）</label></div>
+                    <div class="checkbox"><label><input type="checkbox" value="">网页打开时长（S）</label></div>
+                    <div class="checkbox"><label><input type="checkbox" value="">网页平均下载速率（KBPS）</label></div>
+                </div>
+            </div>
+            <hr style="height: 1px ;margin: 10px 0px ;background: #ddd;">
+            <div class="form-group">
+                <label class="label-style"></label>
+                <label class="checkbox-inline lidu-none">
+                    <input type="checkbox" id="inlineCheckbox1" value="option1"> 平均值
+                </label>
+                <label class="checkbox-inline lidu-none">
+                    <input type="checkbox" id="inlineCheckbox2" value="option2"> 均分
+                </label>
+            </div>
+        </div>
+        <div class="col-md-3 reset-form-group">
+            <div class="ztree-wrap">
+                <div  id="treeSelect" class="ztree"></div>
+            </div>
+        </div>
+    </div>
+    <div style="height: 30px;padding-bottom: 10px;padding-right: 20px;">
+        <div class="pull-right">
+            <button class="btn btn-sm btn-default " data-dismiss="modal">取消</button>&emsp;
+
+            <button class="btn btn-sm btn-primary " data-dismiss="modal">确认</button>
+        </div>
+
+
+    </div>
+</form>
+<script>
+
+
+
+    $(function () {
+
+        $("#totalKeyWorld").multiselect({
+            buttonWidth: '180px',
+            enableFiltering: true,
+            enableFullValueFiltering: true,
+            includeSelectAllOption: true
+        });
+        $("#callNet").multiselect({
+            buttonWidth: '180px',
+            enableFiltering: true,
+            enableFullValueFiltering: true,
+            includeSelectAllOption: true
+        });
+        $("#callKind").multiselect({
+            buttonWidth: '180px',
+            enableFiltering: true,
+            enableFullValueFiltering: true,
+            includeSelectAllOption: true
+        });
+
+        $(".lidu-has").hide();
+
+        $("input[type='radio'][name='selectData']").on('change',function(){
+            if($(this).val()==0){
+                $(".lidu-none").show();
+                $(".lidu-has").hide();
+            }if($(this).val()==1){
+                $(".lidu-none").hide();
+                $(".lidu-has").show();
+            }if($(this).val()==2){
+                $(".lidu-none").hide();
+                $(".lidu-has").show();
+            }if($(this).val()==3){
+                $(".lidu-none").hide();
+                $(".lidu-has").show();
+            }
+        })
+        var treeObj = initSceneTrees('treeSelect');
+        //加载ztree
+        function initSceneTrees(id){
+            var setting = {
+                callback: {
+                    onExpand: onExpand,
+                    onClick: onClick,
+
+                },
+                check:{
+                    enable: true,
+                    autoCheckTrigger: true
+                }
+            };
+
+            var zNodes =[
+                {
+                    name:"客户",
+                    isParent:true,
+                    isRoot:true,
+                    open:true,
+                    children: [
+                        { name:"任务1" },
+                        { name:"任务1" },
+                    ]
+                }
+
+            ];
+
+            var zTreeObj = $.fn.zTree.init($("#"+ id), setting, zNodes);
+            var curExpandNode = null;
+            function onExpand(event, treeId, treeNode) {
+                curExpandNode = treeNode;
+            }
+            function onClick(e,treeId, treeNode) {
+                var zTree = $.fn.zTree.getZTreeObj(id);
+                zTree.expandNode(treeNode, null, null, null, true);
+            }
+
+            return zTreeObj;
+        }
+
+
+
+    })
+
+
+
+
+</script>

@@ -1,0 +1,69 @@
+<!--任务过滤弹窗-->
+
+<form action="" id="form-task-filter" class="form-inline">
+    <div class="form-group">
+        <label>时间段：</label>
+        <div class="input-group">
+            <input type="text" class="form-control read-only-normal" placeholder="请选择开始时间" id="startTime2-taskFilter" name="startTime-taskFilter" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'endTime2-taskFilter\');}',isShowClear:false,readOnly:true})" readonly/>
+            <div class="input-group-addon">至</div>
+            <input type="text" class="form-control read-only-normal" placeholder="请选择结束时间" id="endTime2-taskFilter" name="endTime-taskFilter" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startTime2-taskFilter\');}',isShowClear:false,readOnly:true})" readonly/>
+        </div>
+    </div>
+    &emsp;
+    <div class="form-group">
+        <label>任务名称：</label>
+        <input class="form-control" type="text"/>
+    </div>
+    &emsp;
+    <div class="form-group">
+        <button type="button" class="btn btn-default">查询</button>
+    </div>
+    <hr class="dashed-line">
+    <div class="simscroller" style="height: 200px;">
+        <table class="table table-condensed table-bordered table-advance">
+            <thead>
+            <tr>
+                <th><input type="checkbox"/></th>
+                <th>任务名称</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input type="checkbox"/></td>
+                <td>宁波家宽测试__20161011104837_组织机构_root_1146896_720161011105035</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"/></td>
+                <td>宁波家宽测试__20161011104837_组织机构_root_1146895_620161011105034</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"/></td>
+                <td>宁波家宽测试__20161011104837_组织机构_root_1146895_620161011105034</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"/></td>
+                <td>宁波家宽测试__20161011104837_组织机构_root_1146895_620161011105034</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"/></td>
+                <td>宁波家宽测试__20161011104837_组织机构_root_1146895_620161011105034</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"/></td>
+                <td>宁波家宽测试__20161011104837_组织机构_root_1146895_620161011105034</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</form>
+
+<!--此处需要数据验证-->
+<script>
+    $(function(){
+       $("#form-task-filter .simscroller").slimScroll({
+           height: '300px',
+           size: '4px'
+       });
+    })
+</script>

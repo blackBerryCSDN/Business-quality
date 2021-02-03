@@ -1,0 +1,27 @@
+.testType-dropdown-menu{
+  padding:15px;
+  dt{
+    color: #aaaaaa;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: bold;
+    margin-top: 10px;
+    padding:3px 0;
+    &:first-child{
+      margin-top: 0;
+    }
+  }
+  dd{
+    font-weight: normal;
+    text-indent: 10px;
+    padding: 5px 0;
+  }
+}
+.toleft-dropdown-submenu > a:after{
+  display: none;
+}
+.toleft-dropdown-submenu > .dropdown-menu{
+    left: auto;
+    right: 100%;
+  box-shadow: 0px 5px rgba(102,102,102,.1);
+}

@@ -1,0 +1,43 @@
+<!--选择测试点-->
+
+<form class="form-horizontal" id="">
+
+   <div id="tree-choosePoint" class="ztree" style="height: 250px;overflow: auto"></div>
+
+</form>
+
+<script>
+    $(function () {
+       var setting = {
+          check: {
+             enable: true
+          },
+          data: {
+             simpleData: {
+                enable: true
+             }
+          }
+       };
+
+       var zNodes =[
+          { id:1, pId:0, name:"随意勾选 1", open:false},
+          { id:11, pId:1, name:"随意勾选 1-1", open:true},
+          { id:111, pId:11, name:"随意勾选 1-1-1"},
+          { id:112, pId:11, name:"随意勾选 1-1-2"},
+          { id:12, pId:1, name:"随意勾选 1-2", open:true},
+          { id:121, pId:12, name:"随意勾选 1-2-1"},
+          { id:122, pId:12, name:"随意勾选 1-2-2"},
+          { id:2, pId:0, name:"随意勾选 2", open:false},
+          { id:21, pId:2, name:"随意勾选 2-1"},
+          { id:22, pId:2, name:"随意勾选 2-2", open:true},
+          { id:221, pId:22, name:"随意勾选 2-2-1"},
+          { id:222, pId:22, name:"随意勾选 2-2-2"},
+          { id:23, pId:2, name:"随意勾选 2-3"}
+       ];
+
+
+       $.fn.zTree.init($("#tree-choosePoint"), setting, zNodes);
+
+    })
+
+</script>

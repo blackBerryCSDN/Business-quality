@@ -1,0 +1,156 @@
+<!--自定义报表配置-->
+
+<form class="form-horizontal" id="">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-body">
+                <h5 style="border-left: 3px solid #0B61A4;padding-left:5px;margin-left:10px;font-weight: 700;">导出选项</h5>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">命名规则 </label>
+                    <div class="col-sm-7 ">
+                        <input type="text" class="form-control" value="WEB访问{yyyyMMddHHmmss}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">导出类型</label>
+                    <div class="col-sm-7 ">
+                        <select class="form-control input-small">
+                            <option value="0" selected>xls</option>
+                            <option>txt</option>
+                            <option>AVL</option>
+                            <option>csv</option>
+                        </select>
+                    </div>
+                </div>
+                <h5 style="border-left: 3px solid #0B61A4;padding-left:5px;margin-left:10px;font-weight: 700;">过滤条件</h5>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">地市</label>
+                    <div class="col-sm-7 ">
+                        <select class="tmp-mul-select input-sm" multiple="multiple">
+                            <option value="0">省份</option>
+                            <option value="1">菏泽市</option>
+                            <option value="2">济南市</option>
+                            <option value="3">菏泽市</option>
+                            <option value="4">济南市</option>
+                            <option value="5">菏泽市</option>
+                            <option value="6">济南市</option>
+                            <option value="7">菏泽市</option>
+                            <option value="8">济南市</option>
+                            <option value="9">菏泽市</option>
+                            <option value="10">济南市</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">县区</label>
+                    <div class="col-sm-7 ">
+                        <select class="tmp-mul-select input-sm" multiple="multiple">
+                            <option value="">省份</option>
+                            <option value="">地市</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">测试点 </label>
+                    <div class="col-sm-7 ">
+                        <input type="text" class="form-control read-only-normal" onclick="m_chooseTestPoint()" placeholder="请选择测试点" readonly />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">测试任务 </label>
+                    <div class="col-sm-7 ">
+                        <input type="text" class="form-control read-only-normal" onclick="m_chooseTestTask()" placeholder="请选择测试任务" readonly />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">域名组 </label>
+                    <div class="col-sm-7 ">
+                        <input type="text" class="form-control read-only-normal" onclick="m_chooseGroup()" placeholder="请选择域名组" readonly />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<script>
+    $(function () {
+//        $.ajax({
+//            type : "POST",  //提交方式
+//            url : "http://192.168.30.142:7070/login",//路径
+//            data : {
+//                userName:1111,
+//                password:123
+//            },//数据，这里使用的是Json格式进行传输
+//            success : function(result) {//返回数据根据结果进行相应的处理
+//                if ( result.success ) {
+//                    $("#tipMsg").text("删除数据成功");
+//                    tree.deleteItem("${org.id}", true);
+//                } else {
+//                    $("#tipMsg").text("删除数据失败");
+//                }
+//            }
+//        });
+        $(".tmp-mul-select").multiselect({
+            buttonWidth: '180px',
+            enableFiltering: true,
+            enableFullValueFiltering: true,
+            includeSelectAllOption: true,
+            buttonClass: 'form-control'
+        });
+    });
+
+
+    //选择测试点
+    function m_chooseTestPoint(){
+        var dialog = st_dialogOpen('选择测试点', './reportModal/M-report-choosePoint.html', okFunc, 'middle');
+
+        function okFunc(){
+
+            if(true){
+                //判断表单是否验证通过 通过则做点事情
+                toastr.success("创建成功");
+                dialog.modal('hide');
+            }else{
+                dialog.find('.modal-footer .btn-primary').attr("disabled", false).html('确认');
+            }
+        }
+    }
+
+    //选择测试任务
+    function m_chooseTestTask(){
+        var dialog = st_dialogOpen('选择测试任务', './reportModal/M-report-chooseTestTask.html', okFunc, 'full');
+
+        function okFunc(){
+
+            if(true){
+                //判断表单是否验证通过 通过则做点事情
+                toastr.success("创建成功");
+                dialog.modal('hide');
+            }else{
+                dialog.find('.modal-footer .btn-primary').attr("disabled", false).html('确认');
+            }
+
+        }
+    }
+
+    //选择域名组
+    function m_chooseGroup(){
+        var dialog = st_dialogOpen('选择域名组', './reportModal/M-report-chooseGroup.html', okFunc, 'middle');
+
+        function okFunc(){
+
+            if(true){
+                //判断表单是否验证通过 通过则做点事情
+                toastr.success("创建成功");
+                dialog.modal('hide');
+            }else{
+                dialog.find('.modal-footer .btn-primary').attr("disabled", false).html('确认');
+            }
+        }
+    }
+
+</script>

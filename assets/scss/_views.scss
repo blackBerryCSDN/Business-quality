@@ -1,0 +1,416 @@
+
+//测试指标试图
+.view-scenario-controls{
+  height: 347px;
+  position: relative;
+  .left-column{
+    position: absolute;
+    left: 0;
+    width: 225px;
+    height: 347px;
+    border-right: 1px solid #efefef;
+  }
+  .right-column {
+    position: absolute;
+    left: 225px;
+    right: 0;
+  }
+  .scenario-controls-title{
+    padding: 10px;
+    border-bottom: 1px solid #efefef;
+    font-size: 14px;
+  }
+  .scenario-controls-body{
+    height: 258px;
+  }
+  .category-list{
+    list-style: none;
+    margin-left: 0;
+    padding-left:10px;
+    >li{
+      line-height: 24px;
+      padding-top: 6px;
+    }
+  }
+  .category-title{
+    font-size: 10px;
+    color: #bfbfbf;
+    cursor: default;
+  }
+  .scenario-list{
+    list-style: none;
+    margin-left: 0;
+    padding-left: 22px;
+  }
+  .scenario-title{
+    color: #999;
+    cursor: default;
+    cursor: pointer;
+    font-size: 14px;
+    &:hover{
+      color: #333;
+    }
+    &.active{
+      color: black;
+      font-weight: bold;
+      cursor: default;
+    }
+  }
+  .target-row{
+    padding: 10px;
+    border-top: 1px solid #efefef;
+  }
+  .target-type{
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .target-value{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: default;
+    padding: 0 10px 5px 10px;
+    max-width: 205px;
+    position: absolute;
+    left: 0;
+    background: white;
+  }
+  .selector-label {
+    margin-bottom: 2px;
+  }
+  .view-filters{
+    padding: 6px 10px 10px 10px;
+    border-bottom: 1px solid #efefef;
+    @include clearfix();
+  }
+  .view-filter{
+    width: 23%;
+    float: left;
+    margin-right: 10px;
+  }
+  .view-echarts{
+    position: relative;
+    padding:10px;
+  }
+  .zoom-tools{
+    font-weight: bold;
+    position: absolute;
+    left: 30px;
+    z-index: 1;
+    .zoom-button{
+      text-decoration: none;
+      color: #369;
+      outline: 0 none;
+      margin-right: 5px;
+      &:hover{
+        text-decoration: underline;
+        cursor: pointer;
+        outline: 0 none;
+      }
+    }
+  }
+  .view-tip{
+    padding: 0 10px;
+    text-align: center;
+    color: #666;
+  }
+}
+
+.view-testState-controls{
+  position: relative;
+  min-height: 295px;
+  @include clearfix();
+  .left-column{
+    width: 300px;
+    position: absolute;
+    border-right: 1px solid #efefef;
+  }
+  .right-column{
+    margin-left: 300px;
+    width: auto;
+  }
+  .summary-wrap{
+    padding-bottom: 15px;
+  }
+  .summary-title-row{
+    border-bottom: 1px solid #efefef;
+    padding: 20px 8px 3px 8px;
+    margin-bottom: 5px;
+  }
+  .summary-title{
+    color: #999;
+    font-style: italic;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .error-summary-row{
+    padding-top: 7px;
+    padding-bottom: 7px;
+    .error-label{
+      color: #666666;
+      font-size: 11px;
+      line-height: 15px;
+      padding-top: 1px;
+    }
+    .error-bar>span{
+      position: relative;
+      display: inline-block;
+      width: 5px;
+
+      &:after{
+        content: ' ';
+        position: absolute;
+        height: 13px;
+        width: 5px;
+        border-radius: 40%;
+        background: #32bb2d;
+        display: inline-block;
+        /* padding-top: 3px; */
+        top: -11px;
+      }
+
+      &.error-red-bar{
+        &:after{
+          background: #bf1b14;
+        }
+      }
+
+    }
+    .error-value{
+      margin-left: 6px;
+    }
+  }
+  .tip-container{
+    padding:15px;
+
+    .summary-metric{
+      font-size: 16px;
+    }
+    small{
+      color: #999;
+      font-style: italic;
+      padding-top: 1px;
+    }
+    .metric-title{
+      margin-bottom: 10px;
+      padding:0 0 5px 0;
+      border-bottom: 1px dashed #efefef;
+    }
+  }
+}
+
+
+//趋势图
+.view-data-trend{
+  position: relative;
+  .zoom-tools {
+    font-weight: bold;
+    position: absolute;
+    left: 30px;
+    z-index: 1;
+    .zoom-button{
+      text-decoration: none;
+      outline: 0 none;
+      margin-right: 5px;
+      color: #337ab7;
+      cursor: pointer;
+    }
+    .zoom-button:hover{
+      text-decoration: underline;
+      outline: 0 none;
+      margin-right: 5px;
+      color: #337ab7;
+    }
+  }
+}
+
+//告警总数线性
+.view-alarms-total{
+  position: relative;
+  padding-top:15px;
+  padding-bottom:15px;
+  .link-line{
+    background: -webkit-linear-gradient( left, #999, $c-blue, $c-yellow, $c-orange, $c-red);
+    background: -moz-linear-gradient( left, #999, $c-blue, $c-yellow, $c-orange, $c-red);
+    background: -ms-linear-gradient( left, #999, $c-blue, $c-yellow, $c-orange, $c-red);
+    background: linear-gradient( left, #999, $c-blue, $c-yellow, $c-orange, $c-red);
+    height: 6px;
+    width: 66.7%;
+    margin-left: 8.8%;
+    top: 82px;
+    position: absolute;
+    transition: all 0.2s;
+  }
+  .total-items{
+    text-align: center;
+    padding-top: 30px;
+  }
+  .total-count{
+    display: block;
+    width: 80px;
+    border: 6px solid #ddd;
+    height: 80px;
+    line-height: 66px;
+    text-align: center;
+    font-size: 32px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: #fff;
+
+  }
+  .total-desc{
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .total-summary-wrap{
+
+    text-align: center;
+
+    .total-summary-num{
+      display: block;
+      font-size: 60px;
+      color: #666;
+      height: 140px;
+      width:140px;
+      border-radius: 50%;
+      border: 8px solid #666;
+      background: #fff;
+      line-height: 120px;
+      margin:0 auto;
+    }
+  }
+  .total-btn-detail{
+    margin-top: 55px;
+  }
+}
+
+.view-sort-progress{
+}
+
+
+.view-scene-manager-left{
+  background: #f1f4f7;
+  .action-btn-group{
+    text-align: center;
+    background: #d6dee7;
+    padding: 7px 0;
+    border-bottom: 1px solid #d7d7d7;
+  }
+}
+
+.view-scoreModel-item{
+  .panel-heading{
+    position: relative;
+  }
+  .panel-title .actions{
+    position: absolute;
+    height: 36px;
+    top: 0;
+    right: 0;
+    font-size: 0;
+    a{
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      line-height: 36px;
+      text-align: center;
+      border: 1px solid #ddd;
+      border-width: 0 1px;
+      margin-right: -1px;
+      font-size: 16px;
+      color: #546478;
+      @include transition(all .2s);
+      &:hover{
+        background: #d3d3d3;
+      }
+    }
+  }
+  .panel-body{
+    padding:0;
+  }
+  .scoreModel-services-list{
+    list-style: none;
+    margin:0;
+    padding:0;
+    li{
+
+      border-right: 1px solid #ddd;
+      div.sl{
+        cursor: pointer;
+        padding:10px 15px;
+        border-top: 1px solid transparent;
+        border-bottom: 1px solid transparent;
+        span.name{
+          width: 90%;
+          display: inline-block;
+        }
+        span.ico{
+          display: inline-block;
+        }
+      }
+
+      &:first-child.active .sl{
+        border-top: 0;
+      }
+      &.active{
+
+        border-right: 1px solid transparent;
+      }
+      &.active .sl{
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        color: #0066cc;
+        &:hover{
+          background: #fff;
+        }
+      }
+      &:hover .sl{
+        background: #eeeeee;
+      }
+    }
+  }
+  .scoreModel-score-body{
+  }
+
+}
+
+
+.view-tab-content-scene{
+  .nav-tabs a>i{
+    @include transition(all 0.2s);
+    &:hover{
+      color: #e7505a;
+      @include transform(scale(1.2));
+    }
+  }
+  .panel .panel-title .accordion-toggle.accordion-toggle-styled.collapsed{
+    background-position: 12px 12px;
+  }
+  .panel .panel-title .accordion-toggle.accordion-toggle-styled{
+    background-position-x: 12px;
+  }
+
+  .panel .panel-title .accordion-toggle {
+    padding: 10px 15px 10px 20px;
+  }
+  .panel{
+    position: relative;
+  }
+  .btn-group-action{
+    position: absolute;
+    right:0px;
+    top: 0;
+    //z-index: 2;
+    font-size: 0;
+    .btn.default{
+      height: 35px;
+      line-height: 35px;
+      padding:0 10px;
+      border-radius: 0;
+      border-left: 1px solid #ccc;
+      margin-left: -1px;
+      border-width: 0 1px;
+    }
+  }
+}

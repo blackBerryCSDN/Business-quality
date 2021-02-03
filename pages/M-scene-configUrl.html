@@ -1,0 +1,322 @@
+<form class="form-horizontal" id="scene-configUrl-form">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="col-sm-6">
+                <h5 class="text-bolder">
+                    可选择
+                    &emsp;
+                    <div class="btn-group btn-group-devided" data-toggle="buttons">
+                        <label class="btn grey-mint btn-xs btn-circle btn-outline btn-sm input-xsmall active" href="#configUrl-tab-1" onclick="toggleLTURl(this)">
+                            <input type="radio" name="options" class="toggle">自由选择</label>
+                        <label class="btn grey-mint btn-xs btn-circle btn-outline btn-sm input-xsmall" href="#configUrl-tab-2" onclick="toggleLTURl(this)">
+                            <input type="radio" name="options" class="toggle">组选择</label>
+                        <label class="btn  grey-mint btn-xs btn-circle btn-outline btn-sm input-xsmall" href="#configUrl-tab-3" onclick="toggleLTURl(this)">
+                            <input type="radio" name="options" class="toggle">手动输入</label>
+                    </div>
+                    <div id="actions-left-url" class="pull-right">
+                        <a class='mr10' onclick='chooseLTUrlPage()' href='javascript:;'>全选本页</a>
+                        <a onclick='chooseLTUrlAll()' href='javascript:;'>全选所有</a>
+                    </div>
+                </h5>
+
+                <div class="btn-group-devided-url-content">
+                    <div id="configUrl-tab-1">
+                        <table id="url-single-left-table" class="table-condensed"></table>
+                    </div>
+                    <div id="configUrl-tab-2" style="display: none">
+                        <table id="url-group-left-table" class="table-condensed"></table>
+                    </div>
+                    <div id="configUrl-tab-3" style="display: none">
+                        <div class="space-10"></div>
+                        <div class="form-body">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">* 名称</label>
+                                <div class="col-md-6">
+                                    <input type="text" name="name" class="form-control" placeholder="请输入名称">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">* URL</label>
+                                <div class="col-md-6">
+                                    <input type="text" name="url" class="form-control" placeholder="请输入URL">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">* 域名组</label>
+                                <div class="col-md-6">
+                                    <input type="text" name="groupName" class="form-control" placeholder="请输入域名组">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"></label>
+                                <div class="col-md-6">
+                                    <button type="button" id="hand-input-url-btn" class="btn blue btn-sm">确认添加</button>
+                                    &emsp;
+                                    <button type="button" class="btn btn-default btn-sm">文件导入</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <h5 class="text-bolder">
+                    已选择
+                    <a class='pull-right' onclick='removeRTUrlAll()' href='javascript:;'>全部清空</a>
+                </h5>
+                <table id="url-right-table" class="table-condensed"></table>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<script>
+    
+    //TODO 页面逻辑需要重新整理结构
+    
+    $(function(){
+
+        $("#scene-configUrl-form").validate({
+            focusInvalid  : true,
+            errorElement  : "span",
+            errorClass    : "help-block help-block-error",
+            ignore        : "",
+            rules: {
+                // no quoting necessary
+                'name': {required: true},
+                'url': {required: true},
+                'groupName': {required: true}
+            },
+            highlight     : function(e) {
+                $(e).closest(".form-group").addClass("has-error")
+            },
+            unhighlight   : function(e) {
+                $(e).closest(".form-group").removeClass("has-error")
+            },
+            success       : function(e, r) {
+                e.closest(".form-group").removeClass("has-error");
+                e.remove();
+            },
+            submitHandler: function(form) {
+
+                //form[0].submit()
+
+                return false; // 阻止表单自动提交事件
+            }
+        });
+        
+        $('#hand-input-url-btn').on("click", function(e){
+            if($("#scene-configUrl-form").valid()){
+                var _row = {
+                        "id": new Date().getTime(),
+                        "name": $("[name='name']").val(),
+                        "url": $("[name='url']").val(),
+                        "groupName": $("[name='groupName']").val(),
+                        "action":"<a href='javascript:;' class='btn btn-xs default'><i class='fa fa-arrow-right'></i></a>",
+                        "remove":"<a href='javascript:;' class='btn btn-xs red'><i class='fa fa-remove'></i></a>",
+                        "type": "手动"
+                };
+                $("[name='name']").val("");
+                $("[name='url']").val("");
+                $("[name='groupName']").val("");
+                $('#url-right-table').bootstrapTable("prepend",_row);
+            }
+        });
+        
+        $('#url-single-left-table').bootstrapTable({
+            'url': '../assets/json/urls-single.json',
+            'pagination': true,
+            'search': true,
+            'sidePagination': 'client',
+            'columns':[
+                { 'field': 'id', 'visible': false},
+                { 'field': 'type',  'visible': false},
+                { 'field': 'name', 'title': '名称','sortable':true},
+                { 'field': 'url', 'title': 'URL','sortable':true},
+                { 'field': 'groupName', 'title': '域名组','sortable':true},
+                {
+                    'field': 'action',
+                    'align': 'center',
+                    'title': '操作',
+                    'events':{
+                        'click a': function (e, value, row, index) {
+                            $('#url-right-table').bootstrapTable("prepend",row);
+                            $('#url-single-left-table').bootstrapTable('remove', {
+                                field: 'id',
+                                values: [row.id]
+                            });
+                            //alert('You click like action, row: ' + JSON.stringify(row));
+                        }
+                    }
+                },
+                { 'field': 'remove', 'visible': false}
+            ]
+            
+        });
+
+        $('#url-group-left-table').bootstrapTable({
+            'url': '../assets/json/urls-group.json',
+            'pagination': true,
+            'search': true,
+            'sidePagination': 'client',
+            'columns':[
+                { 'field': 'id', 'visible': false},
+                { 'field': 'type',  'visible': false},
+                { 'field': 'name', 'title': '名称','sortable':true},
+                { 'field': 'url', 'title': 'URL','sortable':true},
+                { 'field': 'groupName', 'title': '域名组','sortable':true},
+                {
+                    'field': 'action',
+                    'align': 'center',
+                    'title': '操作',
+                    'events':{
+                        'click a': function (e, value, row, index) {
+                            $('#url-right-table').bootstrapTable("prepend",row);
+                            $('#url-group-left-table').bootstrapTable('remove', {
+                                field: 'id',
+                                values: [row.id]
+                            });
+                            //alert('You click like action, row: ' + JSON.stringify(row));
+                        }
+                    }
+                },
+                { 'field': 'remove', 'visible': false}
+            ]
+
+        });
+
+        $('#url-right-table').bootstrapTable({
+            'pagination': true,
+            'search': true,
+            'sidePagination': 'client',
+            'columns':[
+                { 'field': 'id', 'visible': false},
+                {
+                    'field': 'remove',
+                    'align': 'center',
+                    'title': '操作',
+                    'events':{
+                        'click a': function (e, value, row, index) {
+                            remove_Url_rightTableItem(row)
+                            //alert('You click like action, row: ' + JSON.stringify(row));
+                        }
+                    }
+                },
+                { 'field': 'type',  'title': '类别','sortable':true},
+                { 'field': 'name', 'title': '名称','sortable':true},
+                { 'field': 'url', 'title': 'URL','sortable':true},
+                { 'field': 'groupName', 'title': '域名组','sortable':true}
+            ]
+
+        });
+
+    });
+    
+    
+    //切换tab
+    function toggleLTURl(obj){
+        var _this = $(obj);
+        var targetHref = _this.attr("href");
+        console.log(targetHref);
+        console.log($(targetHref).is(":hidden"));
+        if(!$(targetHref).is(":hidden")){
+            return;
+        }else{
+            $(".btn-group-devided-url-content").children().hide();
+            $(targetHref).show();
+        }
+        
+        if(targetHref=="#configUrl-tab-3"){
+            $("#actions-left-url").hide();
+        }else{
+            $("#actions-left-url").show();
+        }
+    }
+    
+    function remove_Url_rightTableItem(row){
+        
+        if(row.type == "单个"){
+            $('#url-single-left-table').bootstrapTable("prepend",row);
+        }else if(row.type == "整组"){
+            $('#url-group-left-table').bootstrapTable("prepend",row);
+        }
+        $('#url-right-table').bootstrapTable('remove', {
+            field: 'id',
+            values: [row.id]
+        });
+        
+    }
+    
+    //选择所有
+    function chooseLTUrlAll(){
+        
+        if(!$("#configUrl-tab-1").is(":hidden")){
+            //单个
+            var _row =  $('#url-single-left-table').bootstrapTable("getData");
+            $('#url-right-table').bootstrapTable("prepend",_row);
+            $('#url-single-left-table').bootstrapTable("removeAll");
+        }else if(!$("#configUrl-tab-2").is(":hidden")){
+            //整组
+            var _row =  $('#url-group-left-table').bootstrapTable("getData");
+            $('#url-right-table').bootstrapTable("prepend",_row);
+            $('#url-group-left-table').bootstrapTable("removeAll");
+        }else if(!$("#configUrl-tab-3").is(":hidden")){
+            
+        }
+       
+    }
+    //选择当页
+    function chooseLTUrlPage(){
+        if(!$("#configUrl-tab-1").is(":hidden")){
+            //单个
+            var _row =  $('#url-single-left-table').bootstrapTable("getData",{'useCurrentPage':true});
+            $('#url-right-table').bootstrapTable("prepend",_row);
+            $('#url-single-left-table').bootstrapTable('remove', {
+                field: 'id',
+                values: (function(){
+                    var arr = [];
+                    for(var i=0;i<_row.length;i++){
+                        arr.push(_row[i].id);
+                    }
+                    return arr;
+                })()
+            });
+        }else if(!$("#configUrl-tab-2").is(":hidden")){
+            //整组
+            var _row =  $('#url-group-left-table').bootstrapTable("getData",{'useCurrentPage':true});
+            $('#url-right-table').bootstrapTable("prepend",_row);
+            $('#url-group-left-table').bootstrapTable('remove', {
+                field: 'id',
+                values: (function(){
+                    var arr = [];
+                    for(var i=0;i<_row.length;i++){
+                        arr.push(_row[i].id);
+                    }
+                    return arr;
+                })()
+            });
+        }else if(!$("#configUrl-tab-3").is(":hidden")){
+
+        }
+        
+    }
+    //清空选择
+    function removeRTUrlAll(){
+        var _row =  $('#url-right-table').bootstrapTable("getData");
+        var _singleArr = [];
+        var _groupArr = [];
+        for(var i=0; i<_row.length; i++){
+            if(_row[i].type == '单个'){
+                _singleArr.push(_row[i]);
+            }else if(_row[i].type == '整组'){
+                _groupArr.push(_row[i]);
+            }
+        }
+        $('#url-single-left-table').bootstrapTable("prepend",_singleArr);
+        $('#url-group-left-table').bootstrapTable("prepend",_groupArr);
+        
+        $('#url-right-table').bootstrapTable("removeAll");
+    }
+</script>

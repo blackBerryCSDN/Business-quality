@@ -1,0 +1,55 @@
+.text-bolder{
+  font-weight: 700!important;
+}
+.text-normal{
+  font-weight: normal!important;
+}
+
+
+.text-red{
+  color: $c-red!important;
+}
+.text-blue{
+  color: $c-blue!important;;
+}
+.text-orange{
+  color: $c-orange!important;;
+}
+.text-yellow{
+  color: $c-yellow!important;;
+}
+.text-green{
+  color: $c-green!important;;
+}
+.text-gray{
+  color: #666!important;;
+}
+.text-left{
+  text-align: left!important;
+}
+.text-right{
+  text-align: right!important;;
+}
+
+
+
+.font-12{
+  font-size: 12px!important;
+}
+.font-14{
+  font-size: 14px!important;
+}
+.font-16{
+  font-size: 16px!important;
+}
+.font-18{
+  font-size: 18px!important;
+}
+.font-20{
+  font-size: 20px!important;
+}
+
+
+.cursor-pointer{
+  cursor: pointer!important;
+}

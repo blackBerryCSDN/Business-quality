@@ -1,0 +1,54 @@
+<ul class="list-menu-vertical">
+
+    <li class="menu-type">
+        <span>综合</span>
+    </li>
+    <li id="s_m_101">
+        <a href="./data-service-main.html"><i class="fa fa-area-chart"></i>综合视图</a>
+    </li>
+    <li class="menu-type">
+        <span>分类</span>
+    </li>
+    <li id="s_m_201">
+        <a href="./data-service-area.html"><i class="fa fa-map"></i>地域视图</a>
+    </li>
+    <li id="s_m_202">
+        <a href="./data-service-range.html"><i class="fa fa-bar-chart"></i>区间视图</a>
+    </li>
+    <li id="s_m_203">
+        <a href="./data-service-falls.html"><i class="fa fa-line-chart"></i>瀑布视图</a>
+    </li>
+    <li id="s_m_204">
+        <a href="./data-service-error.html"><i class="fa fa-pie-chart"></i>失败分析</a>
+    </li>
+    <li id="s_m_207">
+        <a href="./data-service-alarm.html"><i class="fa fa-pie-chart"></i>告警分析</a>
+    </li>
+    <li id="s_m_205">
+        <a href="./data-service-kpi.html"><i class="fa fa-bookmark"></i>KPI视图</a>
+    </li>
+    <li id="s_m_206">
+        <a href="./data-service-trend.html"><i class="fa fa-line-chart"></i>趋势视图</a>
+    </li>
+    <li class="menu-type">
+        <span>其他</span>
+    </li>
+    <li id="s_m_301">
+        <a href="./data-index.html"><i class="fa fa-map"></i>全局概况</a>
+    </li>
+    <li id="s_m_303">
+        <a href="./data-detail.html"><i class="fa fa-map"></i>详单数据</a>
+    </li>
+    <li id="s_m_304">
+        <a href="./data-statistics.html"><i class="fa fa-map"></i>统计数据</a>
+    </li>
+</ul>
+
+<script>
+    //TODO jsp开发 可能是无效代码
+    window.onload = function(){
+        var _id = $("#smId").val();
+        $("#"+_id).addClass("active");
+    };
+    
+</script>

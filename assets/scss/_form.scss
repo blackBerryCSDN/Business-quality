@@ -1,0 +1,38 @@
+.form-well{
+  padding:10px;
+}
+.form-inline .form-group{
+  margin-bottom: 5px;
+}
+.btn-group-devided-inform{
+  label.btn{
+    margin-bottom: 2px;
+  }
+}
+.form-group{
+  .mt-checkbox-inline{
+    display: inline-block;
+
+    .mt-checkbox{
+      margin-bottom: 0;
+      margin-left: 0px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.input-sxsmall{
+  width: 44px!important;
+}
+
+.read-only-normal{
+  cursor: auto !important;
+  background-color: #fff !important;
+}
+
+.label-width{
+  width: 150px;
+}
+.form-inline .mt-radio-inline{
+  display: inline-block;
+}

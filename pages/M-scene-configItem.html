@@ -1,0 +1,79 @@
+<form class="form-horizontal" id="scene-configItem-form">
+    <div class="row">
+        <div class="col-md-12">
+            <select id="my_multi_select_sceneItem" multiple="multiple" class="multi-select">
+                <optgroup label="家宽业务">
+                    <option value="0">PING</option>
+                    <option value="1">TRACER</option>
+                    <option value="2">WEB视频</option>
+                    <option value="3">网页浏览</option>
+                </optgroup>
+            </select>
+        </div>
+    </div>
+</form>
+<style>
+    .scene_multi_select_body{
+        width: 90%;
+        margin: 0 auto;;
+    }
+</style>
+<script>
+    $(function () {
+
+        $("#my_multi_select_sceneItem").multiSelect({
+            cssClass: 'scene_multi_select_body',
+            selectableOptgroup: true,
+            selectableHeader: "<h5 class='text-bolder'>可选择<a class='pull-right' onclick='chooseSceneItemAll()' href='javascript:;'>全选</a></h5><div class='input-icon input-icon-sm'><i class='fa fa-search'></i><input type='text' class='form-control search-input input-sm' autocomplete='off' placeholder='请输入过滤关键字'></div>",
+            selectionHeader: "<h5 class='text-bolder'>已选择<a class='pull-right' onclick='clearSceneItemAll()' href='javascript:;'>清空</a></h5><div class='input-icon input-icon-sm'><i class='fa fa-search'></i><input type='text' class='form-control search-input input-sm' autocomplete='off' placeholder='请输入过滤关键字'></div>",
+            afterInit: function(ms){
+                var that = this,
+                    $selectableSearch = that.$selectableUl.parent().find(".search-input"),
+                  
+                    $selectionSearch = that.$selectionUl.parent().find(".search-input"),
+                    selectableSearchString = '#'+that.$container.attr('id')+' .ms-elem-selectable:not(.ms-selected)',
+                    selectionSearchString = '#'+that.$container.attr('id')+' .ms-elem-selection.ms-selected';
+
+
+                that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+                        .on('keydown', function(e){
+                            if (e.which === 40){
+                                that.$selectableUl.focus();
+                                return false;
+                            }
+                        });
+
+                that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+                        .on('keydown', function(e){
+                            if (e.which == 40){
+                                that.$selectionUl.focus();
+                                return false;
+                            }
+                        });
+            },
+            afterSelect: function(){
+                this.qs1.cache();
+                this.qs2.cache();
+            },
+            afterDeselect: function(){
+                this.qs1.cache();
+                this.qs2.cache();
+            }
+        });
+    });
+//    function submitConfigItem(){
+//        $('#M-scene-configItem').modal('hide');
+//
+//        //获取配置的值
+//        //console.log( $('#my_multi_select_sceneItem').val());
+//    }
+    
+    function chooseSceneItemAll(){
+        $('#my_multi_select_sceneItem').multiSelect('select_all');
+        return false;
+    }
+    function clearSceneItemAll(){
+        $('#my_multi_select_sceneItem').multiSelect('deselect_all');
+        return false;
+    }
+</script>

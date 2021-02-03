@@ -1,0 +1,112 @@
+<form class="form-horizontal" id="scene-addGroup-form">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-body">
+                <div class="form-group col-md-12">
+                    <label class="col-md-3 control-label">* 组名称</label>
+                    <div class="col-md-6">
+                        <input type="text" name="groupName" class="form-control" placeholder="长度不要超过30"
+                               datatype="*1-30" errormsg="长度不要超过30">
+                        <div class="Validform_checktip " >长度不要超过30</div>
+                    </div>
+                </div>
+                <div class="form-group mb0 col-md-12">
+                    <label class="control-label col-md-3">
+                        <span class="badge badge-roundless tooltips" data-container="body" data-placement="top" data-original-title="公共分组所有用户都能看到，私有分组仅自己可见"><i class="fa fa-question"></i></span>
+                        分组类型</label>
+                    <div class="col-md-9">
+                        <div class="mt-radio-inline">
+                            <label class="mt-radio">
+                                <input type="radio" name="optionsRadios" value="option1" checked=""> 公共
+                                <span></span>
+                            </label>
+                            <label class="mt-radio">
+                                <input type="radio" name="optionsRadios" value="option2"> 私有
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <label class="col-md-3 control-label">备注</label>
+                    <div class="col-md-6">
+                        <textarea class="form-control" cols="20"  rows="4" name="description"  placeholder="长度不要超过500"></textarea>
+                    </div>
+                </div>
+                <div class="alert-scene-group alert alert-block alert-mini alert-danger hide fade text-center">
+                    提交失败
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<script>
+    $(function () {
+        $('.tooltips').tooltip();
+
+        $("#scene-addGroup-form").Validform({
+            tiptype:4
+        });
+
+//        $('#m-submitBtn').on("click", function(e){
+//            //点击提交
+//            if($("#scene-addGroup-form").valid()){
+//                e.preventDefault();
+//                var l = Ladda.create(this);
+//                l.start();
+//                $("#scene-addGroup-form").ajaxSubmit({
+//                    type: 'post', // 提交方式 get/post
+//                    url: 'http://www.baidu.com', // 需要提交的 url
+//                    data: {},
+//                    success: function(data) { // data 保存提交后返回的数据，一般为 json 数据
+//                        // 此处可对 data 作相关处理
+//                        //alert('提交成功！');
+//
+//                        //$('#M-addSceneGroup').modal('hide')
+//                    },
+//                    error: function(e){
+//                        //console.log(e);
+//                        $('#M-addSceneGroup').modal('hide')
+//                        setTimeout(function(){
+//                            l.stop();
+//                            $(".alert-scene-group").removeClass('hide').addClass('in');
+//                        },3000);
+//                    }
+//
+//                });
+//                return false;
+//            }
+//        });
+//        $("#scene-addGroup-form").validate({
+//            focusInvalid  : true,
+//            errorElement  : "span",
+//            errorClass    : "help-block help-block-error",
+//            ignore        : "",
+//            rules: {
+//                // no quoting necessary
+//                'groupName': {maxlength:30, required: true},
+//                'description': {maxlength:500}
+//            },
+//            highlight     : function(e) {
+//                $(e).closest(".form-group").addClass("has-error")
+//            },
+//            unhighlight   : function(e) {
+//                $(e).closest(".form-group").removeClass("has-error")
+//            },
+//            success       : function(e, r) {
+//                e.closest(".form-group").removeClass("has-error");
+//                e.remove();
+//            },
+//            submitHandler: function(form) {
+//
+//                //form[0].submit()
+//
+//                return false; // 阻止表单自动提交事件
+//            }
+//        });
+    })
+
+</script>

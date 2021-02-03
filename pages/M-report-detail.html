@@ -1,0 +1,1398 @@
+<style>
+    .table-scrollable  > tbody > tr > td , .table-scrollable  > thead > tr > th{
+        white-space: nowrap;
+
+    }
+
+
+
+</style>
+<form action="" class="" id="form-report-detail">
+    <div class="form-inline">
+        <div class="form-group">
+            <label>时间段：</label>
+            <div class="input-group">
+                <input type="text" class="form-control read-only-normal" placeholder="请选择开始时间" id="startTime2" name="startTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'endTime2\');}',isShowClear:false,readOnly:true})" value="2018-03-01 12:09:21" readonly/>
+                <div class="input-group-addon">至</div>
+                <input type="text" class="form-control read-only-normal" placeholder="请选择结束时间" id="endTime2" name="endTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startTime2\');}',isShowClear:false,readOnly:true})" value="2018-06-10 10:21:10" readonly/>
+            </div>
+        </div>
+        &emsp;
+        <div class="form-group">
+            <label for="">业务：</label>
+            <select class="form-control"
+                    style="width: 220px;"
+                    id="task1_3">
+                <option value="7">WLAN测试</option>
+                <option value="0">PING</option>
+                <option value="1">TRACE</option>
+                <option value="2">DNS</option>
+                <option value="3">HTTP文件下载</option>
+                <option value="4">互联网专线</option>
+                <option value="5">网页浏览测试</option>
+                <option value="6">视频播放测试</option>
+                <option value="8">网页版客户端测试</option>
+
+            </select>
+        </div>
+        &emsp;
+
+        <div class="form-group">
+            <div class="mt-radio-inline">
+                <label class="mt-radio mb4">
+                    <input type="radio" class="MoptionsRadios" name="MoptionsRadios" class="" checked value="1"  onchange="changeMDType()"> 详单
+                    <span></span>
+                </label>
+                <label class="mt-radio mb4">
+                    <input type="radio" class="MoptionsRadios" name="MoptionsRadios" value="2"  onchange="changeMDType()"> 统计
+                    <span></span>
+                </label>
+            </div>
+        </div>
+        &emsp;
+        <div class="form-group">
+            <!--<label for="">高级过滤：</label>-->
+            <!--<input type="checkbox" class="M-make-switch"-->
+            <!--data-size="small"-->
+            <!--data-on-text="是"-->
+            <!--data-off-color="default"-->
+            <!--data-off-text="否"-->
+            <!--onchange="toggleWellShow()"-->
+            <!--/>-->
+            <button type="button" class="btn blue" onclick="toggleWellShow()">
+                高级查询
+            </button>
+        </div>
+        &emsp;
+        <div class="form-group">
+            <button type="button" class="btn blue" id="searchBtnExcel">
+                <i class="fa fa-search"></i> 查询</button>
+        </div>
+        &nbsp;
+
+        <div class="form-group">
+            <button type="button" class="btn btn-default btn-outline btn-ouline">
+                <i class="fa fa-cloud-download"></i> 导出
+            </button>
+        </div>
+    </div>
+    <div class="well-hight-level" style="display: none;">
+
+        <div id="well-detail" class="well form-inline" style="display: none;">
+            <div class="form-group">
+                <label for="">数据有效性：</label>
+                <div class="mt-radio-inline">
+                    <label class="mt-radio mb4">
+                        <input type="radio" name="optionsRadiosa" value="0"> 成功
+                        <span></span>
+                    </label>
+                    <label class="mt-radio mb4">
+                        <input type="radio" name="optionsRadiosa" value="1"> 失败
+                        <span></span>
+                    </label>
+                    <label class="mt-radio mb4">
+                        <input type="radio" name="optionsRadiosa" value="2" checked> 有效
+                        <span></span>
+                    </label>
+                    <label class="mt-radio mb4">
+                        <input type="radio" name="optionsRadiosa" value="3"> 无效
+                        <span></span>
+                    </label>
+                    <label class="mt-radio mb4">
+                        <input type="radio" name="optionsRadiosa" value="4"> 全部
+                        <span></span>
+                    </label>
+                </div>
+            </div>
+            &emsp;
+            <div class="form-group">
+                <label for="">承载网络：</label>
+                <select  class="form-control" id="select-localnet" multiple="multiple">
+                    <option value="2">TD</option>
+                    <option value="1">CDMA2000</option>
+                </select>
+            </div>
+            &emsp;
+            <div class="form-group">
+                <label for="">运营商：</label>
+                <select  class="form-control" id="select-localOperatorCode" multiple="multiple">
+                    <option value="2">移动</option>
+                    <option value="1">联通</option>
+                    <option value="0">电信</option>
+                </select>
+            </div>
+            &emsp;
+            <div class="form-group">
+                <label for="">选择终端：</label>
+                <select  class="form-control" id="select-terminal" multiple="multiple">
+                    <option value="2">终端1</option>
+                    <option value="1">终端2</option>
+                    <option value="0">终端3</option>
+                </select>
+            </div>
+            &emsp;
+            <div class="form-group">
+                <label for="">指标过滤：</label>
+                <div class="input-group">
+                    <input type="text" class="form-control input-medium read-only-normal" readonly onclick="chooseNormFilter()">
+                    <span class="input-group-btn">
+                                                <button class="btn btn-danger" type="button">清空</button>
+                                            </span>
+                </div>
+            </div>
+            &emsp;
+            <div class="form-group">
+                <label for="">任务过滤：</label>
+                <div class="input-group">
+                    <input type="text" class="form-control input-medium read-only-normal" readonly onclick="chooseTaskFilter()">
+                    <span class="input-group-btn">
+                    <button class="btn btn-danger" type="button">清空</button>
+                </span>
+                </div>
+            </div>
+        </div>
+
+        <div id="well-stat" class="well form-horizontal form-horizontal-resetstyle" style="display: none;">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label">时间粒度</label>
+                        <div class="col-md-9 form-inline">
+                            <div class="mt-radio-inline">
+                                <label class="mt-radio mb0">
+                                    <input type="radio" name="optionsRadiosa1x" value="0" checked> 无
+                                    <span></span>
+                                </label>
+                                <label class="mt-radio mb0">
+                                    <input type="radio" name="optionsRadiosa1x" value="1"> 小时
+                                    <span></span>
+                                </label>
+                                <label class="mt-radio mb0">
+                                    <input type="radio" name="optionsRadiosa1x" value="2"> 天
+                                    <span></span>
+                                </label>
+                                <label class="mt-radio mb0">
+                                    <input type="radio" name="optionsRadiosa1x" value="3"> 周
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label">闲忙时</label>
+                        <div class="col-md-9 form-inline">
+                            <div class="mt-radio-inline">
+                                <label class="mt-radio mb0">
+                                    <input type="radio" name="optionsRadiosa1" value="0" checked> 全天
+                                    <span></span>
+                                </label>
+                                <label class="mt-radio mb0">
+                                    <input type="radio" name="optionsRadiosa1" value="1"> 忙时
+                                    <span></span>
+                                </label>
+                                <label class="mt-radio mb0">
+                                    <input type="radio" name="optionsRadiosa1" value="2"> 闲时
+                                    <span></span>
+                                </label>
+                                <label class="mt-radio mb0">
+                                    <input type="radio" name="optionsRadiosa1" value="3"> 自定义
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label">时段</label>
+                        <div class="col-md-9">
+                            <select class="form-control input-xsmall inline-block">
+                                <option value="">0</option>
+                                <option value="">1</option>
+                                <option value="">2</option>
+                            </select>
+                            &emsp;至&emsp;
+                            <select class="form-control input-xsmall inline-block">
+                                <option value="" selected>24</option>
+                                <option value="">23</option>
+                                <option value="">22</option>
+                                <option value="">21</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="col-sm-3 control-label">统计关键字</label>
+                        <div class="col-md-9">
+                            <select class="tmp-mul-select text-left" multiple="multiple" >
+                                <option value="0">省份</option>
+                                <option value="1">地市</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label">接入方式</label>
+                        <div class="col-md-9">
+                            <select class="tmp-mul-select " multiple="multiple">
+                                <option value="0">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label">ISP</label>
+                        <div class="col-md-9">
+                            <select class="tmp-mul-select " multiple="multiple">
+                                <option value="0">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label">任务过滤</label>
+                        <div class="col-md-9" >
+                            <div class="input-group" style="width: 220px;">
+                                <input type="text" style="width: 196px;"  class="form-control read-only-normal" readonly onclick="chooseTaskFilter()">
+                                <span class="input-group-btn" style="display: inline-block;">
+                                <button class="btn btn-danger" type="button">清空</button>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label">测试终端</label>
+                        <div class="col-md-9">
+                            <select class="tmp-mul-select2 form-control" multiple="multiple">
+                                <option value="2">终端001</option>
+                                <option value="1">联通</option>
+                                <option value="0">电信</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label">域名组</label>
+                        <div class="col-md-9">
+                            <select class="tmp-mul-select2 form-control" multiple="multiple">
+                                <option value="2">终端001</option>
+                                <option value="1">联通</option>
+                                <option value="0">电信</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label">测试指标</label>
+                        <div class="col-md-9">
+                            <select class="tmp-mul-select2 form-control" multiple="multiple">
+                                <option value="2">指标1</option>
+                                <option value="1">指标2</option>
+                                <option value="0">指标3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label">展现方式</label>
+                        <div class="col-md-9">
+                            <div class="mt-radio-inline">
+                                <label class="mt-radio mb0">
+                                    <input type="radio" name="optionsRadiosas1" value="0" checked> 表格(终端)
+                                    <span></span>
+                                </label>
+                                <label class="mt-radio mb0">
+                                    <input type="radio" name="optionsRadiosas1" value="1"> 表格(网点)
+                                    <span></span>
+                                </label>
+                                <label class="mt-radio mb0">
+                                    <input type="radio" name="optionsRadiosas1" value="2"> 柱图
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label">统计值</label>
+                        <div class="col-md-9">
+                            <div class="mt-radio-inline">
+                                <label class="mt-radio mb0">
+                                    <input type="radio" name="inlineCheckbox21x" checked value="0"> 平均值
+                                    <span></span>
+                                </label>
+                                <label class="mt-radio mb0">
+                                    <input type="radio" name="inlineCheckbox21x" value="1"> 评分
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</form>
+
+<hr class="dashed-line"/>
+
+
+
+<!--详单页面-->
+<div class="mt10 ">
+    <button class="btn btn-default btn-sm">
+        <i class="fa fa-file-excel-o"></i> 导出结果</button>
+
+    <div class="table-scrollable tableView">
+        <table class="table table-striped table-condensed table-bordered table-advancetable-nowrap">
+            <thead>
+            <tr>
+                <th>测试点</th>
+                <th>测试终端</th>
+                <th class="ping-test">接入方式</th>
+                <th class="ping-test">目的地址</th>
+                <th >测试开始时间</th>
+                <th class="ping-test">ping时延(ms)</th>
+                <th class="ping-test">抖动(ms)</th>
+                <th class="ping-test">丢包率(%)</th>
+                <th class="ping-test">ping次数</th>
+                <th class="ping-test">ping包大小(B)</th>
+                <th class="ping-test">ISP归属</th>
+                <th class="ping-test">DNS服务器地址</th>
+
+                <th class="http-test">接入方式</th>
+                <th class="http-test">Url</th>
+                <th class="http-test">ISP归属</th>
+
+                <th class="http-test">拨号时延(s)</th>
+                <th class="http-test">DNS查询时延(ms)</th>
+                <th class="http-test">首字节时延(ms)</th>
+                <th class="http-test">下载时延(s)</th>
+                <th class="http-test">文件大小(KB)</th>
+                <th class="http-test">下载速率(KBps</th>
+                <th class="http-test">信令文件</th>
+                <th class="http-test">网络协议日志</th>
+                <th class="dns-test">插入方式</th>
+                <th class="dns-test">DNS服务器IP</th>
+                <th class="dns-test">ISP归属</th>
+                <th class="dns-test">DNS解析延时(MS)</th>
+                <th class="dns-test">解析后IP</th>
+                <th class="dns-test">成功率(%)</th>
+                <th class="dns-test">网络返回代码</th>
+                <th class="trace-test">主叫承载网络</th>
+                <th class="trace-test">服务地址</th>
+
+                <th class="trace-test">跟踪测试时间</th>
+                <th class="trace-test">跟踪时延(S)</th>
+                <th class="trace-test">跳数</th>
+                <th class="trace-test">最后一跳IP</th>
+                <th class="trace-test">ISP归属</th>
+                <th class="trace-test">Qos网络级别</th>
+                <th class="trace-test">网络返回代码</th>
+                <th class="trace-test">tracerouter</th>
+                <th class="net-test">平均时延(S)</th>
+                <th class="net-test">抖动(ms)</th>
+                <th class="net-test">丢包率(%)</th>
+                <th class="net-test">带宽(Kbps)</th>
+                <th class="net-test">上行平均速率(Kb/s)</th>
+                <th class="net-test">下行平均速率(Kb/s)</th>
+
+                <th class="net1-test">连接时延(MS)</th>
+                <th class="net1-test">展现时延(MS)</th>
+                <th class="net1-test">TCP时延(MS)</th>
+                <th class="net1-test">首屏时延(MS)</th>
+                <th class="net1-test">下载速率(MS)</th>
+
+                <th class="video-test">首帧显示时长(MS)</th>
+                <th class="video-test">缓冲次数</th>
+                <th class="video-test">视频下载速率(kbps)</th>
+                <th class="video-test">停顿时长(MS)</th>
+                <th class="video-test">视频停顿时长占比(%)</th>
+
+                <th class="wlan-test">ping是否成功</th>
+                <th class="wlan-test">ping时延(MS)</th>
+                <th class="wlan-test">PORTAL访问是否成功</th>
+                <th class="wlan-test">PORTAL访问时延(MS)</th>
+                <th class="wlan-test">是否掉线</th>
+
+                <th class="pcnet-test">会议视频卡顿</th>
+                <th>测试结果</th>
+                <th >更多信息</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>宁波-客户</td>
+                <td>223.11.120.33</td>
+                <td class="ping-test">移动FTTH</td>
+                <td class="ping-test">www.qq.com</td>
+                <td >2018-04-24 16:33:39.0</td>
+                <td class="ping-test">17</td>
+                <td class="ping-test">0.00 </td>
+                <td class="ping-test">0</td>
+                <td class="ping-test">3</td>
+                <td class="ping-test">0.000 </td>
+                <td class="ping-test">浙江直连专线</td>
+                <td class="ping-test">111.566.132.1111</td>
+
+                <td class="http-test">移动FTTH</td>
+                <td class="http-test">https://app.10086.cn/downile/apk/ChinaMobile</td>
+                <td class="http-test">集团</td>
+                <td class="http-test">0.00</td>
+                <td class="http-test">30</td>
+                <td class="http-test">5</td>
+                <td class="http-test">4.7</td>
+                <td class="http-test">18796</td>
+                <td class="http-test">3760.256</td>
+                <td class="http-test"><a href="javascript:;">更多</a></td>
+                <td class="http-test"><a href="javascript:;">更多</a></td>
+                <td class="dns-test">CMDD-ADSL</td>
+                <td class="dns-test">194.123.123.33</td>
+                <td class="dns-test">浙江</td>
+                <td class="dns-test">43</td>
+                <td class="dns-test">194.166.145.35</td>
+                <td class="dns-test">100</td>
+                <td class="dns-test">0</td>
+                <td class="trace-test">CMCC-ADSL</td>
+                <td class="trace-test">www.qq.com</td>
+                <td class="trace-test">2018-04-24 16:33:39</td>
+                <td class="trace-test">118.843</td>
+                <td class="trace-test">9</td>
+                <td class="trace-test">_</td>
+                <td class="trace-test">浙江移动</td>
+                <td class="trace-test">0</td>
+                <td class="trace-test">0</td>
+                <td class="trace-test" onclick="chooseTraceRouter()"><a href="javascript:;">更多</a></td>
+                <td class="net-test">23</td>
+                <td class="net-test">0</td>
+                <td class="net-test">0</td>
+                <td class="net-test">2050</td>
+                <td class="net-test">386</td>
+                <td class="net-test">512</td>
+
+                <td class="net1-test">20</td>
+                <td class="net1-test">15</td>
+                <td class="net1-test">23</td>
+                <td class="net1-test">34</td>
+                <td class="net1-test">2362.23</td>
+                <td class="video-test">14</td>
+                <td class="video-test">2</td>
+                <td class="video-test">3428.12</td>
+                <td class="video-test">24</td>
+                <td class="video-test">0</td>
+                <td class="wlan-test">是</td>
+                <td class="wlan-test">23</td>
+                <td class="wlan-test">是</td>
+                <td class="wlan-test">41</td>
+                <td class="wlan-test">否</td>
+                <td class="pcnet-test">否</td>
+
+                <td class="">成功</td>
+                <td><a href="javascript:;">更多</a></td>
+            </tr>
+            <!--  <tr>
+                  <td>宁波-客户</td>
+                  <td>223.11.120.33</td>
+                  <td class="ping-test">移动FTTH</td>
+                  <td class="ping-test">www.qq.com</td>
+                  <td >2018-04-24 16:33:39.0</td>
+                  <td class="ping-test">17</td>
+                  <td class="ping-test">0.00 </td>
+                  <td class="ping-test">0</td>
+                  <td class="ping-test">3</td>
+                  <td class="ping-test">0.000 </td>
+                  <td class="ping-test">浙江直连专线</td>
+                  <td class="ping-test">111.566.132.1111</td>
+
+                  <td class="http-test">移动FTTH</td>
+                  <td class="http-test">https://app.10086.cn/downile/apk/ChinaMobile</td>
+                  <td class="http-test">集团</td>
+                  <td class="http-test">0.00</td>
+                  <td class="http-test">30</td>
+                  <td class="http-test">5</td>
+                  <td class="http-test">4.7</td>
+                  <td class="http-test">18796</td>
+                  <td class="http-test">3760.256</td>
+                  <td class="http-test"><a href="javascript:;">更多</a></td>
+                  <td class="http-test"><a href="javascript:;">更多</a></td>
+                  <td class="dns-test">CMDD-ADSL</td>
+                  <td class="dns-test">194.123.123.33</td>
+                  <td class="dns-test">浙江</td>
+                  <td class="dns-test">43</td>
+                  <td class="dns-test">194.166.145.35</td>
+                  <td class="dns-test">100</td>
+                  <td class="dns-test">0</td>
+                  <td class="trace-test">CMCC-ADSL</td>
+                  <td class="trace-test">www.qq.com</td>
+                  <td class="trace-test">2018-04-24 16:33:39</td>
+                  <td class="trace-test">118.843</td>
+                  <td class="trace-test">9</td>
+                  <td class="trace-test">_</td>
+                  <td class="trace-test">浙江移动</td>
+                  <td class="trace-test">0</td>
+                  <td class="trace-test">0</td>
+                  <td class="trace-test" onclick="traceRouterModal()"><a href="javascript:;">更多</a></td>
+                  <td class="net-test">23</td>
+                  <td class="net-test">0</td>
+                  <td class="net-test">0</td>
+                  <td class="net-test">2050</td>
+                  <td class="net-test">386</td>
+                  <td class="net-test">512</td>
+
+                  <td class="net1-test">20</td>
+                  <td class="net1-test">15</td>
+                  <td class="net1-test">23</td>
+                  <td class="net1-test">34</td>
+                  <td class="net1-test">2362.23</td>
+                  <td class="video-test">14</td>
+                  <td class="video-test">2</td>
+                  <td class="video-test">3428.12</td>
+                  <td class="video-test">24</td>
+                  <td class="video-test">0</td>
+                  <td class="wlan-test">100</td>
+                  <td class="wlan-test">23</td>
+                  <td class="wlan-test">100</td>
+                  <td class="wlan-test">41</td>
+                  <td class="wlan-test">否</td>
+                  <td class="">成功</td>
+                  <td><a href="javascript:;">更多</a></td>
+              </tr>
+              <tr>
+                  <td>宁波-客户</td>
+                  <td>223.11.120.33</td>
+                  <td class="ping-test">移动FTTH</td>
+                  <td class="ping-test">www.qq.com</td>
+                  <td >2018-04-24 16:33:39.0</td>
+                  <td class="ping-test">17</td>
+                  <td class="ping-test">0.00 </td>
+                  <td class="ping-test">0</td>
+                  <td class="ping-test">3</td>
+                  <td class="ping-test">0.000 </td>
+                  <td class="ping-test">浙江直连专线</td>
+                  <td class="ping-test">111.566.132.1111</td>
+
+                  <td class="http-test">移动FTTH</td>
+                  <td class="http-test">https://app.10086.cn/downile/apk/ChinaMobile</td>
+                  <td class="http-test">集团</td>
+                  <td class="http-test">0.00</td>
+                  <td class="http-test">30</td>
+                  <td class="http-test">5</td>
+                  <td class="http-test">4.7</td>
+                  <td class="http-test">18796</td>
+                  <td class="http-test">3760.256</td>
+                  <td class="http-test"><a href="javascript:;">更多</a></td>
+                  <td class="http-test"><a href="javascript:;">更多</a></td>
+                  <td class="dns-test">CMDD-ADSL</td>
+                  <td class="dns-test">194.123.123.33</td>
+                  <td class="dns-test">浙江</td>
+                  <td class="dns-test">43</td>
+                  <td class="dns-test">194.166.145.35</td>
+                  <td class="dns-test">100</td>
+                  <td class="dns-test">0</td>
+                  <td class="trace-test">CMCC-ADSL</td>
+                  <td class="trace-test">www.qq.com</td>
+                  <td class="trace-test">2018-04-24 16:33:39</td>
+                  <td class="trace-test">118.843</td>
+                  <td class="trace-test">9</td>
+                  <td class="trace-test">_</td>
+                  <td class="trace-test">浙江移动</td>
+                  <td class="trace-test">0</td>
+                  <td class="trace-test">0</td>
+                  <td class="trace-test" onclick="traceRouterModal()"><a href="javascript:;">更多</a></td>
+                  <td class="net-test">23</td>
+                  <td class="net-test">0</td>
+                  <td class="net-test">0</td>
+                  <td class="net-test">2050</td>
+                  <td class="net-test">386</td>
+                  <td class="net-test">512</td>
+
+                  <td class="net1-test">20</td>
+                  <td class="net1-test">15</td>
+                  <td class="net1-test">23</td>
+                  <td class="net1-test">34</td>
+                  <td class="net1-test">2362.23</td>
+                  <td class="video-test">14</td>
+                  <td class="video-test">2</td>
+                  <td class="video-test">3428.12</td>
+                  <td class="video-test">24</td>
+                  <td class="video-test">0</td>
+                  <td class="wlan-test">100</td>
+                  <td class="wlan-test">23</td>
+                  <td class="wlan-test">100</td>
+                  <td class="wlan-test">41</td>
+                  <td class="wlan-test">否</td>
+                  <td class="">成功</td>
+                  <td><a href="javascript:;">更多</a></td>
+              </tr>
+              <tr>
+                  <td>宁波-客户</td>
+                  <td>223.11.120.33</td>
+                  <td class="ping-test">移动FTTH</td>
+                  <td class="ping-test">www.qq.com</td>
+                  <td>2018-04-24 16:33:39.0</td>
+                  <td class="ping-test">17</td>
+                  <td class="ping-test">0.00 </td>
+                  <td class="ping-test">0</td>
+                  <td class="ping-test">3</td>
+                  <td class="ping-test">0.000 </td>
+                  <td class="ping-test">浙江直连专线</td>
+                  <td class="ping-test">111.566.132.1111</td>
+
+                  <td class="http-test">移动FTTH</td>
+                  <td class="http-test">https://app.10086.cn/downile/apk/ChinaMobile</td>
+                  <td class="http-test">集团</td>
+                  <td class="http-test">0.00</td>
+                  <td class="http-test">30</td>
+                  <td class="http-test">5</td>
+                  <td class="http-test">4.7</td>
+                  <td class="http-test">18796</td>
+                  <td class="http-test">3760.256</td>
+                  <td class="http-test"><a href="javascript:;">更多</a></td>
+                  <td class="http-test"><a href="javascript:;">更多</a></td>
+                  <td class="dns-test">CMDD-ADSL</td>
+                  <td class="dns-test">194.123.123.33</td>
+                  <td class="dns-test">浙江</td>
+                  <td class="dns-test">43</td>
+                  <td class="dns-test">194.166.145.35</td>
+                  <td class="dns-test">100</td>
+                  <td class="dns-test">0</td>
+                  <td class="trace-test">CMCC-ADSL</td>
+                  <td class="trace-test">www.qq.com</td>
+                  <td class="trace-test">2018-04-24 16:33:39</td>
+                  <td class="trace-test">118.843</td>
+                  <td class="trace-test">9</td>
+                  <td class="trace-test">_</td>
+                  <td class="trace-test">浙江移动</td>
+                  <td class="trace-test">0</td>
+                  <td class="trace-test">0</td>
+                  <td class="trace-test" onclick="traceRouterModal()"><a href="javascript:;">更多</a></td>
+                  <td class="net-test">23</td>
+                  <td class="net-test">0</td>
+                  <td class="net-test">0</td>
+                  <td class="net-test">2050</td>
+                  <td class="net-test">386</td>
+                  <td class="net-test">512</td>
+
+                  <td class="net1-test">20</td>
+                  <td class="net1-test">15</td>
+                  <td class="net1-test">23</td>
+                  <td class="net1-test">34</td>
+                  <td class="net1-test">2362.23</td>
+                  <td class="video-test">14</td>
+                  <td class="video-test">2</td>
+                  <td class="video-test">3428.12</td>
+                  <td class="video-test">24</td>
+                  <td class="video-test">0</td>
+                  <td class="wlan-test">100</td>
+                  <td class="wlan-test">23</td>
+                  <td class="wlan-test">100</td>
+                  <td class="wlan-test">41</td>
+                  <td class="wlan-test">否</td>
+                  <td class="">成功</td>
+                  <td><a href="javascript:;">更多</a></td>
+              </tr>
+              <tr>
+                  <td>宁波-客户</td>
+                  <td>223.11.120.33</td>
+                  <td class="ping-test">移动FTTH</td>
+                  <td class="ping-test">www.qq.com</td>
+                  <td >2018-04-24 16:33:39.0</td>
+                  <td class="ping-test">17</td>
+                  <td class="ping-test">0.00 </td>
+                  <td class="ping-test">0</td>
+                  <td class="ping-test">3</td>
+                  <td class="ping-test">0.000 </td>
+                  <td class="ping-test">浙江直连专线</td>
+                  <td class="ping-test">111.566.132.1111</td>
+
+                  <td class="http-test">移动FTTH</td>
+                  <td class="http-test">https://app.10086.cn/downile/apk/ChinaMobile</td>
+                  <td class="http-test">集团</td>
+                  <td class="http-test">0.00</td>
+                  <td class="http-test">30</td>
+                  <td class="http-test">5</td>
+                  <td class="http-test">4.7</td>
+                  <td class="http-test">18796</td>
+                  <td class="http-test">3760.256</td>
+                  <td class="http-test"><a href="javascript:;">更多</a></td>
+                  <td class="http-test"><a href="javascript:;">更多</a></td>
+                  <td class="dns-test">CMDD-ADSL</td>
+                  <td class="dns-test">194.123.123.33</td>
+                  <td class="dns-test">浙江</td>
+                  <td class="dns-test">43</td>
+                  <td class="dns-test">194.166.145.35</td>
+                  <td class="dns-test">100</td>
+                  <td class="dns-test">0</td>
+                  <td class="trace-test">CMCC-ADSL</td>
+                  <td class="trace-test">www.qq.com</td>
+                  <td class="trace-test">2018-04-24 16:33:39</td>
+                  <td class="trace-test">118.843</td>
+                  <td class="trace-test">9</td>
+                  <td class="trace-test">_</td>
+                  <td class="trace-test">浙江移动</td>
+                  <td class="trace-test">0</td>
+                  <td class="trace-test">0</td>
+                  <td class="trace-test" onclick="traceRouterModal()"><a href="javascript:;">更多</a></td>
+                  <td class="net-test">23</td>
+                  <td class="net-test">0</td>
+                  <td class="net-test">0</td>
+                  <td class="net-test">2050</td>
+                  <td class="net-test">386</td>
+                  <td class="net-test">512</td>
+
+                  <td class="net1-test">20</td>
+                  <td class="net1-test">15</td>
+                  <td class="net1-test">23</td>
+                  <td class="net1-test">34</td>
+                  <td class="net1-test">2362.23</td>
+                  <td class="video-test">14</td>
+                  <td class="video-test">2</td>
+                  <td class="video-test">3428.12</td>
+                  <td class="video-test">24</td>
+                  <td class="video-test">0</td>
+                  <td class="wlan-test">100</td>
+                  <td class="wlan-test">23</td>
+                  <td class="wlan-test">100</td>
+                  <td class="wlan-test">41</td>
+                  <td class="wlan-test">否</td>
+                  <td class="">成功</td>
+                  <td><a href="javascript:;">更多</a></td>
+              </tr>
+              <tr>
+                  <td>宁波-客户</td>
+                  <td>223.11.120.33</td>
+                  <td class="ping-test">移动FTTH</td>
+                  <td class="ping-test">www.qq.com</td>
+                  <td>2018-04-24 16:33:39.0</td>
+                  <td class="ping-test">17</td>
+                  <td class="ping-test">0.00 </td>
+                  <td class="ping-test">0</td>
+                  <td class="ping-test">3</td>
+                  <td class="ping-test">0.000 </td>
+                  <td class="ping-test">浙江直连专线</td>
+                  <td class="ping-test">111.566.132.1111</td>
+
+                  <td class="http-test">移动FTTH</td>
+                  <td class="http-test">https://app.10086.cn/downile/apk/ChinaMobile</td>
+                  <td class="http-test">集团</td>
+                  <td class="http-test">0.00</td>
+                  <td class="http-test">30</td>
+                  <td class="http-test">5</td>
+                  <td class="http-test">4.7</td>
+                  <td class="http-test">18796</td>
+                  <td class="http-test">3760.256</td>
+                  <td class="http-test"><a href="javascript:;">更多</a></td>
+                  <td class="http-test"><a href="javascript:;">更多</a></td>
+                  <td class="dns-test">CMDD-ADSL</td>
+                  <td class="dns-test">194.123.123.33</td>
+                  <td class="dns-test">浙江</td>
+                  <td class="dns-test">43</td>
+                  <td class="dns-test">194.166.145.35</td>
+                  <td class="dns-test">100</td>
+                  <td class="dns-test">0</td>
+                  <td class="trace-test">CMCC-ADSL</td>
+                  <td class="trace-test">www.qq.com</td>
+                  <td class="trace-test">2018-04-24 16:33:39</td>
+                  <td class="trace-test">118.843</td>
+                  <td class="trace-test">9</td>
+                  <td class="trace-test">_</td>
+                  <td class="trace-test">浙江移动</td>
+                  <td class="trace-test">0</td>
+                  <td class="trace-test">0</td>
+                  <td class="trace-test" onclick="traceRouterModal()"><a href="javascript:;">更多</a></td>
+                  <td class="net-test">23</td>
+                  <td class="net-test">0</td>
+                  <td class="net-test">0</td>
+                  <td class="net-test">2050</td>
+                  <td class="net-test">386</td>
+                  <td class="net-test">512</td>
+
+                  <td class="net1-test">20</td>
+                  <td class="net1-test">15</td>
+                  <td class="net1-test">23</td>
+                  <td class="net1-test">34</td>
+                  <td class="net1-test">2362.23</td>
+                  <td class="video-test">14</td>
+                  <td class="video-test">2</td>
+                  <td class="video-test">3428.12</td>
+                  <td class="video-test">24</td>
+                  <td class="video-test">0</td>
+                  <td class="wlan-test">100</td>
+                  <td class="wlan-test">23</td>
+                  <td class="wlan-test">100</td>
+                  <td class="wlan-test">41</td>
+                  <td class="wlan-test">否</td>
+                  <td class="">成功</td>
+                  <td><a href="javascript:;">更多</a></td>
+              </tr>
+              <tr>
+                  <td>宁波-客户</td>
+                  <td>223.11.120.33</td>
+                  <td class="ping-test">移动FTTH</td>
+                  <td class="ping-test">www.qq.com</td>
+                  <td >2018-04-24 16:33:39.0</td>
+                  <td class="ping-test">17</td>
+                  <td class="ping-test">0.00 </td>
+                  <td class="ping-test">0</td>
+                  <td class="ping-test">3</td>
+                  <td class="ping-test">0.000 </td>
+                  <td class="ping-test">浙江直连专线</td>
+                  <td class="ping-test">111.566.132.1111</td>
+
+                  <td class="http-test">移动FTTH</td>
+                  <td class="http-test">https://app.10086.cn/downile/apk/ChinaMobile</td>
+                  <td class="http-test">集团</td>
+                  <td class="http-test">0.00</td>
+                  <td class="http-test">30</td>
+                  <td class="http-test">5</td>
+                  <td class="http-test">4.7</td>
+                  <td class="http-test">18796</td>
+                  <td class="http-test">3760.256</td>
+                  <td class="http-test"><a href="javascript:;">更多</a></td>
+                  <td class="http-test"><a href="javascript:;">更多</a></td>
+                  <td class="dns-test">CMDD-ADSL</td>
+                  <td class="dns-test">194.123.123.33</td>
+                  <td class="dns-test">浙江</td>
+                  <td class="dns-test">43</td>
+                  <td class="dns-test">194.166.145.35</td>
+                  <td class="dns-test">100</td>
+                  <td class="dns-test">0</td>
+                  <td class="trace-test">CMCC-ADSL</td>
+                  <td class="trace-test">www.qq.com</td>
+                  <td class="trace-test">2018-04-24 16:33:39</td>
+                  <td class="trace-test">118.843</td>
+                  <td class="trace-test">9</td>
+                  <td class="trace-test">_</td>
+                  <td class="trace-test">浙江移动</td>
+                  <td class="trace-test">0</td>
+                  <td class="trace-test">0</td>
+                  <td class="trace-test" onclick="traceRouterModal()"><a href="javascript:;">更多</a></td>
+                  <td class="net-test">23</td>
+                  <td class="net-test">0</td>
+                  <td class="net-test">0</td>
+                  <td class="net-test">2050</td>
+                  <td class="net-test">386</td>
+                  <td class="net-test">512</td>
+
+                  <td class="net1-test">20</td>
+                  <td class="net1-test">15</td>
+                  <td class="net1-test">23</td>
+                  <td class="net1-test">34</td>
+                  <td class="net1-test">2362.23</td>
+                  <td class="video-test">14</td>
+                  <td class="video-test">2</td>
+                  <td class="video-test">3428.12</td>
+                  <td class="video-test">24</td>
+                  <td class="video-test">0</td>
+                  <td class="wlan-test">100</td>
+                  <td class="wlan-test">23</td>
+                  <td class="wlan-test">100</td>
+                  <td class="wlan-test">41</td>
+                  <td class="wlan-test">否</td>
+                  <td class="">成功</td>
+                  <td><a href="javascript:;">更多</a></td>
+              </tr>
+              <tr>
+                  <td>宁波-客户</td>
+                  <td>223.11.120.33</td>
+                  <td class="ping-test">移动FTTH</td>
+                  <td class="ping-test">www.qq.com</td>
+                  <td>2018-04-24 16:33:39.0</td>
+                  <td class="ping-test">17</td>
+                  <td class="ping-test">0.00 </td>
+                  <td class="ping-test">0</td>
+                  <td class="ping-test">3</td>
+                  <td class="ping-test">0.000 </td>
+                  <td class="ping-test">浙江直连专线</td>
+                  <td class="ping-test">111.566.132.1111</td>
+
+                  <td class="http-test">移动FTTH</td>
+                  <td class="http-test">https://app.10086.cn/downile/apk/ChinaMobile</td>
+                  <td class="http-test">集团</td>
+                  <td class="http-test">0.00</td>
+                  <td class="http-test">30</td>
+                  <td class="http-test">5</td>
+                  <td class="http-test">4.7</td>
+                  <td class="http-test">18796</td>
+                  <td class="http-test">3760.256</td>
+                  <td class="http-test"><a href="javascript:;">更多</a></td>
+                  <td class="http-test"><a href="javascript:;">更多</a></td>
+                  <td class="dns-test">CMDD-ADSL</td>
+                  <td class="dns-test">194.123.123.33</td>
+                  <td class="dns-test">浙江</td>
+                  <td class="dns-test">43</td>
+                  <td class="dns-test">194.166.145.35</td>
+                  <td class="dns-test">100</td>
+                  <td class="dns-test">0</td>
+                  <td class="trace-test">CMCC-ADSL</td>
+                  <td class="trace-test">www.qq.com</td>
+                  <td class="trace-test">2018-04-24 16:33:39</td>
+                  <td class="trace-test">118.843</td>
+                  <td class="trace-test">9</td>
+                  <td class="trace-test">_</td>
+                  <td class="trace-test">浙江移动</td>
+                  <td class="trace-test">0</td>
+                  <td class="trace-test">0</td>
+                  <td class="trace-test" onclick="traceRouterModal()"><a href="javascript:;">更多</a></td>
+                  <td class="net-test">23</td>
+                  <td class="net-test">0</td>
+                  <td class="net-test">0</td>
+                  <td class="net-test">2050</td>
+                  <td class="net-test">386</td>
+                  <td class="net-test">512</td>
+
+                  <td class="net1-test">20</td>
+                  <td class="net1-test">15</td>
+                  <td class="net1-test">23</td>
+                  <td class="net1-test">34</td>
+                  <td class="net1-test">2362.23</td>
+                  <td class="video-test">14</td>
+                  <td class="video-test">2</td>
+                  <td class="video-test">3428.12</td>
+                  <td class="video-test">24</td>
+                  <td class="video-test">0</td>
+                  <td class="wlan-test">100</td>
+                  <td class="wlan-test">23</td>
+                  <td class="wlan-test">100</td>
+                  <td class="wlan-test">41</td>
+                  <td class="wlan-test">否</td>
+                  <td class="">成功</td>
+                  <td><a href="javascript:;">更多</a></td>
+              </tr>-->
+            </tbody>
+        </table>
+
+    </div>
+
+    <!--统计页面-->
+    <div class="statisticsView table-scrollable" style="display: none;">
+        <div id="chartsBox" style="display: none;">
+            <div style="height: 300px;width: 49%;display: inline-block;" id="chartBar1"></div>
+            <div style="height: 300px;width: 49%;display: inline-block;" id="chartBar2"></div>
+        </div>
+        <table id="statisticsTable" class="table table-bordered table-condensed table-bordered table-advancetable-nowrap">
+            <thead>
+            <tr>
+                <th>测试点</th>
+                <th>测试终端</th>
+                <th>测试开始时间</th>
+                <th>ping成功率(%)</th>
+                <th>ping时延(MS)</th>
+                <th>PORTAL访问成功率(%)</th>
+                <th>PORTAL访问时延(MS)</th>
+                <th>掉线率(%)</th>
+                <th>测试结果</th>
+                <th>更多信息</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>宁波-客户</td>
+                <td>223.11.120.33</td>
+                <td>2018-04-24  16:33:39.0</td>
+                <td>100</td>
+                <td>23</td>
+                <td>100	</td>
+                <td>41</td>
+                <td>0</td>
+                <td>成功</td>
+                <td><a href="javascript:;">更多</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<div class="mt20 mb5 clearfix pages-wrap-box">
+    <div class="pull-left pagination-detail"><span class="pagination-info">1 - 10 条，共 23 条</span><span class="page-list">每页 <span class="btn-group dropup"><button type="button" class="btn btn-default  dropdown-toggle" data-toggle="dropdown"><span class="page-size">10</span> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li class="active"><a href="javascript:void(0)">10</a></li><li><a href="javascript:void(0)">25</a></li></ul></span> 条</span></div>
+    <ul class="pagination bootpag pull-right no-margin"><li data-lp="1" class="prev disabled"><a href="javascript:void(0);"><i class="fa fa-angle-left"></i></a></li><li data-lp="1" class="disabled"><a href="javascript:void(0);">1</a></li><li data-lp="2" class="next"><a href="javascript:void(0);"><i class="fa fa-angle-right"></i></a></li></ul>
+</div>
+<script src="../assets/plugins/echarts/echarts.min.js"></script>
+<script>
+
+
+
+    $(function(){
+        var optionBar1={
+            title:{
+                text:"ping时延",
+                left:'center'
+            },
+            color: ['#3398DB'],
+            tooltip : {
+                trigger: 'axis',
+                axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                    type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    data : ['03-01', '03-02', '03-03', '03-04', '03-05', '03-06', '03-07','03-08','03-09','03-10','03-11','03-12'],
+                    axisTick: {
+                        alignWithLabel: true
+                    }
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value'
+                }
+            ],
+            series : [
+                {
+                    name:'ping时延（MS）',
+                    type:'bar',
+                    barWidth: '60%',
+                    data:[10, 52, 33, 23, 12, 6, 23,23,12,23,33,12]
+                }
+            ]
+        }
+        var optionBar2={
+            title:{
+                text:"PORTAL访问时延",
+                left:'center'
+            },
+            tooltip : {
+                trigger: 'axis',
+                axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                    type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    data : ['03-01', '03-02', '03-03', '03-04', '03-05', '03-06', '03-07','03-08','03-09','03-10','03-11','03-12'],
+                    axisTick: {
+                        alignWithLabel: true
+                    }
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value'
+                }
+            ],
+            series : [
+                {
+                    name:'PORTAL访问时延（MS）',
+                    type:'bar',
+                    barWidth: '60%',
+                    data:[25, 32, 11, 45, 26, 7, 9,12,24,20,12,32]
+                }
+            ]
+        }
+        //默认影藏
+        $(".net-test").hide();
+        $(".dns-test").hide();
+        $(".trace-test").hide();
+        $(".http-test").hide();
+        $(".ping-test").hide();
+        $(".net1-test").hide();
+        $(".video-test").hide();
+        $(".pcnet-test").hide();
+
+        //点击查询生成图表
+        $("#searchBtnExcel").on('click',function(){
+            var showFun=$('input[name=\'MoptionsRadios\']:checked').val();
+            var selectShow=$('input[name=\'optionsRadiosas1\']:checked').val();
+            if(showFun==1){
+                $(".tableView").show();
+                $(".statisticsView").hide();
+            }if(showFun==2){
+                $(".tableView").hide();
+                $(".statisticsView").show();
+                //统计 判断  展示方式
+                if(selectShow==0){
+                    $(".pages-wrap-box").show();
+                    $("#statisticsTable").show();
+                    $("#chartsBox").hide();
+                    $("#chartBar1").hide();
+                    $("#chartBar2").hide();
+
+                }if(selectShow==1){
+                    $(".pages-wrap-box").show();
+                    $("#statisticsTable").show();
+                    $("#chartsBox").hide();
+                    $("#chartBar1").hide();
+                    $("#chartBar2").hide();
+                }if(selectShow==2){
+                    $(".pages-wrap-box").hide();
+                    $("#statisticsTable").hide();
+                    $("#chartsBox").show();
+                    $("#chartBar1").show();
+                    $("#chartBar2").show();
+                    loadEachart("chartBar1",optionBar1)
+                    loadEachart("chartBar2",optionBar2)
+                }
+            }
+
+
+            //详单 判断显示信息
+            var task1_3=$("#task1_3").val();
+
+            if(task1_3==0){
+                $(".pages-wrap-box").show();
+                $(".net-test").hide();
+                $(".dns-test").hide();
+                $(".ping-test").show();
+                $(".trace-test").hide();
+                $(".http-test").hide();
+                $(".net1-test").hide();
+                $(".video-test").hide();
+                $(".wlan-test").hide();
+                $(".pcnet-test").hide();
+
+            }if(task1_3==1){
+                $(".pages-wrap-box").show();
+                $(".net-test").hide();
+                $(".dns-test").hide();
+                $(".ping-test").hide();
+                $(".trace-test").show();
+                $(".http-test").hide();
+                $(".net1-test").hide();
+                $(".video-test").hide();
+                $(".wlan-test").hide();
+                $(".pcnet-test").hide();
+            }if(task1_3==2){
+                $(".pages-wrap-box").show();
+                $(".net-test").hide();
+                $(".dns-test").show();
+                $(".ping-test").hide();
+                $(".trace-test").hide();
+                $(".http-test").hide();
+                $(".net1-test").hide();
+                $(".video-test").hide();
+                $(".wlan-test").hide();
+                $(".pcnet-test").hide();
+            }if(task1_3==3){
+                $(".pages-wrap-box").show();
+                $(".net-test").hide();
+                $(".dns-test").hide();
+                $(".ping-test").hide();
+                $(".trace-test").hide();
+                $(".http-test").show();
+                $(".net1-test").hide();
+                $(".video-test").hide();
+                $(".wlan-test").hide();
+                $(".pcnet-test").hide();
+            }if(task1_3==4){
+                $(".pages-wrap-box").show();
+                $(".net-test").show();
+                $(".dns-test").hide();
+                $(".ping-test").hide();
+                $(".trace-test").hide();
+                $(".http-test").hide();
+                $(".net1-test").hide();
+                $(".video-test").hide();
+                $(".wlan-test").hide();
+                $(".pcnet-test").hide();
+            }if(task1_3==5){
+                $(".pages-wrap-box").show();
+                $(".net-test").hide();
+                $(".dns-test").hide();
+                $(".ping-test").hide();
+                $(".trace-test").hide();
+                $(".http-test").hide();
+                $(".net1-test").show();
+                $(".video-test").hide();
+                $(".wlan-test").hide();
+                $(".pcnet-test").hide();
+            }if(task1_3==6){
+                $(".pages-wrap-box").show();
+                $(".net-test").hide();
+                $(".dns-test").hide();
+                $(".ping-test").hide();
+                $(".trace-test").hide();
+                $(".http-test").hide();
+                $(".net1-test").hide();
+                $(".video-test").show();
+                $(".wlan-test").hide();
+                $(".pcnet-test").hide();
+            }if(task1_3==7){
+                $(".pages-wrap-box").show();
+                $(".net-test").hide();
+                $(".dns-test").hide();
+                $(".ping-test").hide();
+                $(".trace-test").hide();
+                $(".http-test").hide();
+                $(".net1-test").hide();
+                $(".video-test").hide();
+                $(".wlan-test").show();
+                $(".pcnet-test").hide();
+            }
+            if(task1_3==8){
+                $(".pages-wrap-box").show();
+                $(".net-test").hide();
+                $(".dns-test").hide();
+                $(".ping-test").hide();
+                $(".trace-test").hide();
+                $(".http-test").hide();
+                $(".net1-test").hide();
+                $(".video-test").hide();
+                $(".wlan-test").hide();
+                $(".pcnet-test").show();
+            }
+        });
+
+
+        $("#select-localnet").multiselect({
+            buttonWidth: '250px',
+            enableFiltering: true,
+            enableFullValueFiltering: true,
+            includeSelectAllOption: true,
+            buttonClass: 'form-control'
+        });
+        $("#select-localOperatorCode").multiselect({
+            buttonWidth: '250px',
+            enableFiltering: true,
+            enableFullValueFiltering: true,
+            includeSelectAllOption: true,
+            buttonClass: 'form-control'
+        });
+        $("#select-terminal").multiselect({
+            buttonWidth: '250px',
+            enableFiltering: true,
+            enableFullValueFiltering: true,
+            includeSelectAllOption: true,
+            buttonClass: 'form-control'
+        });
+        $(".tmp-mul-select").multiselect({
+            buttonWidth: '250px',
+            enableFiltering: true,
+            enableFullValueFiltering: true,
+            includeSelectAllOption: true,
+            buttonClass: 'form-control'
+        });
+        $(".tmp-mul-select2").multiselect({
+            buttonWidth: '250px',
+            enableFiltering: true,
+            enableFullValueFiltering: true,
+            includeSelectAllOption: true,
+            buttonClass: 'form-control'
+        });
+
+        $(".normSimScroller").slimScroll({
+            height: '291px',
+            size: '4px'
+        });
+        $(".M-make-switch").bootstrapSwitch();
+
+    });
+
+    //改变类型
+    function changeMDType(){
+        if(!$(".well-hight-level").is(':visible')){
+            return ;
+        }else{
+            var _v = $('.MoptionsRadios:checked').val();
+            if(_v == 1){
+                //详单
+                $("#well-stat").hide();
+                $("#well-detail").show();
+            }else if(_v ==2){
+                //统计
+                $("#well-detail").hide();
+                $("#well-stat").show();
+            }
+        }
+    }
+
+
+    //高级查询
+    function toggleWellShow(){
+        var _v = $('.MoptionsRadios:checked').val();
+        if(_v == 1){
+            //详单
+            $("#well-stat").hide();
+            $("#well-detail").show();
+        }else if(_v ==2){
+            //统计
+            $("#well-detail").hide();
+            $("#well-stat").show();
+        }
+        $(".well-hight-level").slideToggle('fast');
+    }
+    //过滤指标
+    function chooseNormFilter() {
+
+        var dialog = st_dialogOpen('指标过滤', './M-norm-filter.html', okFunc,'large');
+
+        function okFunc(){
+
+            if($("#form-norm-filter").Validform().check()){
+                //判断表单是否验证通过 通过则做点事情
+                //toastr.options.positionClass = 'toast-bottom-right';
+                dialog.modal('hide');
+            }else{
+                dialog.find('.modal-footer .btn-primary').attr("disabled", false).html('确认');
+            }
+        }
+
+    }
+
+    //过滤任务
+    function chooseTaskFilter() {
+
+        var dialog = st_dialogOpen('任务过滤', './M-task-filter.html', okFunc,'large');
+
+        function okFunc(){
+
+            if($("#form-task-filter").Validform().check()){
+                //判断表单是否验证通过 通过则做点事情
+
+                dialog.modal('hide');
+            }else{
+                dialog.find('.modal-footer .btn-primary').attr("disabled", false).html('确认');
+            }
+        }
+
+    }
+
+    //tracerouter 详情
+    function chooseTraceRouter() {
+
+        var dialog = st_dialogOpen('tracerouter 详情', './M-trace-router.html', okFunc,'large');
+
+        function okFunc(){
+
+            if($("#form-task-filter").Validform().check()){
+                //判断表单是否验证通过 通过则做点事情
+
+                dialog.modal('hide');
+            }else{
+                dialog.find('.modal-footer .btn-primary').attr("disabled", false).html('确认');
+            }
+        }
+
+    }
+
+    // var   chartBar1
+
+
+
+    //echarts加载
+    function loadEachart(id,option){
+        var myChart = echarts.init(document.getElementById(id));
+        myChart.setOption(option);
+        return  myChart;
+    }
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,113 @@
+<form class="form-horizontal" id="scene-alarmFormat-form">
+    <div class="row">
+        <div class="col-md-7">
+            <textarea id="alarmFormat" style="width: 100%; height: 300px; margin: 0px 0px 9px;color: #666;padding:15px;"
+                    ></textarea>
+        </div>
+        <div class="col-md-5">
+            <div id="scroller-alarmFormat" style="height: 300px;">
+                <table class="table table-condensed table-condensed-more">
+                    <thead>
+                    <tr>
+                        <th>变量字符</th>
+                        <th>说明</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>#LEVELNAME#</td>
+                        <td>告警级别</td>
+                    </tr>
+                    <tr>
+                        <td>#SCENE#</td>
+                        <td>场景名称</td>
+                    </tr>
+                    <tr>
+                        <td>#SERVICENAME#</td>
+                        <td>业务名称</td>
+                    </tr>
+                    <tr>
+                        <td>#NETNAME#</td>
+                        <td>网络名称</td>
+                    </tr>
+                    <tr>
+                        <td>#TESTTIME#</td>
+                        <td>测试开始时间</td>
+                    </tr>
+                    <tr>
+                        <td>#INTIME#</td>
+                        <td>告警时间</td>
+                    </tr>
+                    <tr>
+                        <td>#CONTTHR#</td>
+                        <td>告警门限次数</td>
+                    </tr>
+                    <tr>
+                        <td>#LOCALNUMBER#</td>
+                        <td>主叫信息</td>
+                    </tr>
+                    <tr>
+                        <td>#CTNAME#</td>
+                        <td>主叫测试点</td>
+                    </tr>
+                    <tr>
+                        <td>#TSNAME#</td>
+                        <td>主叫终端名称</td>
+                    </tr>
+                    <tr>
+                        <td>#LOCALTSINFO#</td>
+                        <td>主叫终端信息</td>
+                    </tr>
+                    <tr>
+                        <td>#OTHERNUMBER#</td>
+                        <td>对端信息</td>
+                    </tr>
+                    <tr>
+                        <td>#OTHERCTNAME#</td>
+                        <td>被叫测试点</td>
+                    </tr>
+                    <tr>
+                        <td>#OTHERTSNAME#</td>
+                        <td>被叫终端名称</td>
+                    </tr>
+                    <tr>
+                        <td>#OTHERTSINFO#</td>
+                        <td>被叫终端信息</td>
+                    </tr>
+                    <tr>
+                        <td>#ALARMVALUE#</td>
+                        <td>告警次数</td>
+                    </tr>
+                    <tr>
+                        <td>#RESULTNAMES#</td>
+                        <td>结果信息</td>
+                    </tr>
+                    <tr>
+                        <td>#ROAMCOUNTRY#</td>
+                        <td>国漫卡归属地</td>
+                    </tr>
+                    <tr>
+                        <td>#ROAMOPERATOR#</td>
+                        <td>国漫卡归属运营商</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<script>
+    
+    //TODO 页面逻辑需要重新整理结构
+    
+    $(function(){
+        $("#scroller-alarmFormat").slimScroll({
+            height: '300'
+        });
+        var str = "自动拨测业务连续失败告警:告警级别--#LEVELNAME#,场景名称--#SCENE#,业务类型--#SERVICENAME#(#NETNAME#),测试开始时间--#TESTTIME#,告警时间--#INTIME#,告警门限--#CONTTHR#次,主叫信息--#LOCALNUMBER#,主叫测试点--#CTNAME#,主叫测试终端--#TSNAME##LOCALTSINFO#,对端信息--#OTHERNUMBER#,被叫测试点--#OTHERCTNAME#,被叫终端--#OTHERTSNAME##OTHERTSINFO#,告警内容--#TASKNAME#连续失败#ALARMVALUE#次.#RESULTNAMES#";
+        $("#alarmFormat").val(str)
+    });
+    
+</script>

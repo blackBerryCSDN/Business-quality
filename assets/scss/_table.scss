@@ -1,0 +1,61 @@
+.table-route{
+  th{  
+    background-color: #F8F8F8;;
+    font-size: 12px;
+    outline: 0;
+  }
+  .th-inner{
+    padding: 4px 8px!important;
+  }
+}
+.table-line-zebra{
+    .fixed-table-container{
+      border: 0;
+    }
+    thead th,tbody td{
+      border-left: 0!important;
+    }
+}
+.table-nobordered{
+  tbody > tr > td {
+    border: 0!important; }
+  thead > tr > th {
+    border: 0!important;; }
+}
+.table-nowrap{
+  td,th{
+    white-space: nowrap;
+  }
+  
+}
+.table-vertical-middle{
+  td,th{
+    vertical-align: middle!important;
+  }
+ 
+}
+.table-condensed-more{
+  &.table-condensed>tbody>tr>td,
+  &.table-condensed>tbody>tr>th,
+  &.table-condensed>tfoot>tr>td,
+  &.table-condensed>tfoot>tr>th,
+  &.table-condensed>thead>tr>td,
+  &.table-condensed>thead>tr>th{
+    padding:2px;
+  }
+}
+
+.table-responsive > .table > thead > tr > th,
+.table-responsive > .table > tbody > tr > th,
+.table-responsive > .table > tfoot > tr > th,
+.table-responsive > .table > thead > tr > td,
+.table-responsive > .table > tbody > tr > td,
+.table-responsive > .table > tfoot > tr > td,
+.table-scrollable > .table > thead > tr > th,
+.table-scrollable > .table > tbody > tr > th,
+.table-scrollable > .table > tfoot > tr > th,
+.table-scrollable > .table > thead > tr > td,
+.table-scrollable > .table > tbody > tr > td,
+.table-scrollable > .table > tfoot > tr > td,{
+  white-space: nowrap;
+}

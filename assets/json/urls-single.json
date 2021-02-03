@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "name": "名称1",
+    "url": "189.ourgame.com",
+    "groupName": "WEBTOP60",
+    "action":"<a href='javascript:;' class='btn btn-xs default'><i class='fa fa-arrow-right'></i></a>",
+    "remove":"<a href='javascript:;' class='btn btn-xs red'><i class='fa fa-remove'></i></a>",
+    "type": "单个"
+  },
+  {
+    "id": 2,
+    "name": "名称2",
+    "url": "www.163.com",
+    "groupName": "WEBTOP60",
+    "action":"<a href='javascript:;' class='btn btn-xs default'><i class='fa fa-arrow-right'></i></a>",
+    "remove":"<a href='javascript:;' class='btn btn-xs red'><i class='fa fa-remove'></i></a>",
+    "type": "单个"
+  },
+  {
+    "id": 3,
+    "name": "名称3",
+    "url": "bbs.178.com",
+    "groupName": "WEBTOP60",
+    "action":"<a href='javascript:;' class='btn btn-xs default'><i class='fa fa-arrow-right'></i></a>",
+    "remove":"<a href='javascript:;' class='btn btn-xs red'><i class='fa fa-remove'></i></a>",
+    "type": "单个"
+  },
+  {
+    "id": 4,
+    "name": "名称4",
+    "url": "bbs.52pk.com",
+    "groupName": "WEBTOP60",
+    "action":"<a href='javascript:;' class='btn btn-xs default'><i class='fa fa-arrow-right'></i></a>",
+    "remove":"<a href='javascript:;' class='btn btn-xs red'><i class='fa fa-remove'></i></a>",
+    "type": "单个"
+  },
+  {
+    "id": 5,
+    "name": "名称5",
+    "url": "bbs.greatwuyi.com",
+    "groupName": "WEBTOP60",
+    "action":"<a href='javascript:;' class='btn btn-xs default'><i class='fa fa-arrow-right'></i></a>",
+    "remove":"<a href='javascript:;' class='btn btn-xs red'><i class='fa fa-remove'></i></a>",
+    "type": "单个"
+  },
+  {
+    "id": 6,
+    "name": "名称6",
+    "url": "bbs.ruian.com",
+    "groupName": "WEBTOP60",
+    "action":"<a href='javascript:;' class='btn btn-xs default'><i class='fa fa-arrow-right'></i></a>",
+    "remove":"<a href='javascript:;' class='btn btn-xs red'><i class='fa fa-remove'></i></a>",
+    "type": "单个"
+  },
+  {
+    "id": 7,
+    "name": "名称7",
+    "url": "bbs.nfer.net",
+    "groupName": "WEBTOP60",
+    "action":"<a href='javascript:;' class='btn btn-xs default'><i class='fa fa-arrow-right'></i></a>",
+    "remove":"<a href='javascript:;' class='btn btn-xs red'><i class='fa fa-remove'></i></a>",
+    "type": "单个"
+  },
+  {
+    "id": 8,
+    "name": "名称8",
+    "url": "189.ourgame.com",
+    "groupName": "WEBTOP60",
+    "action":"<a href='javascript:;' class='btn btn-xs default'><i class='fa fa-arrow-right'></i></a>",
+    "remove":"<a href='javascript:;' class='btn btn-xs red'><i class='fa fa-remove'></i></a>",
+    "type": "单个"
+  },
+  {
+    "id": 9,
+    "name": "名称9",
+    "url": "club.gznet.com",
+    "groupName": "WEBTOP60",
+    "action":"<a href='javascript:;' class='btn btn-xs default'><i class='fa fa-arrow-right'></i></a>",
+    "remove":"<a href='javascript:;' class='btn btn-xs red'><i class='fa fa-remove'></i></a>",
+    "type": "单个"
+  },
+  {
+    "id": 10,
+    "name": "名称10",
+    "url": "189.ourgame.com",
+    "groupName": "WEBTOP60",
+    "action":"<a href='javascript:;' class='btn btn-xs default'><i class='fa fa-arrow-right'></i></a>",
+    "remove":"<a href='javascript:;' class='btn btn-xs red'><i class='fa fa-remove'></i></a>",
+    "type": "单个"
+  },
+  {
+    "id": 11,
+    "name": "名称11",
+    "url": "www.163.com",
+    "groupName": "WEBTOP60",
+    "action":"<a href='javascript:;' class='btn btn-xs default'><i class='fa fa-arrow-right'></i></a>",
+    "remove":"<a href='javascript:;' class='btn btn-xs red'><i class='fa fa-remove'></i></a>",
+    "type": "单个"
+  },
+  {
+    "id": 12,
+    "name": "名称12",
+    "url": "bbs.178.com",
+    "groupName": "WEBTOP60",
+    "action":"<a href='javascript:;' class='btn btn-xs default'><i class='fa fa-arrow-right'></i></a>",
+    "remove":"<a href='javascript:;' class='btn btn-xs red'><i class='fa fa-remove'></i></a>",
+    "type": "单个"
+  }
+]

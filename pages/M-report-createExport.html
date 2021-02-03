@@ -1,0 +1,454 @@
+<!--导出报表-->
+<!-- Button trigger modal -->
+
+<form action="" class="form-horizontal" id="export-report-form">
+
+    <div class="form-wizard">
+        <div class="form-body">
+            <ul class="nav nav-pills nav-justified steps    no-padding">
+                <li class="active">
+                    <a href="#export-tab1" data-toggle="tab" class="step" aria-expanded="true">
+                        <span class="number"> 1 </span>
+                        <span class="desc">
+                        <i class="fa fa-check"></i> 任务基础信息配置 </span>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="#export-tab2" data-toggle="tab" class="step" aria-expanded="false">
+                        <span class="number"> 2 </span>
+                        <span class="desc">
+                        <i class="fa fa-check"></i> 数据源 </span>
+                        <!--自定义报表、存储过程（输入框自己写）、自定义数据源（进行选择）-->
+                    </a>
+                </li>
+                <li>
+                    <a href="#export-tab3" data-toggle="tab" class="step active">
+                        <span class="number"> 3 </span>
+                        <span class="desc">
+                        <i class="fa fa-check"></i> 导出目标配置 </span>
+                    </a>
+                </li>
+            </ul>
+
+
+            <hr class="dashed-line">
+            <div class="tab-content" style="min-height: 300px;">
+                <div class="alert alert-danger display-none" style="display: none;">
+                    <button class="close" data-dismiss="alert"></button>
+                    You have some form errors. Please check below.
+                </div>
+                <div class="alert alert-success display-none" style="display: none;">
+                    <button class="close" data-dismiss="alert"></button>
+                    Your form validation is successful!
+                </div>
+                <div class="tab-pane active" id="export-tab1">
+
+                    <form action="" class="form-horizontal" id="scene-basic-form">
+                        <div class="row">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <div class="form-body">
+                                    <div class="form-group col-md-12" >
+                                        <label class="control-label col-md-3">是否启用</label>
+                                        <div class="col-md-9 form-inline">
+                                            <select class="form-control input-small">
+                                                <option value="0" selected>启用</option>
+                                                <option>禁用</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-3">所属组</label>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" value="互联网" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-3">名称</label>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" placeholder="请输入名称" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-3">备注</label>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" value="请输入备注" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="form-group col-md-12">
+                                    <label class="control-label col-md-3">执行粒度</label>
+                                    <div class="col-md-9">
+                                        <div class="mt-radio-inline">
+                                            <label class="mt-radio mb0">
+                                                <input name="params.upCheckRadio" type="radio" value="option2" checked> 单次
+                                                <span></span>
+                                            </label>
+                                            <label class="mt-radio mb0">
+                                                <input name="params.upCheckRadio" type="radio" value="option2"> 月
+                                                <span></span>
+                                            </label>
+                                            <label class="mt-radio mb0">
+                                                <input name="params.upCheckRadio" type="radio" value="option2"> 周
+                                                <span></span>
+                                            </label>
+                                            <label class="mt-radio mb0">
+                                                <input name="params.upCheckRadio" type="radio" value="option2"> 日
+                                                <span></span>
+                                            </label>
+                                            <label class="mt-radio mb0">
+                                                <input name="params.upCheckRadio" type="radio" value="option2"> 时
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label class="control-label col-md-3">开始日期 </label>
+                                    <div class="col-md-5">
+                                        <input type="text" class="form-control read-only-normal" placeholder="请选择开始时间" id="startTime2" name="startTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',isShowClear:false,readOnly:true})" value="2017-02-22 09:54:27" readonly/>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label class="control-label col-md-3">结束日期</label>
+                                    <div class="col-md-5">
+                                        <input type="text" class="form-control read-only-normal" placeholder="请选择开始时间" id="startTime2" name="startTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',isShowClear:false,readOnly:true})" value="2017-02-22 09:54:27" readonly/>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label class="control-label col-md-3">执行日期 </label>
+                                    <div class="col-md-5">
+                                        <input type="text" class="form-control read-only-normal" placeholder="请选择开始时间" id="startTime2" name="startTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',isShowClear:false,readOnly:true})" value="2017-02-22 09:54:27" readonly/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="tab-pane" id="export-tab2">
+                    <!--自定义报表、存储过程（输入框自己写）、自定义数据源（进行选择）-->
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h5>可选择导出报表</h5>
+                            <div id="m-report-export-ztree" class="ztree" style="height: 350px;overflow: auto;background: #eee;"></div>
+                        </div>
+                        <div class="col-sm-8">
+                            <h5>数据源配置</h5>
+                            <div style="height: 350px;overflow: auto;b">
+                                <table class="table table-route table-bordered table-vertical-middle form-horizontal">
+                                <thead>
+                                <tr>
+                                    <th>报表名称</th>
+                                    <th>数据配置类型</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>WEB访问</td>
+                                    <td>
+                                        <select class="from-control input-sm">
+                                            <option value="0" selected>自定义报表</option>
+                                            <option value="1">存储过程</option>
+                                            <option value="2">自定义数据源</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-primary" onclick="openModalCogCustomReport()">配置</button>
+                                        &nbsp;|&nbsp;
+                                        <button type="button" class="btn btn-sm btn-danger">删除</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>WEB访问</td>
+                                    <td>
+                                        <select class="from-control input-sm">
+                                            <option value="0">自定义报表</option>
+                                            <option value="1" selected>存储过程</option>
+                                            <option value="2">自定义数据源</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-primary" onclick="openModalCogtoreProcedure()">配置</button>
+                                        &nbsp;|&nbsp;
+                                        <button type="button" class="btn btn-sm btn-danger">删除</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>WEB访问</td>
+                                    <td>
+                                        <select class="from-control input-sm">
+                                            <option value="0">自定义报表</option>
+                                            <option value="1">存储过程</option>
+                                            <option value="2" selected>自定义数据源</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-primary" onclick="openModalCogDataRes()">配置</button>
+                                        &nbsp;|&nbsp;
+                                        <button type="button" class="btn btn-sm btn-danger">删除</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="export-tab3">
+                    <div class="table-action-btns">
+                        <button type="button" class="btn btn-default btn-sm" onclick="mReportAddTarget('ftp')"><i class="fa fa-plus"></i> 新增FTP</button>
+                        <button type="button" class="btn btn-default btn-sm" onclick="mReportAddTarget('mail')"><i class="fa fa-plus"></i> 新增Mail</button>
+
+                        <div class="mt-checkbox-inline inline-block ml10">
+                            <label class="mt-checkbox mb0">
+                                是否压缩：
+                                <input name="params.upCheckGroup" type="checkbox" value="option2" checked> (不压缩会忽略邮件输出)
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-vertical-middle table-bordered table-condensed table-advance">
+                            <thead>
+                            <tr>
+                                <th>类型</th>
+                                <th>地址</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>FTP</td>
+                                    <td>123.123.11.1</td>
+                                    <td>启用</td>
+                                    <td>
+                                        <button type="button" class="btn btn-default btn-xs">修改</button>
+                                        &nbsp;|&nbsp;
+                                        <button type="button" class="btn btn-danger btn-xs">删除</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>FTP</td>
+                                    <td>123.123.11.1</td>
+                                    <td>启用</td>
+                                    <td>
+                                        <button type="button" class="btn btn-default btn-xs">修改</button>
+                                        &nbsp;|&nbsp;
+                                        <button type="button" class="btn btn-danger btn-xs">删除</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>MAIL</td>
+                                    <td>songt@nbpt.cn</td>
+                                    <td>启用</td>
+                                    <td>
+                                        <button type="button" class="btn btn-default btn-xs">修改</button>
+                                        &nbsp;|&nbsp;
+                                        <button type="button" class="btn btn-danger btn-xs">删除</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<script>
+    $(function() {
+
+        initSceneTrees("m-report-export-ztree");
+    });
+
+    //配置存储过程
+    function openModalCogtoreProcedure(){
+        var dialog = st_dialogOpen('存储成功', './reportModal/M-report-cogStoredProcedure.html', okFunc, 'middle');
+
+        function okFunc(){
+
+            if(true){
+                //判断表单是否验证通过 通过则做点事情
+                toastr.success("创建成功");
+                dialog.modal('hide');
+            }else{
+                dialog.find('.modal-footer .btn-primary').attr("disabled", false).html('确认');
+            }
+        }
+    }
+
+    //配置数据源
+    function openModalCogDataRes(){
+
+        var dialog = st_dialogOpen('自定义数据源', './reportModal/M-report-cogDataRes.html', okFunc, 'middle');
+
+        function okFunc(){
+
+            if(true){
+                //判断表单是否验证通过 通过则做点事情
+                toastr.success("创建成功");
+                dialog.modal('hide');
+            }else{
+                dialog.find('.modal-footer .btn-primary').attr("disabled", false).html('确认');
+            }
+        }
+    }
+
+    //打开自定义配置报表
+    function openModalCogCustomReport(){
+        var dialog = st_dialogOpen('自定义报表配置', './reportModal/M-report-cogCustomReport.html', okFunc, 'middle');
+
+        function okFunc(){
+
+            if(true){
+                //判断表单是否验证通过 通过则做点事情
+                toastr.success("创建成功");
+                dialog.modal('hide');
+            }else{
+                dialog.find('.modal-footer .btn-primary').attr("disabled", false).html('确认');
+            }
+        }
+    }
+
+    function initSceneTrees(id){
+        var rootIconPath = ['../assets/img/icon-tree-open.png','../assets/img/icon-tree-close.png'];
+        var nodeIconPath = "../assets/img/icon-leaf.png";
+        var setting = {
+            callback: {
+                onClick: onClick
+            },
+            view: {
+                addDiyDom: addDiyDom
+            }
+        };
+        function addDiyDom(treeId, treeNode) {
+
+            var aObj = $("#" + treeNode.tId + "_a");
+            //if ($("#diyBtn_"+treeNode.id).length>0) return;
+            var editStr ="";
+            if(treeNode.isRoot){
+                editStr = "<button type='button' style='margin-left: 5px;padding:0 5px;font-family: \"Microsoft Yahei\"' class='btn btn-xs green-meadow' id='diyBtn_" + treeNode.id
+                        + "' title='"+treeNode.name+"' onfocus='this.blur();'>添加该组</button>";
+            }else{
+                editStr = "<button type='button' style='margin-left: 5px;padding:0 5px;font-family: \"Microsoft Yahei\"' class='btn btn-xs green-meadow' id='diyBtn_" + treeNode.id
+                        + "' title='"+treeNode.name+"' onfocus='this.blur();'>添加</button>";
+            }
+
+            aObj.append(editStr);
+            var btn = $("#diyBtn_"+treeNode.id);
+            if (btn) btn.bind("click", function(){alert("diy Button for " + treeNode.name);});
+        };
+
+        var zNodes =[
+            {
+                name:"父节点1 - 展开",
+                open:true,
+                isParent:true,
+                isRoot:true,
+                iconOpen: rootIconPath[0], iconClose: rootIconPath[1],
+                children: [
+                    { id:"100",name:"父节点11 - 没有子节点" ,icon: nodeIconPath},
+                    { id:"101",name:"父节点12 - 没有子节点" ,icon: nodeIconPath},
+                    { id:"102",name:"父节点13 - 没有子节点" ,icon: nodeIconPath}
+                ]
+            },
+            {
+                name:"父节点2 - 展开",
+                open:true,
+                isParent:true,
+                isRoot:true,
+                iconOpen: rootIconPath[0], iconClose: rootIconPath[1],
+                children: [
+                    { id:"200",name:"父节点21 - 没有子节点", icon: nodeIconPath},
+                    { id:"201",name:"父节点22 - 没有子节点", icon: nodeIconPath},
+                    { id:"202",name:"父节点23 - 没有子节点", icon: nodeIconPath}
+                ]
+            },
+            {
+                name:"父节点3 - 展开",
+                open:true,
+                isParent:true,
+                isRoot:true,
+                iconOpen: rootIconPath[0], iconClose: rootIconPath[1],
+                children: [
+                    { id:"300", name:"父节点31 - 没有子节点", icon: nodeIconPath},
+                    { id:"301", name:"父节点32 - 没有子节点", icon: nodeIconPath},
+                    { id:"302", name:"父节点33 - 没有子节点", icon: nodeIconPath},
+                    { id:"303", name:"父节点31 - 没有子节点", icon: nodeIconPath},
+                    { id:"304", name:"父节点32 - 没有子节点", icon: nodeIconPath},
+                    { id:"305", name:"父节点31 - 没有子节点", icon: nodeIconPath},
+                    { id:"306", name:"父节点32 - 没有子节点", icon: nodeIconPath},
+                    { id:"307", name:"父节点33 - 没有子节点", icon: nodeIconPath},
+                    { id:"308", name:"父节点31 - 没有子节点", icon: nodeIconPath},
+                    { id:"309", name:"父节点32 - 没有子节点", icon: nodeIconPath},
+                    { id:"310", name:"父节点31 - 没有子节点", icon: nodeIconPath},
+                    { id:"311", name:"父节点32 - 没有子节点", icon: nodeIconPath},
+                    { id:"312", name:"父节点33 - 没有子节点", icon: nodeIconPath},
+                    { id:"313", name:"父节点31 - 没有子节点", icon: nodeIconPath},
+                    { id:"314", name:"父节点32 - 没有子节点", icon: nodeIconPath},
+                    { id:"315", name:"父节点31 - 没有子节点", icon: nodeIconPath},
+                    { id:"316", name:"父节点32 - 没有子节点", icon: nodeIconPath},
+                    { id:"317", name:"父节点33 - 没有子节点", icon: nodeIconPath},
+                    { id:"318", name:"父节点31 - 没有子节点", icon: nodeIconPath},
+                    { id:"319", name:"父节点32 - 没有子节点", icon: nodeIconPath},
+                    { id:"320", name:"父节点31 - 没有子节点", icon: nodeIconPath},
+                    { id:"321", name:"父节点32 - 没有子节点", icon: nodeIconPath},
+                    { id:"322", name:"父节点33 - 没有子节点", icon: nodeIconPath},
+                    { id:"323", name:"父节点31 - 没有子节点", icon: nodeIconPath},
+                    { id:"324", name:"父节点32 - 没有子节点", icon: nodeIconPath},
+                    { id:"325", name:"父节点33 - 没有子节点", icon: nodeIconPath}
+                ]
+            }
+
+        ];
+
+        var zTreeObj = $.fn.zTree.init($("#"+ id), setting, zNodes);
+        var rMenu = $("#rMenu");
+
+        function onClick(e,treeId, treeNode) {
+            var zTree = $.fn.zTree.getZTreeObj(id);
+            zTree.expandNode(treeNode, null, null, null, true);
+        }
+
+        return zTreeObj;
+    }
+    function mReportAddTarget(type){
+        if(type == "ftp") {
+
+            var dialog = st_dialogOpen('新增ftp', './reportModal/M-report-cogFtp.html', okFunc, 'middle');
+
+            function okFunc(){
+
+                if(true){
+                    //判断表单是否验证通过 通过则做点事情
+                    toastr.success("创建成功");
+                    dialog.modal('hide');
+                }else{
+                    dialog.find('.modal-footer .btn-primary').attr("disabled", false).html('确认');
+                }
+            }
+
+        }else if(type =="mail") {
+
+            var dialog = st_dialogOpen('新增Mail', './reportModal/M-report-cogMail.html', okFunc, 'middle');
+
+            function okFunc(){
+
+                if(true){
+                    //判断表单是否验证通过 通过则做点事情
+                    toastr.success("创建成功");
+                    dialog.modal('hide');
+                }else{
+                    dialog.find('.modal-footer .btn-primary').attr("disabled", false).html('确认');
+                }
+            }
+
+        }
+    }
+</script>
